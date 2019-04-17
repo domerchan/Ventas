@@ -1,0 +1,151 @@
+section.compra {
+	float: left;
+	width: 16%;
+	margin: 20px;
+	padding: 0px 15px;
+	border: 5px solid;
+	border-color: white;
+  	box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.9), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  	height: 200px;
+}
+
+section.compra h1 {
+	background-color: rgba(255, 255, 255, 0.6);
+	padding:  15px 25px;
+	color: black;
+	text-align: center;
+	margin-top: 70px;
+	font-size: 24px;
+}
+
+section.compra p {
+	background-color: rgba(255, 255, 255, 0.5);
+	padding:  10px 25px;
+	color: black;
+}
+
+#about {
+	clear: both;
+    background-image: url(../img/back3.jpg);
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 200px;
+    padding: 45px;
+    margin-top: 550px;
+}
+
+#about section {
+	background-color: rgba(255, 255, 255, 0.6);
+	padding: 1px 15px;
+	text-align: center;
+}
+
+h1 {
+	font-size: 32px;
+}
+
+p {
+	font-size: 24px;
+}
+
+#contact {
+  	height: 100%;
+  	color: black;
+	padding: 15px;
+	margin: 15px;
+	padding-bottom: 330px;
+	border: 1px solid;
+}
+
+#contact h1 {
+	text-align: center;
+}
+
+#contact #uno {
+	float: left;
+	width: 49%;
+}
+
+#contact #dos {
+	float: left;
+	width: 49%;
+}
+
+#options section {
+	background-color: white;
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+
+#FV {
+	background-image: url(../img/FV.jpg);
+	background-position: bottom;
+}
+
+#Bb {
+	background-image: url(../img/Bb.jpg);
+	background-position: bottom;
+}
+
+#Sn {
+	background-image: url(../img/Sn.jpg);
+	background-position: top;
+}
+
+
+#Lc {
+	background-image: url(../img/Lc.jpg);
+	background-position: top;
+}
+
+#Cs {
+	background-image: url(../img/Cs.jpg);
+	background-position: top;
+}
+
+#PH {
+	background-image: url(../img/PH.jpg);
+	background-position: top;
+}
+
+#Cr {
+	background-image: url(../img/Cr.jpg);
+	background-position: top;
+}
+
+#Pn {
+	background-image: url(../img/Pn.jpg);
+	background-position: top;
+}
+
+#Ms {
+	background-image: url(../img/Ms.jpg);
+	background-position: bottom;
+}
+
+#Fr {
+	background-image: url(../img/Fr.jpg);
+	background-position: top;
+}
+
+#Bs {
+	background-image: url(../img/Bs.jpg);
+	background-position: top;
+}
+
+#Dr {
+	background-image: url(../img/Dr.jpg);
+	background-position: top;
+}
+
+#En {
+	background-image: url(../img/En.jpg);
+	background-position: top;
+}
+
+#Es {
+	background-image: url(../img/Es.jpg);
+	background-position: top;
+}
