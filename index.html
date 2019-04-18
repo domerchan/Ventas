@@ -1,15 +1,25 @@
 <!DOCTYPE html>
-<html>
+<html lang="es" ng-app="market">
 	<head>
 		<title>Market Online</title>
+
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
 		<link rel="stylesheet" type="text/css" href="css/style.css">
 		<link rel="stylesheet" type="text/css" href="css/index.css">
 		<link href="https://fonts.googleapis.com/css?family=Marcellus+SC" rel="stylesheet">
+
 		<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
 		<script type="text/javascript" src="js/javascript.js"></script>
+        <script src="js/angular.js"></script>
+        <script src="js/app.js"></script> <!-- se agrega el modulo -->
+        <script src="js/controllers.js"></script> <!--Se agrega un nuevo archivo Controller-->
+        <script src="js/services.js"></script> <!-- se agrega los servicios-->
 	</head>
 
-	<body>
+	<body ng-controller="ProductListCtrl">
 
 		<header>
 			<div id="banner">
@@ -21,123 +31,34 @@
 					<li><a href="index.html"><p>Inicio</p></a></li>
 					<li><a href="#about"><p>Acerca</p></a></li>
 					<li><a href="#contact"><p>Contáctanos</p></a></li>
+					<li><a href=""><p>Promociones</p></a></li>
 					<li><a href=""><p>Log In</p></a></li>
 				</ul>
 			</nav>
 		</header>
+
+		<div id="buscador">
+			<form>
+				<label>Buscar:</label>
+				<input type="text" ng-model="query">
+			</form>
+		</div>
 		
 		<div id="options">
-			<a href="new.html">
-				<section id="FV" class="compra">
+
+			<a href={{product.id}}.html ng-repeat="product in products | filter:query">
+				<section id={{product.id}} class="compra">
 					<article>
-						<h1>Frutas y Verduras</h1>
-					</article>
-				</section>
-			</a>
-		
-			<a href="used.html">
-				<section id="Bb" class="compra">
-					<article>
-						<h1>Bebidas</h1>
+						<h1>{{product.name}}</h1>
 					</article>
 				</section>
 			</a>
 
-			<a href="rent.html">
-				<section id="Sn" class="compra">
-					<article>
-						<h1>Snacks</h1>
-					</article>
-				</section>
-			</a>
+			<br>
+			<br>
+			<br>
+			<br>
 
-			<a href="new.html">
-				<section id="Lc" class="compra">
-					<article>
-						<h1>Licorería</h1>
-					</article>
-				</section>
-			</a>
-		
-			<a href="used.html">
-				<section id="Cs" class="compra">
-					<article>
-						<h1>Cosméticos</h1>
-					</article>
-				</section>
-			</a>
-
-			<a href="rent.html">
-				<section id="PH" class="compra">
-					<article>
-						<h1>Para el Hogar</h1>
-					</article>
-				</section>
-			</a>
-
-			<a href="rent.html">
-				<section id="Cr" class="compra">
-					<article>
-						<h1>Carnes</h1>
-					</article>
-				</section>
-			</a>
-
-			<a href="rent.html">
-				<section id="Pn" class="compra">
-					<article>
-						<h1>Panadería</h1>
-					</article>
-				</section>
-			</a>
-
-			<a href="rent.html">
-				<section id="Ms" class="compra">
-					<article>
-						<h1>Mascotas</h1>
-					</article>
-				</section>
-			</a>
-
-			<a href="rent.html">
-				<section id="Fr" class="compra">
-					<article>
-						<h1>Ferretería</h1>
-					</article>
-				</section>
-			</a>
-
-			<a href="rent.html">
-				<section id="Bs" class="compra">
-					<article>
-						<h1>Bebés</h1>
-					</article>
-				</section>
-			</a>
-
-			<a href="rent.html">
-				<section id="Dr" class="compra">
-					<article>
-						<h1>Derivados</h1>
-					</article>
-				</section>
-			</a>
-
-			<a href="rent.html">
-				<section id="En" class="compra">
-					<article>
-						<h1>Enlatados</h1>
-					</article>
-				</section>
-			</a>
-
-			<a href="rent.html">
-				<section id="Es" class="compra">
-					<article>
-						<h1>Especias</h1>
-					</article>
-				</section>
-			</a>
 		</div>
 
 		<div id="about">

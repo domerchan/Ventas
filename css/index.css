@@ -33,7 +33,6 @@ section.compra p {
     background-position: center;
     height: 200px;
     padding: 45px;
-    margin-top: 550px;
 }
 
 #about section {
@@ -54,7 +53,7 @@ p {
   	height: 100%;
   	color: black;
 	padding: 15px;
-	margin: 15px;
+	margin: 75px 15px 15px 15px;
 	padding-bottom: 330px;
 	border: 1px solid;
 }
@@ -71,6 +70,14 @@ p {
 #contact #dos {
 	float: left;
 	width: 49%;
+}
+
+#options {
+	margin-left: 9%;
+}
+
+#options br {
+	clear: both;
 }
 
 #options section {
@@ -148,4 +155,9 @@ p {
 #Es {
 	background-image: url(../img/Es.jpg);
 	background-position: top;
+}
+
+#Lb {
+	background-image: url(../img/Lb.jpg);
+	background-position: bottom;
 }
