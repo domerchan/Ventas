@@ -24,6 +24,12 @@ section.compra p {
 	color: black;
 }
 
+#buscador {
+	clear: both;
+	float: right;
+	padding: 30px 60px;
+}
+
 #about {
 	clear: both;
     background-image: url(../img/back3.jpg);
@@ -73,6 +79,7 @@ p {
 }
 
 #options {
+	clear: both;
 	margin-left: 9%;
 }
 

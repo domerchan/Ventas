@@ -39,17 +39,17 @@
 
 		<div id="buscador">
 			<form>
-				<label>Buscar:</label>
+				<label>¿Estás buscando algo en específico? </label>
 				<input type="text" ng-model="query">
 			</form>
 		</div>
 		
 		<div id="options">
 
-			<a href={{product.id}}.html ng-repeat="product in products | filter:query">
+			<a href={{product.id}}.html ng-repeat="product in products | filter:query" class="opcion">
 				<section id={{product.id}} class="compra">
 					<article>
-						<h1>{{product.name}}</h1>
+						<h1 class="h1">{{product.name}}</h1>
 					</article>
 				</section>
 			</a>

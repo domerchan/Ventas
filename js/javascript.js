@@ -1,4 +1,5 @@
 $(document).ready(function() {
+
 	var altura = $('.navHeader').offset().top;
 
 	$(window).on('scroll', function() {
@@ -8,4 +9,9 @@ $(document).ready(function() {
 			$('.navHeader').removeClass('navFixed');
 		}
 	});
+
+	$(".opcion").mouseenter(function() {
+		alert("asdf");
+	})
+
 });
