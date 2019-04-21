@@ -36,7 +36,7 @@ section.compra p {
     background-attachment: fixed;
     background-repeat: no-repeat;
     background-size: cover;
-    background-position: center;
+    background-position: bottom;
     height: 200px;
     padding: 45px;
 }
