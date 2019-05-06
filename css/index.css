@@ -144,6 +144,10 @@ p {
 	width: 49%;
 }
 
+#contact textarea {
+	width: 100%;
+}
+
 #options {
 	clear: both;
 }

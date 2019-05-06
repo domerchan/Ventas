@@ -15,7 +15,7 @@ marketServices.factory('Product', [
     		var products = [{
     					"id": "FV",
 				        "name": "Frutas y Verduras", 
-				        "listado": ["naranja", "pera"]
+				        "listado": [{"nombre": "naranja"}, {"nombre": "pera"}]
 				    },
 				    {
     					"id": "Cr",
