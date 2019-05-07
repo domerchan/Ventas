@@ -8,11 +8,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
 		<link rel="stylesheet" type="text/css" href="css/style.css">
-		<link rel="stylesheet" type="text/css" href="css/index.css">
+		<link rel="stylesheet" type="text/css" href="css/ind.css">
 		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
 		<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
-		<script type="text/javascript" src="js/javascript.js"></script>
+		<script type="text/javascript" src="js/script.js"></script>
 	</head>
 
 	<body>
@@ -34,6 +34,8 @@
 				<a href=""><i class="material-icons">shopping_cart</i></a>
 			</nav>
 		</header>
+
+		<a href="categorias.php">Ingresar como administrador</a>
 
 		<div id="promociones">
 			<div id="lista">
@@ -68,7 +70,7 @@
 			$sql = "SELECT * FROM categoria";
 			$result = $conn -> query($sql);
 			while ($row = $result -> fetch_assoc()) {
-				echo "<a href='' class='option'>";
+				echo "<a href='' class='opcion' onmouseover='crecer()'>";
 				echo "<div class='compra' style='background-image: url(data:image/jpg;base64,".base64_encode($row["ca_imagen"])."); background-size: cover; background-repeat: no-repeat; background-position: center;'>";
 				echo "<h1 class='h1'>".$row['ca_nombre']."</h1>";
 				echo "</div>";
@@ -136,8 +138,6 @@
 			  	</form>
 			</section>
 		</div>
-
-		<a href="categorias.php">Ingresar como administrador</a>
 
 		<footer>
 			<div id="pie">

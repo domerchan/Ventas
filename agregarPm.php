@@ -59,6 +59,11 @@
 					</tr>
 
 					<tr>
+						<td><label>Nombre</label></td>
+						<td><input class="input" type="text" name="nom"></td>
+					</tr>
+
+					<tr>
 						<td><label>Porcentaje</label></td>
 						<td><input class="input" type="number" name="por" min="0" max="99" step="1" value="0"></td>
 					</tr>

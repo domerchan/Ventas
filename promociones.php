@@ -38,6 +38,7 @@
 				<tr>
 					<th>ID</th>
 					<th>CATEGORÍA</th>
+					<th>NOMBRE</th>
 					<th>PORCENTAJE</th>
 					<th>DÍA QUE APLICA</th>
 					<th>DESCRIPCIÓN</th>
@@ -54,6 +55,7 @@
 							echo "<tr>";
 							echo "<td class='id'>".$row["pm_codigo"]."</td>";
 							echo "<td class='nom'>".$row["ca_nombre"]."</td>";
+							echo "<td class='nom'>".$row["pm_nombre"]."</td>";
 							echo "<td class='por'>".$row["pm_porcentaje"]."</td>";
 							echo "<td class='dia'>".$row["pm_dia"]."</td>";
 							echo "<td class='des'>".$row["pm_descripcion"]."</td>";

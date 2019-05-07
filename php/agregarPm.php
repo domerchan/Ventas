@@ -35,7 +35,7 @@
 
     		} else {
 
-    			$sql = "INSERT INTO promocion VALUES (0, '$ca_codigo', '$porcentaje', '$dia', '$descripcion', '$image')";
+    			$sql = "INSERT INTO promocion VALUES (0, '$ca_codigo', '$nombre', '$porcentaje', '$dia', '$descripcion', '$image')";
 
 				if ($conn -> query($sql) == TRUE) {
 					echo "<h2>Se han cargado los datos correctamente!</h2>";
