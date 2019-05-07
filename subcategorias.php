@@ -21,7 +21,7 @@
 			<div id="gradient"></div>
 			<nav class="navHeader">
 				<ul>
-					<li><a href="index.html"><p>Inicio</p></a></li>
+					<li><a href="index.php"><p>Inicio</p></a></li>
 					<li><a href="sucursal.php"><p>Sucursal</p></a></li>
 					<li><a href="categorias.php"><p>Categorías</p></a></li>
 					<li><a href="subcategorias.php"><p>Subcategorías</p></a></li>

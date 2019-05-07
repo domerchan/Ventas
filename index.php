@@ -24,7 +24,7 @@
 			<div id="gradient"></div>
 			<nav class="navHeader">
 				<ul>
-					<li><a href="index.html"><p>Inicio</p></a></li>
+					<li><a href="index.php"><p>Inicio</p></a></li>
 					<li><a href="#about"><p>Acerca</p></a></li>
 					<li><a href="#contact"><p>Contáctanos</p></a></li>
 					<li><a href=""><p>Locales</p></a></li>
