@@ -62,7 +62,7 @@
 	float: left;
 }
 
-section.compra {
+.compra {
 	float: left;
 	width: 16%;
 	margin-top: 40px;
@@ -75,7 +75,7 @@ section.compra {
   	height: 200px;
 }
 
-section.compra h1 {
+.compra h1 {
 	background-color: rgba(255, 255, 255, 0.6);
 	padding:  15px 25px;
 	color: black;
@@ -84,7 +84,7 @@ section.compra h1 {
 	font-size: 24px;
 }
 
-section.compra p {
+.compra p {
 	background-color: rgba(255, 255, 255, 0.5);
 	padding:  10px 25px;
 	color: black;
@@ -122,11 +122,10 @@ p {
 }
 
 #contact {
-  	height: 100%;
   	color: black;
 	padding: 15px;
-	margin: 75px 15px 15px 15px;
-	padding-bottom: 330px;
+	margin: 70px 15px 15px 15px;
+	padding-bottom: 400px;
 	border: 1px solid;
 }
 

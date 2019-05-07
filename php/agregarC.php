@@ -32,7 +32,7 @@
 				$fecha = date('Y-m-d H:i:s', time());
 
 				$sql = "INSERT INTO categoria VALUES (0, '$nombre', '$descripcion', '$image', '$fecha')";
-
+                
 				if ($conn -> query($sql) == TRUE) {
 					echo "se han cargado los datos correctamente";
 				} else {

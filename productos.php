@@ -24,8 +24,9 @@
 					<li><a href="index.html"><p>Inicio</p></a></li>
 					<li><a href="sucursal.php"><p>Sucursal</p></a></li>
 					<li><a href="categorias.php"><p>Categorías</p></a></li>
+					<li><a href="subcategorias.php"><p>Subcategorías</p></a></li>
 					<li><a href="productos.php"><p>Productos</p></a></li>
-					<li><a href=""><p>Promociones</p></a></li>
+					<li><a href="promociones.php"><p>Promociones</p></a></li>
 				</ul>
 			</nav>
 		</header>
@@ -37,6 +38,7 @@
 				<tr>
 					<th>ID</th>
 					<th>CATEGORIA</th>
+					<th>SUBCATEGORIA</th>
 					<th>NOMBRE</th>
 					<th>DESCRIPCION</th>
 					<th>PRECIO</th>
@@ -51,14 +53,15 @@
 
 				<?php
 					include'php/conexionBD.php';
-					$sql = "SELECT * FROM producto, categoria WHERE producto.ca_codigo = categoria.ca_codigo";
+					$sql = "SELECT * FROM producto, subcategoria, categoria WHERE producto.sb_codigo = subcategoria.sb_codigo and subcategoria.ca_codigo = categoria.ca_codigo";
 					$result = $conn -> query($sql);
 
 					if($result -> num_rows > 0) {
 						while ($row = $result -> fetch_assoc()) {
 							echo "<tr>";
 							echo "<td class='id'>".$row["pr_codigo"]."</td>";
-							echo "<td class='id_cat'>".$row["ca_codigo"]."</td>";
+							echo "<td class='id'>".$row["ca_nombre"]."</td>";
+							echo "<td class='id'>".$row["sb_nombre"]."</td>";
 							echo "<td class='nom'>".$row["pr_nombre"]."</td>";
 							echo "<td class='des'>".$row["pr_descripcion"]."</td>";
 							echo "<td class='pre'>".$row["pr_precio"]."</td>";

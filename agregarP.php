@@ -25,8 +25,9 @@
 					<li><a href="index.html"><p>Inicio</p></a></li>
 					<li><a href="sucursal.php"><p>Sucursal</p></a></li>
 					<li><a href="categorias.php"><p>Categorías</p></a></li>
+					<li><a href="subcategorias.php"><p>Subcategorías</p></a></li>
 					<li><a href="productos.php"><p>Productos</p></a></li>
-					<li><a href=""><p>Promociones</p></a></li>
+					<li><a href="promociones.php"><p>Promociones</p></a></li>
 				</ul>
 			</nav>
 		</header>
@@ -36,7 +37,7 @@
 		<br>
 
 		<div id="formulario">
-			<form method="POST" action="php/agregarP.php" enctype="multipart/form-data">
+			<form method="POST" action="agregarP.php" enctype="multipart/form-data">
 
 				<table>
 
@@ -44,6 +45,7 @@
 						<td><label>Categoría</label></td>
 						<td>
 							<select name="cat">
+								<option></option>
 								<?php
 									include'php/conexionBD.php';
 									$sql = "SELECT ca_nombre FROM categoria";
@@ -51,6 +53,37 @@
 
 									while($row = $result -> fetch_assoc()) {
 										echo "<option value='".$row['ca_nombre']."'>".$row['ca_nombre']."</option>";
+									}
+								?>
+							</select>
+						</td>
+					</tr>
+
+					<tr>
+						<td id="button" colspan="2"><input type="submit" name="submit" value="Agragar Categoría"></td>
+					</tr>
+				</table>
+			</form>
+
+			<form method="POST" action="php/agregarP.php" enctype="multipart/form-data">
+				<table>
+
+					<tr>
+						<td><label>Subategoría</label></td>
+						<td>
+							<select name="sub" >
+								<option></option>
+								<?php
+									$categoria = $_POST['cat'];
+									$sql = "SELECT ca_codigo FROM categoria WHERE ca_nombre = '$categoria'";
+									$result = $conn -> query($sql);
+									$row = $result -> fetch_assoc();
+									$ca_codigo = $row['ca_codigo'];
+									$sql = "SELECT sb_nombre FROM subcategoria WHERE ca_codigo = '$ca_codigo'";
+									$result = $conn -> query($sql);
+
+									while($row = $result -> fetch_assoc()) {
+										echo "<option value='".$row['sb_nombre']."'>".$row['sb_nombre']."</option>";
 									}
 								?>
 							</select>
@@ -108,7 +141,7 @@
 					</tr>
 
 					<tr>
-						<td id="button" colspan="2"><input type="submit" name="submit" value="Agragar Categoría"></td>
+						<td id="button" colspan="2"><input type="submit" name="submit" value="Agragar Producto"></td>
 					</tr>
 
 				</table>

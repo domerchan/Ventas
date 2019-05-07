@@ -9,9 +9,4 @@ $(document).ready(function() {
 			$('.navHeader').removeClass('navFixed');
 		}
 	});
-
-	$(".opcion").mouseenter(function() {
-		alert("asdf");
-	})
-
 });
