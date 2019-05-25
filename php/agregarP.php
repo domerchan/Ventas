@@ -40,7 +40,7 @@
     			echo "Tamaño máximo admitido es de 64 000 bytes";
     		} else {
 
-				$sql = "INSERT INTO producto VALUES (0, '$sb_codigo', '$nombre', '$descripcion', '$precio', '$unidad', '$image', '$stock', '$oferta', '$azucar', '$grasa', '$sal')";
+				$sql = "INSERT INTO producto VALUES (0, '$sb_codigo', '$nombre', '$descripcion', '$precio', '$unidad', '$image', '$stock', '$oferta', '$azucar', '$grasa', '$sal', 'N')";
 
 				if ($conn -> query($sql) == TRUE) {
 					echo "<h2>Se han cargado los datos correctamente!</h2>";

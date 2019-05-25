@@ -1,7 +1,7 @@
 <?php
-	$db_servername = "localhost";
-	$db_username = "root";
-	$db_password = "";
+	$db_servername = "35.199.81.45";
+	$db_username = "admin";
+	$db_password = "Admin_ups2019";
 	$db_name = "ventas";
 
 	//crea conexión
