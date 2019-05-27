@@ -1,11 +1,12 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
+
 <html>
 
 	<head>
 		<meta charset="utf-8">
 		<title></title>
 		<link rel="stylesheet" type="text/css" href="css/style.css">
-		<link rel="stylesheet" type="text/css" href="css/listados.css">
+		<link rel="stylesheet" type="text/css" href="css/agregar.css">
 		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
 		<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
@@ -30,42 +31,53 @@
 				</ul>
 			</nav>
 		</header>
+
 		<br>
-		<a href="agregarC.php">Agregar una nueva Categoría</a>
+		<br>
+		<br>
 
-		<div id="listado">
-			<table>
-				<tr>
-					<th>ID</th>
-					<th>AREA</th>
-					<th>NOMBRE</th>
-					<th>DESCRIPCION</th>
-					<th>IMAGEN</th>
-				</tr>
+		<div id="formulario">
+			<form method="POST" action="php/agregarC.php" enctype="multipart/form-data">
 
-				<?php
-					include'php/conexionBD.php';
-					$sql = "SELECT * FROM categoria";
-					$result = $conn -> query($sql);
+				<table>
+					<tr>
+						<td><label>Área</label></td>
+						<td>
+							<select name="area">
+								<?php
+									include'php/conexionBD.php';
+									$sql = "SELECT ar_nombre FROM area";
+									$result = $conn -> query($sql);
 
-					if($result -> num_rows > 0) {
-						while ($row = $result -> fetch_assoc()) {
+									while($row = $result -> fetch_assoc()) {
+										echo "<option value='".$row['ar_nombre']."'>".$row['ar_nombre']."</option>";
+									}
+								?>
+							</select>
+						</td>
+					</tr>
 
-							$sql2 = "SELECT * FROM area WHERE ar_codigo = ".$row['ar_codigo'];
-							$result2 = $conn -> query($sql2);
-							$row2 = $result2 -> fetch_assoc();
-							
-							echo "<tr>";
-							echo "<td class='id'>".$row["ca_codigo"]."</td>";
-							echo "<td class='are'>".$row2["ar_nombre"]."</td>";
-							echo "<td class='nom'>".$row["ca_nombre"]."</td>";
-							echo "<td class='des'>".$row["ca_descripcion"]."</td>";
-							echo "<td class='img'><img src='data:image/jpg;base64,".base64_encode($row["ca_imagen"])."'/></td>";
-							echo "</tr>";
-						}
-					}
-				?>
-			</table>
+					<tr>
+						<td><label>Nombre</label></td>
+						<td><input class="input" type="text" name="nom" placeholder="ingresar el nombre de la categoría"></td>
+					</tr>
+
+					<tr>
+						<td><label>Descipción</label></td>
+						<td><textarea rows="4" cols="50" maxlength="300" name="des" placeholder="ingresar una descripción de la categoría"></textarea></td>
+					</tr>
+
+					<tr>
+						<td><label>Imagen</label></td>
+						<td><input class="input" type="file" name="image"></td>
+					</tr>
+
+					<tr>
+						<td id="button" colspan="2"><input type="submit" name="submit" value="Agragar Categoría"></td>
+					</tr>
+
+				</table>
+			</form>
 		</div>
 
 		<footer>
@@ -80,4 +92,5 @@
 		</footer>
 		
 	</body>
+
 </html>

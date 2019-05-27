@@ -1,3 +1,7 @@
+html {
+	font-family: 'Didact Gothic', sans-serif;
+}
+
 #promociones {
 	margin: 35px 30px 0px 30px;
 	height: 250px;
@@ -58,7 +62,7 @@
 	background-size: 150px;
 	background-position: center;
 	background-repeat: no-repeat;
-	background-color: #D1D1D1;
+	background-color: rgba(191, 215, 58, 0.3);
 	float: left;
 }
 
@@ -96,6 +100,66 @@
 	padding: 40px 60px 10px 0px;
 }
 
+#slogan section {
+	width: 90%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#slogan article {
+	width: 25%;
+	float: left;
+}
+
+#slogan i {
+	width: 16%;
+	margin-top: 10px;
+	font-size: 48px;
+	color: rgb(191, 215, 58);
+	float: left;
+}
+
+#slogan div {
+	width: 70%;
+	float: left;
+}
+
+#slogan li {
+	list-style-image: url(../img/check.png);
+	font-size: 18px;
+}
+
+#start section {
+	width: 50%;
+	margin-right: auto;
+	border-bottom: 3px solid rgb(191, 215, 58);
+	margin-left: auto;
+}
+
+#start_title {
+	text-align: center;
+}
+
+#start article {
+	width: 30%;
+	margin: 0px 1%;
+	float: left;
+}
+
+#start article h1 {
+	float: left;
+	width: 25%;
+	font-size: 50px;
+	font-weight: bold;
+	color: rgb(191, 215, 58);
+}
+
+#start article p {
+	float: left;
+	width: 75%;
+	font-size: 28px;
+}
+
 #about {
 	clear: both;
     background-image: url(../img/back3.jpg);
@@ -103,14 +167,46 @@
     background-repeat: no-repeat;
     background-size: cover;
     background-position: bottom;
-    height: 200px;
-    padding: 45px;
+    padding: 55px 0px;
 }
 
 #about section {
-	background-color: rgba(255, 255, 255, 0.6);
-	padding: 1px 15px;
+	background-color: rgba(0, 0, 0, 0.6);
+	padding: 0;
+    height: 220px;
 	text-align: center;
+}
+
+#about div {
+	width: 70%;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+#about article {
+	width: 30%;
+	float: left;
+	margin: 0px 1%;
+	color: white;
+}
+
+#about li {
+	text-align: left;
+}
+
+#about p {
+	font-size: 22px;
+	font-weight: bold;
+}
+
+#about a {
+	text-decoration: none;
+	color: white;
+	font-size: 20px;
+}
+
+#about a:hover {
+	font-weight: bold;
 }
 
 h1 {
@@ -120,7 +216,7 @@ h1 {
 p {
 	font-size: 24px;
 }
-
+/*
 #contact {
   	color: black;
 	padding: 15px;
@@ -146,6 +242,7 @@ p {
 #contact textarea {
 	width: 100%;
 }
+*/
 
 #options {
 	clear: both;
@@ -153,4 +250,18 @@ p {
 
 #options br {
 	clear: both;
+}
+
+#social svg {
+	width: 40px;
+	height: 40px;
+	padding: 10px;
+	fill: rgb(63, 63, 63);
+}
+
+#social section {
+	width: 12%;
+	margin: 15px 0px;
+	margin-right: auto;
+	margin-left: auto;
 }

@@ -13,20 +13,20 @@ body {
 
 #gradient {
 	background-color: rgba(0,0,0,0.6);
-	height: 125px;
-	margin-top: -125px;
+	height: 150px;
+	margin-top: -150px;
 }
 
 header {
-	height: 155px;
+	height: 180px;
 }
 
 header #banner {
-	height: 125px;
+	height: 150px;
 }
 
 header img {
-	width: 70%;
+	width: 1100px;
 	margin-top: 10px;
 	margin-left: 60px;
 	margin-bottom: 20px;
@@ -44,7 +44,8 @@ header i {
 	padding-top: 0px;
   	box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.19);
   	clear: both;
-  	z-index: 1;
+  	z-index: 100;
+  	position: relative;
 }
 
 .navFixed {
@@ -54,7 +55,7 @@ header i {
     width: 100%;
 }
 
-header ul {
+header .ul1 {
     list-style-type: none;
     margin: 0;
     padding: 0;
@@ -64,30 +65,62 @@ header ul {
     border-bottom: 2px solid rgb(191, 215, 58);
 }
 
-header li {
+header .frst {
      display: inline;
 }
 
-header li a {
+header .frst a {
 	text-decoration: none;
 	color: black;
 	display: inline-block;
-	padding: 0px 10px;
-	margin: 3px;
-	width: 100px;
+	padding: 7px 10px 0px 10px;
+	margin: 0px 2px;
+	width: 130px;
 	height: 26px;
-	transform: skewX(-25deg);
+	vertical-align: middle;
 }
 
-header p {
-	transform: skewX(25deg);
-	margin: 5px 0px;
-	font-size: 15px;
+header .frst > a:hover {
+	border-bottom: 4px solid rgb(191, 215, 58);
 }
 
-header a:hover {
-	color: white;
-	background-color: rgb(63, 63, 63);
+.navHeader ul ul {
+	display: none;
+	position: absolute;
+	left: 50%;
+	transform: translate(-50%);
+	width: 90%;
+	margin-right: 5%;
+	border: 2px solid rgb(191, 215, 58);
+	padding: 15px 0px;
+    list-style-type: none;
+}
+
+.navHeader ul ul li {
+	float: left;
+	text-align: left;
+	width: 350px;
+	height: 100px;
+}
+
+.navHeader ul ul li:hover {
+	background-color: rgba(191, 215, 58, 0.3);
+}
+
+.navHeader ul ul a {
+	float: left;
+	font-size: 20px;
+	width: 125px;
+}
+
+.navHeader ul li:hover > ul {
+	display: block;
+	background-color: #fff;
+}
+
+.navHeader img {
+	max-width: 100px;
+	float: left;
 }
 
 footer {

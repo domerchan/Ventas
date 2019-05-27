@@ -1,9 +1,15 @@
 <?php
 	include'conexionBD.php';
 
+    $area = $_POST['area'];
 	$nombre = isset($_POST['nom']) ? trim($_POST['nom']) : null;
 	$descripcion = isset($_POST['des']) ? trim($_POST['des']) : null;
  	$image = addslashes(file_get_contents($_FILES['image']['tmp_name']));
+
+    $sql = "SELECT ar_codigo FROM area WHERE ar_nombre = '$area'";
+    $result = $conn -> query($sql);
+    $row = $result -> fetch_assoc();
+    $ar_codigo = $row['ar_codigo'];
 
     $check = getimagesize($_FILES["image"]["tmp_name"]);
     $size = $_FILES["image"]["size"];
@@ -31,7 +37,7 @@
         		date_default_timezone_set("America/Guayaquil");
 				$fecha = date('Y-m-d H:i:s', time());
 
-				$sql = "INSERT INTO categoria VALUES (0, '$nombre', '$descripcion', '$image', '$fecha')";
+				$sql = "INSERT INTO categoria VALUES (0, '$nombre', '$descripcion', '$image', '$fecha', '$ar_codigo')";
                 
 				if ($conn -> query($sql) == TRUE) {
 					echo "se han cargado los datos correctamente";
