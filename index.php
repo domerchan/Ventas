@@ -23,6 +23,7 @@
 				<img src="img/logo4.png">
 			</div>
 			<div id="gradient"></div>
+
 			<nav class="navHeader">
 				<ul class="ul1">
 					<li class="frst"><a href="index.php">Inicio</a></li>
@@ -133,6 +134,10 @@
 		<br style="clear: both;">
 		<br>
 		<br>
+
+		<div id="img_go">
+			<img src="img/go.png" id="go">
+		</div>
 
 		<br style="clear: both;">
 		<br>

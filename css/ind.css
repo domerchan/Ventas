@@ -129,6 +129,16 @@ html {
 	font-size: 18px;
 }
 
+#img_go {
+	max-width: 70%;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+#img_go #go {
+	width: 100%;
+}
+
 #start section {
 	width: 50%;
 	margin-right: auto;
@@ -157,7 +167,7 @@ html {
 #start article p {
 	float: left;
 	width: 75%;
-	font-size: 28px;
+	font-size: 22px;
 }
 
 #about {

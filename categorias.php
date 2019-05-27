@@ -2,11 +2,16 @@
 <html>
 
 	<head>
-		<meta charset="utf-8">
 		<title></title>
+
+		<meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
 		<link rel="stylesheet" type="text/css" href="css/style.css">
 		<link rel="stylesheet" type="text/css" href="css/listados.css">
 		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+		<link href="https://fonts.googleapis.com/css?family=Didact+Gothic&display=swap" rel="stylesheet">
 
 		<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
 		<script type="text/javascript" src="js/javascript.js"></script>
@@ -19,14 +24,15 @@
 				<img src="img/logo4.png">
 			</div>
 			<div id="gradient"></div>
+
 			<nav class="navHeader">
-				<ul>
-					<li><a href="index.php"><p>Inicio</p></a></li>
-					<li><a href="sucursal.php"><p>Sucursal</p></a></li>
-					<li><a href="categorias.php"><p>Categorías</p></a></li>
-					<li><a href="subcategorias.php"><p>Subcategorías</p></a></li>
-					<li><a href="productos.php"><p>Productos</p></a></li>
-					<li><a href="promociones.php"><p>Promociones</p></a></li>
+				<ul class="ul1">
+					<li class="frst"><a href="index.php">Inicio</a></li>
+					<li class="frst"><a href="sucursal.php">Sucursal</a></li>
+					<li class="frst"><a href="categorias.php">Categorías</a></li>
+					<li class="frst"><a href="subcategorias.php">Subcategorías</p></a></li>
+					<li class="frst"><a href="productos.php">Productos</a></li>
+					<li class="frst"><a href="promociones.php">Promociones</a></li>
 				</ul>
 			</nav>
 		</header>
