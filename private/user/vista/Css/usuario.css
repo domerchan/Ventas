@@ -1,0 +1,252 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #63A477;
+}
+
+#banner {
+	background-image: url(../img/banner.png);
+	background-size: 100%;
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+header {
+    width: 100%;
+    height: 18%;
+}
+
+header #banner {
+	height: 125px;
+}
+
+.navHeader {
+    padding-top: 0px;
+    box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.19);
+    clear: both;
+    z-index: 1;
+}
+#navHeader ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+#navHeader li {
+     display: inline;
+}
+#navHeader li a {
+    display: inline-block;
+    color: black;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-family: sans-serif;
+}
+#navHeader li a:hover:not(.activo) {
+    background-color:#63A477;
+    color: black;
+}
+.activo {
+    background-color: #338DC9;
+}
+#perfil {
+    width: 15%;
+    margin-top: 1%;
+    float: left;
+}
+a{
+    color: black;
+    text-decoration: none;
+    font-family: sans-serif;
+}
+#nombreUsuario {
+    font-family: sans-serif;
+    margin-top: 5%;
+    float: left;
+}
+#img {
+    float: left;
+    margin-left: 15%;
+}
+#cerrar a{
+    color: black;
+}
+#cerrar {
+    margin-top: 3%;
+    float: left;
+}
+#btn{
+  background-color: #338DC9;
+  border: none;
+  padding: 5px 7px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+}
+#btn:hover {
+    background-color: #f44336;
+    color: white;
+}
+#tituloIndex{
+    width: 100%;
+}
+#tituloIndex h1{
+    font-family: sans-serif;
+    text-align: center;
+}
+#buscador{
+    width: 90%;
+    margin-left: 5%;
+}
+#buscador h4{
+    font-family: sans-serif;
+}
+#buscador input[type=text]{
+    width: 100%;
+    background-color: white !important;
+}
+table{
+    margin-top: 1%;
+    border-collapse: collapse;
+    width: 90%;
+    margin-left: 5%;
+    font-family: sans-serif;
+}
+th, td{
+    text-align: left;
+    padding: 8px;
+}
+th{
+    background-color: #4CAF50;
+    color: white;
+}
+tr{
+    background-color: white;
+}
+tr:hover{
+    background-color: #6CC4FE;
+}
+input[type=submit]{
+    background-color: #F22F5B;
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-decoration: none;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+input[type=text]{
+    border: 0;
+    outline: 0;
+    border-bottom: 2px solid #338DC9;
+    background-color: transparent;
+    padding: 10px 10px;
+    font-family: sans-serif;
+    font-size: 14px;
+}
+input[type=text]:focus{
+  border-color: #4CAF50;
+}
+textarea{
+    width: 100%;
+    height: 150px;
+    padding: 12px 20px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    background-color: #f8f8f8;
+    font-size: 16px;
+}
+#correo {
+    width: 90%;
+    margin-left: 5%;
+    background-color: white;
+    padding: 10px 10px;
+}
+#cargar_emisor{
+    width: 100%;
+    border-bottom: 1px solid black;
+}
+#cargar_emisor p{
+    font-family: arial;
+    font-size: 20px;
+}
+#cargar_dest{
+    width: 100%;
+    border-bottom: 1px solid black;
+}
+#cargar_dest p{
+    font-family: arial;
+    font-size: 20px;
+}
+#cargar_asunto{
+    width: 100%;
+    border-bottom: 1px solid black;
+}
+#cargar_asunto p{
+    font-family: arial;
+    font-size: 20px;
+}
+#cargar_mensaje{
+    width: 100%;
+}
+#cargar_mensaje p{
+    font-family: arial;
+    font-size: 20px;
+}
+#cuenta {
+    width: 90%;
+    margin-left: 5%;
+    padding: 10px 10px;
+    background-color: white;
+}
+#cargar_usuario {
+    width: 100%;
+    border-bottom: 1px solid black;
+}
+#cargar_usuario p{
+    font-family: arial;
+    font-size: 20px;
+}
+#modificar a{
+    background-color: #f44336;
+    color: white;
+    padding: 14px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin-left: 1%;
+}
+
+#modificar a:hover{
+  background-color:#4CAF50;
+}
+
+footer {
+	margin-top: 15px;
+	text-align: center;
+	clear: both;
+	background-image: url("../img/footer.jpg");
+	background-size: 100%;
+	background-repeat: no-repeat;
+	background-position: center;
+	color: white;
+}
+
+footer div {
+	margin-right: auto;
+	margin-left: auto;
+	max-width: 80%;
+}
+
+footer a {
+	color: white;
+	text-decoration: none;
+}
+#pie {
+	padding-top: 60px;
+}
+

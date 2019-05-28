@@ -1,0 +1,19 @@
+*
+{
+    background-color: burlywood;
+}
+
+form
+{
+    width: 150px;
+    height: 150px;
+    text-align: center;
+    margin:0 auto;
+    padding: 20px;
+    font: small-caps 100%/200% serif;
+} 
+h1
+{
+    text-align: center; 
+}
+

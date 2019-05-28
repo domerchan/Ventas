@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" type="text/css" href="Css/crear_usuario.css">
+
+    </head>
+    <body>
+        <div id="panelInicial">
+            <span id="titulo">Registrarse</span>
+            <span id="errorRegister"></span>
+            <form id="formulario01" method="post" action="../controladores/crear_usuario.php" enctype="multipart/form-data">
+                <label for="cedula" id="label1">Cedula</label>
+                <input type="number" id="cedula" name="cedula" value="" placeholder="Ingrese el numero de cedula" required/>
+                <br>
+                <label for="nombres" id="label1">Nombres</label>
+                <input type="text" id="nombres" name="nombres" style="text-transform:uppercase" value="" placeholder="Ingrese sus dos nombres" required/>
+                <br>
+                <label for="apellidos" id="label1">Apelidos</label>
+                <input type="text" id="apellidos" name="apellidos" style="text-transform:uppercase" value="" placeholder="Ingrese sus dos apellidos" required/>
+                <br>
+
+                <label for="nickname" id="label1">NickName</label>
+                <input type="text" id="nickname" name="nickname" style="text-transform:uppercase" value="" placeholder="Ingrese sus NickName" required/>
+                <br>
+
+                <label for="direccion" id="label1">Dirección</label>
+                <input type="text" id="direccion" name="direccion" style="text-transform:uppercase" value="" placeholder="Ingrese su dirección" required/>
+                <br>
+                <label for="telefono" id="label1">Teléfono</label>
+                <input type="number" id="telefono" name="telefono" value="" placeholder="Ingrese su número telefónico" required/>
+                <br>
+                <label for="fecha" id="label1">Fecha Nacimiento</label>
+                <input type="date" id="fechaNacimiento" name="fechaNacimiento" value="" placeholder="Ingrese su fecha de nacimiento" required/>
+                <br>
+
+            
+
+                <label for="correo" id="label1">Correo electrónico</label>
+                <input type="email" id="correo" name="correo" value="" placeholder="Ingrese su correo electrónico" required/>
+                <br>
+                <label for="contraseña" id="label1">Contraseña</label>
+                <input type="password" id="contraseña" name="contraseña" value="" placeholder="Ingrese su contraseña" required/>
+                <br>
+
+                <input type="submit" id="crear" name="crear" value="Aceptar" />
+                <input type="reset" id="cancelar" name="cancelar" value="Cancelar" onclick="window.location.href='../vista/index.php'"/>
+            </form>
+        </div>    
+    </body>
+</html>
