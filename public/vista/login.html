@@ -1,0 +1,28 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Iniciar sesion</title>
+    <link rel="stylesheet" type="text/css" href="Css/login.css">
+    <script type="text/javascript" src="../../admin/JS/validarLogin.js"></script>
+</head>
+<body>
+    <div id="panelInicial">
+        <span id="titulo">Iniciar Sesion</span>
+        <span id="errorLogin"></span>
+        <form id="formulario01" method="POST" action="../controladores/login.php">
+            <label for="correo" id="label1">Correo electronico</label>
+            <input type="text" id="correo" name="correo" value="" placeholder="Ingrese el correo" required/>
+
+            <br>
+            <label for="contrasena" id="label1">Contraseña</label>
+            <input type="password" id="contrasena" name="contrasena" value="" placeholder="Ingrese su contraseña" required/>
+            <br>
+            <input type="submit" id="login" name="login" value="Iniciar Sesion" />
+        </form>
+        <span id="crearusuario"><a href="crear_usuario.html">Crear Usuario</a></span>
+    </div>
+</body>
+</html>
