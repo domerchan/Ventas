@@ -47,7 +47,7 @@
 					}
 					?>
 					<li class="frst"><a href="">Promociones</a></li>
-					<li class="frst"><a href="">Iniciar Sesión</a></li>
+					<li class="frst"><a href="login.html">Iniciar Sesión</a></li>
 				</ul>
 				<a href="carro.php"><i class="material-icons">shopping_cart</i></a>
 			</nav>
@@ -136,6 +136,8 @@
 		</div>
 
 		<br style="clear: both;">
+		<br>
+		<br>
 		<br>
 		<br>
 
