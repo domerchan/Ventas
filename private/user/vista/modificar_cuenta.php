@@ -24,7 +24,7 @@
         if($result->num_rows > 0){
             while($row=$result->fetch_assoc()){
                 ?>
-                <form id="formulario01" method="post" action="../controladores/usuario/modificar_usuario.php">
+                <form id="formulario01" method="post" action="../controladores/modificar_usuario.php">
                     <input type="hidden" id="codigo" name="codigo" value="<?php echo $codigo ?>"/>
                     <label for="cedula" id="label1">Cedula</label>
                     <input type="text" id="cedula" name="cedula" value="<?php echo $row["us_cedula"]; ?>" required placeholder="Ingresar cedula"/>

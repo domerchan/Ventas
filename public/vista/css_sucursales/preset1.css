@@ -1,0 +1,20 @@
+a {
+  color: #7a7a7a;
+}
+a:hover,
+a:focus {
+  color: #a8a5a5;
+}
+
+.btn-primary,
+.sppb-btn-primary {
+  background-color: #7a7a7a;
+}
+.btn-primary:hover,
+.sppb-btn-primary:hover {
+  background-color: #a8a5a5;
+}
+body {
+  background-color: #f9f9f9;
+  color: #282828;
+}
