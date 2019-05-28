@@ -48,8 +48,27 @@ html {
 	border-bottom: 10px solid transparent;
 }
 
+.hover {
+	background-color: black !important;
+}
+
+.hover:after {
+	content: "";
+	position: absolute;
+	left: 100%;
+	top: 15px;
+	width: 0;
+	height: 0;
+	border-top: 10px solid transparent;
+	border-left: 11px solid rgb(81 ,92, 18);
+	border-bottom: 10px solid transparent;
+}
+
 #imagen {
-	background-color: #A1A1A1;
+	background-image: url(../img1.jpg);
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
 	width: 45%;
 	height: 250px;
 	float: left;
@@ -65,7 +84,7 @@ html {
 	background-color: rgba(191, 215, 58, 0.3);
 	float: left;
 }
-
+/*
 .compra {
 	float: left;
 	width: 16%;
@@ -93,7 +112,7 @@ html {
 	padding:  10px 25px;
 	color: black;
 }
-
+*/
 #buscador {
 	clear: both;
 	float: right;
@@ -126,7 +145,6 @@ html {
 
 #slogan li {
 	list-style-image: url(../../../config/img/check.png);
-	font-size: 18px;
 }
 
 #img_go {
@@ -167,7 +185,7 @@ html {
 #start article p {
 	float: left;
 	width: 75%;
-	font-size: 22px;
+	font-size: 20px;
 }
 
 #about {
@@ -183,7 +201,7 @@ html {
 #about section {
 	background-color: rgba(0, 0, 0, 0.6);
 	padding: 0;
-    height: 220px;
+    height: 180px;
 	text-align: center;
 }
 
@@ -205,26 +223,16 @@ html {
 }
 
 #about p {
-	font-size: 22px;
 	font-weight: bold;
 }
 
 #about a {
 	text-decoration: none;
 	color: white;
-	font-size: 20px;
 }
 
 #about a:hover {
 	font-weight: bold;
-}
-
-h1 {
-	font-size: 32px;
-}
-
-p {
-	font-size: 24px;
 }
 
 #options {
