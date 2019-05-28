@@ -19,7 +19,7 @@
     <?php
         $codigo=$_SESSION['us_codigo'];
     ?>
-    <form id="formulario01" method="post" action="../controladores/usuario/cambiar_contrasena.php">
+    <form id="formulario01" method="post" action="../controladores/cambiar_contrasena.php">
         <input type="hidden" id="codigo" name="codigo" value="<?php echo $codigo ?>"/>
         <label for="contrasena" id="label1">Constraseña actual</label>
         <input type="password" id="contrasena1" name="contrasena1" value="" required placeholder="Ingrese su contraseña actual">
