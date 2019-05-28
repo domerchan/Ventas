@@ -19,17 +19,19 @@
 <body>
 <header>
 			<div id="banner">
-				<img src="img/logo4.png">
+				<img src="../../config/img/logo4.png">
 			</div>
 		</header>
 <?php
-                    include'php/conexionBD.php';
+                    include'../../config/conexionBD.php';
                     $codigo=$_GET["categoria"];
 					$sql = "SELECT * FROM subcategoria WHERE ca_codigo ='$codigo'";
 					$result = $conn -> query($sql);
 					while($row = $result -> fetch_assoc()) {
 						echo "<li class='frst'>";
 						echo "<td><a>".$row['sb_nombre']."</a>";
+						// echo "<br>";
+						// echo "<td><a>".$row['sb_image']."</a>";
 						// echo "<td><a>".$row['sb_image']."</a>";
                         echo "<ul>";
                 	//  $codigo2=$_GET["pr_codigo"];
@@ -48,7 +50,7 @@
 				<p>
 			        Desarrollado por:<br> Jonathan Matute &#8226; Doménica Merchán &#8226; Mark Orellana &#8226; René Panjón &#8226; John Tenesaca
 			    </p>
-			    <a href="https://www.ups.edu.ec" target="_blank"><img style="width: 150px" src="img/ups.png" alt="logo de la Universidad Politecnica Salesiana"></a>
+			    <a href="https://www.ups.edu.ec" target="_blank"><img style="width: 150px" src="../../config/img/ups.png" alt="logo de la Universidad Politecnica Salesiana"></a>
 			    <p><sub>&#169;</sub><em> Todos los derechos reservados</em></p>
 			    <br>
 			</div>
