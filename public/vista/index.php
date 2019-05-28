@@ -13,7 +13,7 @@
 		<link href="https://fonts.googleapis.com/css?family=Didact+Gothic&display=swap" rel="stylesheet">
 
 		<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
-		<script type="text/javascript" src="js/javascript.js"></script>
+		<script type="text/javascript" src="../../config/js/javascript.js"></script>
 	</head>
 
 	<body>
@@ -60,15 +60,19 @@
 		<div id="promociones">
 			<div id="lista">
 				<ul>
-					<li class="lista"><a href="">Promoción 1</a></li>
-					<li class="lista"><a href="">Promoción 2</a></li>
-					<li class="lista"><a href="">Promoción 3</a></li>
-					<li class="lista"><a href="">Promoción 4</a></li>
-					<li class="lista"><a href="">Promoción 5</a></li>
+					<li class="lista" value="1" onclick="mouseOver(this.value)"><a>Promoción 1</a></li>
+					<li class="lista" value="2" onclick="mouseOver(this.value)"><a>Promoción 2</a></li>
+					<li class="lista" value="3" onclick="mouseOver(this.value)"><a>Promoción 3</a></li>
+					<li class="lista" value="4" onclick="mouseOver(this.value)"><a>Promoción 4</a></li>
+					<li class="lista" value="5" onclick="mouseOver(this.value)"><a>Promoción 5</a></li>
 				</ul>
 			</div>
 			<div id="imagen">
-			
+				<img id="img1" class="mySlides" src="img1.jpg">
+				<img id="img2" class="mySlides" src="img2.jpg" style="display: none;">
+				<img id="img3" class="mySlides" src="img3.jpg" style="display: none;">
+				<img id="img4" class="mySlides" src="img4.jpg" style="display: none;">
+				<img id="img5" class="mySlides" src="img5.jpg" style="display: none;">			
 			</div>
 			<div id="promocion">
 				
@@ -263,4 +267,5 @@
 		</footer>
 
 	</body>
+	<script type="text/javascript" src="../controladores/javascript.js"></script>
 </html>

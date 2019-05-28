@@ -9,7 +9,7 @@
 		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
 		<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
-		<script type="text/javascript" src="js/javascript.js"></script>
+		<script type="text/javascript" src="../../../config/js/javascript.js"></script>
 	</head>
 
 	<body>

@@ -14,7 +14,7 @@
 		<link href="https://fonts.googleapis.com/css?family=Didact+Gothic&display=swap" rel="stylesheet">
 
 		<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
-		<script type="text/javascript" src="js/javascript.js"></script>
+		<script type="text/javascript" src="../../../config/js/javascript.js"></script>
 	</head>
 
 	<body>
