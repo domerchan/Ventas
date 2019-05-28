@@ -1,0 +1,147 @@
+
+body {
+    color: #282828;
+}
+
+h2.sppb-addon-title{
+	text-transform: uppercase;
+	
+}
+
+h3{
+	font-size: 28px;
+}
+
+h3 a{
+	color: #fff;
+}
+
+h3 a:hover{
+	color: #a8a5a5;
+	text-decoration: underline;
+}
+
+.sppb-addon-title{
+	margin-bottom: 0px;
+}
+
+.imagenes-recuadro{
+	padding-bottom: 50%!important;
+}
+
+.centrar-vertical{
+	padding-top: 18%!important;
+}
+
+.contenedor-campus{
+	position: relative;
+}
+
+.contenido-campus{
+	position: absolute;
+    bottom: 0px;
+    left: 0px;
+    font-size: 24px;
+    font-weight: normal;
+    color: #fff;
+	padding: 20px;
+	width: 100%;
+	
+	-webkit-transition: all 0.5s ease-out;
+	-moz-transition: all 0.5s ease-out;
+	-o-transition: all 0.5s ease-out;
+	transition: all 0.5s ease-out;
+}
+
+.contenedor-campus:hover > .contenido-campus{
+	background-color: rgba(40, 40, 40, 0.8);
+	padding-bottom: 60px;
+}
+
+.menumenu-horizontal{
+	text-align: center;
+	font-weight: bold;
+    font-size: 16px;
+	background-color: #282828;
+    color: #fff;
+    padding: 20px 10px!important;
+	border-radius: 5px!important;
+}
+
+.transparent-image img:hover{
+	opacity: 0.8;
+}
+
+.sppb-btn{
+	background-color: #282828!important;
+	color: #fff;
+	border: 1px solid #fff;
+	margin-top: 10px;
+	
+}
+
+.sppb-btn:hover{
+	color: #282828;
+	background-color: #fff!important;
+	border: 1px solid #282828;
+	
+}
+  
+.sppb-btn-default:hover{
+	color: #282828;
+}
+
+.page-header{
+	display: none;
+}
+ 
+.alto-fijo{
+    max-height: 500px;
+    overflow-y: auto;
+	overflow-x: hidden;
+}
+
+.cuadro-sombra{
+	background-color: #fff;
+	box-shadow: -2px 4px 0px 0 rgba(0, 0, 0, 0.2);
+	border: 1px solid #d6d6d6;
+	overflow: hidden;
+	max-width: 360px;
+	padding: 10px;
+	transition: all 0.4s ease-in-out;
+}
+
+.cuadro-sombra img{
+	transition: all 0.4s ease-in-out;
+	opacity: 0.8;
+	
+}
+
+.cuadro-sombra:hover img{
+	opacity: 1;
+	
+}
+
+.cuadro-sombra:hover{
+	box-shadow: -10px 15px 0px 0 rgba(0, 0, 0, 0.2);
+	transform: translate(3%,-7%);
+}
+
+.sppb-addon-timeline .sppb-addon-timeline-wrapper .timeline-movement .timeline-item .timeline-panel{
+	width: auto;
+}
+.timeline-panel{
+	background-color:#fff;
+}
+
+.sppb-progress{
+	background-color: #d6d6d6;
+}
+
+.sppb-progress-bar{
+	background-color: #282828;
+}
+.sppb-progress-bar
+{
+	min-width: 0px!important;
+}
