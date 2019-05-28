@@ -20,7 +20,7 @@
 
         //Si la fila del usuario en la columna usu_rol es U se accede como usuario sino accedera como administrador.
         if ($row['us_rol'] == "user"){
-            header("Location:../../private/user/vista/usuario/cuenta_usuario.php");
+            header("Location:../../private/user/vista/cuenta_usuario.php");
         }else{
             header("Location: ../vista/index.php");
         }
