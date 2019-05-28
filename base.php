@@ -25,7 +25,7 @@
 
 			<nav class="navHeader">
 				<ul class="ul1">
-					<li class="frst"><a href="index.php">Inicio</a></li>
+					<li class="frst"><a href="public/vista/index.php">Inicio</a></li>
 					<?php
 
 					#Cambiar dependiendo de la ubicación del archivo
