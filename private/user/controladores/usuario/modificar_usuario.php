@@ -32,12 +32,12 @@
 
         $sql="UPDATE usuario SET us_nombres='$nombres', us_apellidos='$apellidos', us_cedula='$cedula', us_direccion='$direccion',
         us_fecha_nacimiento='$fechaNacimiento', us_fecha_creacion='$modificacion' WHERE us_codigo='$codigo'";
-
+       # echo "<a>$sql</a>";
                                              
         if ($conn->query($sql) === TRUE) {
             echo "Datos personales actualizados correctamente";
-            echo "<a>$sql</a>";
-            header('Refresh: 5; URL=../../vista/usuario/cuenta_usuario.php');
+            
+            header('Refresh: 5; URL=../../vista/cuenta_usuario.php');
         }else {
             echo "Error: " . $sql . "<br>" . mysqli_error($conn) . "<br>";
         }

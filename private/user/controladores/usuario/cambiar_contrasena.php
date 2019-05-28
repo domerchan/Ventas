@@ -33,7 +33,7 @@
             
             if($conn->query($sqlContrasena2) === TRUE){
                 echo "Contraseña actualizada<br>";
-                header('Refresh: 2; URL=../../vista/usuario/cuenta_usuario.php');
+                header('Refresh: 2; URL=../../vista/cuenta_usuario.php');
             }else {
                 echo "<p>Error: " . mysqli_error($conn) . "</p>"; 
             }
