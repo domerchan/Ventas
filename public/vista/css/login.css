@@ -1,0 +1,86 @@
+body{
+    background-color: #63A477;
+}
+#panelInicial{
+    width: 500px;
+    padding: 55px 55px;
+    margin-left: 29%;
+    margin-top: 10%;
+    background-color: #F8F8F8;
+}
+#titulo{
+    display: block;
+    font-family: sans-serif;
+    font-size: 39px;
+    color: #333333;
+    line-height: 1.2;
+    text-align: center;
+    padding-bottom: 20px;
+}
+#label1{
+    font-family: sans-serif;
+    font-size: 20px;
+    color: #333333;
+    line-height: 1.5;
+    padding-left: 7px;
+}
+#correo{
+    font-family: sans-serif;
+    font-size: 16px;
+    color: black;
+    display: block;
+    width: 70%;
+    height: 50px;
+    padding: 0 7px 0 20px;
+    background: #CFCFCF;
+    border: 1px solid #D9D9D9;
+    outline: none;
+    margin-left: 5%;
+}
+#contrasena{
+    font-family: sans-serif;
+    font-size: 16px;
+    color: #333333;
+    display: block;
+    width: 70%;
+    height: 50px;
+    padding: 0 7px 0 20px;
+    background: #CFCFCF;
+    border: 1px solid #D9D9D9;
+    outline: none;
+    margin-left: 5%;
+}
+#login{
+    margin-top: 5%;
+    padding: 0 20px;
+    width: 40%;
+    height: 50px;
+    background-color: #333333;
+    font-family: sans-serif;
+    font-size: 16px;
+    color: #fff;
+    position: relative;
+    margin-left: 30%;
+}
+#login:hover{
+    background-color: #63A477;
+}
+.error{
+    color: red;
+    font-size: 12px;
+    font-family: arial;
+}
+#errorLogin{
+    margin-left: 35%;
+    color: red;
+    font-family: arial;
+}
+#crearusuario {
+    margin-top: 2%;
+    display: block;
+    font-family: sans-serif;
+    font-size: 12px;
+    color: #333333;
+    line-height: 1.2;
+    text-align: center;
+}
