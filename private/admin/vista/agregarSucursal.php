@@ -43,9 +43,9 @@
 				<table>
 
 					<tr>
-						<td><label>Categoría</label></td>
+						<td><label>Sucursal</label></td>
 						<td>
-							<select name="cat">
+							<select name="suc">
 								<?php
 									include'../../../config/conexionBD.php';
 									$sql = "SELECT su_nombre FROM sucursal";
