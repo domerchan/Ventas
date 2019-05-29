@@ -1,4 +1,11 @@
-
+<?php
+    session_start();
+    if(!isset($_SESSION['isLogged']) || $_SESSION['isLogged']==false){
+        header("Location: ../../../public/vista/login.html");
+    }else if($_SESSION['us_rol'] == "A"){
+        header("Location: carro.php");
+    }
+?>
 <!DOCTYPE html>
 <html lang="es" ng-app="market">
 	<head>
@@ -72,34 +79,71 @@
 		<div>
 			<section>
 				<article>
-				<table style="width:100%"> 
-        <tr> 
-            <th>Cantidad</th> 
-            <th>Producto</th> 
-            <th>Valor Unitario</th> 
-            <th>Valor Total</th> 
-        </tr> 
-
-        <script type="text/javascript">
-	        function recuperar() {
-		        var item1 = localStorage.getItem('1');
-                	var key1 = localStorage.key(item1);
-	    }
-        </script>
-            
-        <?php 
-        include '../../../config/conexionBD.php'; 
+		
+				<table>
+			<tr> 
+				<td>Cantidad</td> 
+				<td>Producto</td> 
+				<td>Valor Unitario</td> 
+				<td>Valor Total</td> 
+			</tr>
+		<?php
+		$codigo=$_SESSION['us_codigo'];
+		$sql = "SELECT  * FROM factura WHERE us_codigo=$codigo ";
+		include '../../../config/conexionBD.php'; 
+		$result=$conn->query($sql);
+		if($result->num_rows > 0){
+			while($row=$result->fetch_assoc()){
+				echo "<tr>";
+					echo "<td>" .$row[fa_cantidad]."</td>";
+				echo "</tr>";
+			}	
+			}else{
+				echo "<tr>";
+					echo "<td colspan='7'> No hay prodcutos agregados </td>";
+				echo "</tr>";
+			}
+			$conn->close();
+		?>
+        </table>
         
+        
+				</article>
 
-        $sql = "SELECT * FROM producto Where" ; 
-        $result = $conn->query($sql);
-                while($row = $result->fetch_assoc()){ 
-                    
-                } 
-        $conn->close(); 
-        ?> 
+				<article>
+				<table>
+			<tr> 
+				<td>Datos Personales</td> 
+				 
+			</tr>
+		<?php
+		$codigo=$_SESSION['us_codigo'];
+		$sql = "SELECT  * FROM usuario WHERE us_codigo=$codigo ";
+		include '../../../config/conexionBD.php'; 
+		$result=$conn->query($sql);
+		if($result->num_rows > 0){
+			while($row=$result->fetch_assoc()){
+				echo "<tr>";
+					echo "<td>" .$row[us_nombres]."</td>";
+					echo "<td>" .$row[us_apellidos]."</td>";
+					echo "<td>" .$row[us_direccion]."</td>";
+					echo "<td>" .$row[us_telefono]."</td>";
+					echo "<td>" .$row[us_correo]."</td>";?>
+					<input type="text" id="cedula" name="cedula" value="<?php echo $row["us_cedula"]; ?>" required placeholder="Ingresar cedula"/>
+				<?php				
+				echo "</tr>";
+			}	
+			}else{
+				echo "<tr>";
+					echo "<td colspan='7'> No hay prodcutos agregados </td>";
+				echo "</tr>";
+			}
+			$conn->close();
+		?>
         </table>
 				</article>
+
+				
 			</section>
 		</div>
 
