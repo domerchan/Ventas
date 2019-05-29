@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Productos A Anadir: </title>
 
-	<link rel="stylesheet" type="text/css" href="css/style.css">
+		<link rel="stylesheet" type="text/css" href="../../config/css/style.css">
 		<link rel="stylesheet" type="text/css" href="css/ind.css">
 		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 		<link href="https://fonts.googleapis.com/css?family=Didact+Gothic&display=swap" rel="stylesheet">
@@ -21,6 +21,34 @@
 			<div id="banner">
 				<img src="../../config/img/logo4.png">
 			</div>
+			<div id="gradient"></div>
+			<nav class="navHeader">
+				<ul class="ul1">
+					<li class="frst"><a href="index.php">Inicio</a></li>
+					<?php
+					include'../../config/conexionBD.php';
+					$sql = "SELECT * FROM area";
+					$result = $conn -> query($sql);
+					while($row = $result -> fetch_assoc()) {
+						echo "<li class='frst'>";
+						echo "<a>".$row['ar_nombre']."</a>";
+						
+						echo "<ul>";
+						$sql2 = "SELECT * FROM categoria WHERE ar_codigo = ".$row['ar_codigo'];
+						$result2 = $conn -> query($sql2);
+						while ($row2 = $result2 -> fetch_assoc()) {
+							echo "<li><a href='mostrar_producto.php?categoria=".$row2['ca_codigo']."'>".$row2['ca_nombre']."</a><img class='img' src='data:image/jpg;base64,".base64_encode($row2["ca_imagen"])."'/></li>";
+						}
+						echo "</ul>";
+						
+						echo "</li>";
+					}
+					?>
+					<li class="frst"><a href="">Promociones</a></li>
+					<li class="frst"><a href="login.html">Iniciar Sesión</a></li>
+				</ul>
+				<a href="../../private/user/vista/carro.php"><i class="material-icons">shopping_cart</i></a>
+			</nav>
 		</header>
 <?php
                     include'../../config/conexionBD.php';
@@ -28,14 +56,15 @@
 					$sql = "SELECT * FROM subcategoria WHERE ca_codigo ='$codigo'";
 					$result = $conn -> query($sql);
 					while($row = $result -> fetch_assoc()) {
-						echo "<li class='frst'>";
-						echo "<td><a>".$row['sb_nombre']."</a>";
+						// echo "<li class='frst'>";
+						echo "<a>".$row['sb_nombre']."</a>";
 						// echo "<br>";
 						// echo "<td><a>".$row['sb_image']."</a>";
 						// echo "<td><a>".$row['sb_image']."</a>";
-                        echo "<ul>";
-                	//  $codigo2=$_GET["pr_codigo"];
-						$sql2 = "SELECT * FROM producto";
+						echo "<ul>";
+						// echo "<a>".$row['sb_nombre']."</a>";
+                	    // $codigo2=$_GET["sb_codigo"];
+						$sql2 = "SELECT * FROM producto WHERE sb_codigo=".$row['sb_codigo'];
 						$result2 = $conn -> query($sql2);
 						while ($row2 = $result2 -> fetch_assoc()) {
 							echo "<br><li><a>".$row2['pr_nombre']."</a><img class='img' src='data:image/jpg;base64,".base64_encode($row2["pr_imagen"])."'/></li>";
