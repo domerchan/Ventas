@@ -7,6 +7,7 @@
 		<link rel="stylesheet" type="text/css" href="../../../config/css/style.css">
 		<link rel="stylesheet" type="text/css" href="css/listados.css">
 		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+		<link href="https://fonts.googleapis.com/css?family=Didact+Gothic&display=swap" rel="stylesheet">
 
 		<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
 		<script type="text/javascript" src="../../../config/js/javascript.js"></script>

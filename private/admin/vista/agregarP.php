@@ -8,6 +8,7 @@
 		<link rel="stylesheet" type="text/css" href="../../../config/css/style.css">
 		<link rel="stylesheet" type="text/css" href="css/agregar.css">
 		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+		<link href="https://fonts.googleapis.com/css?family=Didact+Gothic&display=swap" rel="stylesheet">
 
 		<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
 		<script type="text/javascript" src="../../../config/js/javascript.js"></script>
@@ -47,7 +48,7 @@
 							<select name="cat">
 								<option></option>
 								<?php
-									include'php/conexionBD.php';
+									include'../../../config/conexionBD.php';
 									$sql = "SELECT ca_nombre FROM categoria";
 									$result = $conn -> query($sql);
 

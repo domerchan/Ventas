@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" ng-app="market">
 	<head>
 		<title>Market Online</title>
 
@@ -7,18 +7,21 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
+		<!--Cambiar href dependiendo de la ubicación del archivo-->
 		<link rel="stylesheet" type="text/css" href="../../config/css/style.css">
-		<link rel="stylesheet" type="text/css" href="css/index.css">
 		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 		<link href="https://fonts.googleapis.com/css?family=Didact+Gothic&display=swap" rel="stylesheet">
-
+		
 		<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+		<script type="text/javascript" src="../../config/js/javascript.js"></script>
 	</head>
 
-	<body>
+	<body ng-controller="ProductListCtrl">
 
 		<header>
 			<div id="banner">
+
+				<!--Cambiar src dependiendo de la ubicación del archivo-->
 				<img src="../../config/img/logo4.png">
 			</div>
 			<div id="gradient"></div>
@@ -27,7 +30,11 @@
 				<ul class="ul1">
 					<li class="frst"><a href="index.php">Inicio</a></li>
 					<?php
+
+					#Cambiar dependiendo de la ubicación del archivo
 					include'../../config/conexionBD.php';
+
+
 					$sql = "SELECT * FROM area";
 					$result = $conn -> query($sql);
 					while($row = $result -> fetch_assoc()) {
@@ -38,6 +45,8 @@
 						$sql2 = "SELECT * FROM categoria WHERE ar_codigo = ".$row['ar_codigo'];
 						$result2 = $conn -> query($sql2);
 						while ($row2 = $result2 -> fetch_assoc()) {
+
+							#Cambiar href dependiendo de la ubicación del archivo
 							echo "<li><a href='mostrar_producto.php?categoria=".$row2['ca_codigo']."'>".$row2['ca_nombre']."</a><img class='img' src='data:image/jpg;base64,".base64_encode($row2["ca_imagen"])."'/></li>";
 						}
 						echo "</ul>";
@@ -46,129 +55,28 @@
 					}
 					?>
 					<li class="frst"><a href="">Promociones</a></li>
-					<li class="frst"><a href="login.html">Iniciar Sesión</a></li>
+					<li class="frst"><a href="">Iniciar Sesión</a></li>
 				</ul>
-				<a href="../../private/user/vista/carro.php"><i class="material-icons">shopping_cart</i></a>
+				<a href="carro.php"><i class="material-icons">shopping_cart</i></a>
 			</nav>
 		</header>
 
-		<br>
 
-		<a href="../../private/admin/vista/categorias.php">Ingresar como administrador</a>
 
-		<div id="promociones">
-			<div id="lista">
-				<ul>
-					<li id="li0" class="lista hover" value="1" onclick="mouseOver(this.value)"><a>Promoción 1</a></li>
-					<li id="li1" class="lista" value="2" onclick="mouseOver(this.value)"><a>Promoción 2</a></li>
-					<li id="li2" class="lista" value="3" onclick="mouseOver(this.value)"><a>Promoción 3</a></li>
-					<li id="li3" class="lista" value="4" onclick="mouseOver(this.value)"><a>Promoción 4</a></li>
-					<li id="li4" class="lista" value="5" onclick="mouseOver(this.value)"><a>Promoción 5</a></li>
-				</ul>
-			</div>
-			<div id="imagen">
-				<!--img id="img1" class="mySlides" src="img1.jpg">
-				<img id="img2" class="mySlides" src="img2.jpg" style="display: none;">
-				<img id="img3" class="mySlides" src="img3.jpg" style="display: none;">
-				<img id="img4" class="mySlides" src="img4.jpg" style="display: none;">
-				<img id="img5" class="mySlides" src="img5.jpg" style="display: none;"-->			
-			</div>
-			<div id="promocion">
-				
-			</div>
-		</div>
 
-		<br style="clear: both;">
-		<br>
-		<br>
 
-		<div id="slogan">
+
+		<!--Reemplazar esta sección con el contenido de la página-->
+		<div>
 			<section>
 				<article>
-					<i class="material-icons">local_shipping</i>
-					<div>
-						<h2>Servicio de Calidad</h2>
-						<p>Ten acceso a productos de calidad y a los mejores servicios</p>
-						<ul>
-							<li>Productos frescos y de calidad</li>
-							<li>Proveedores confiables</li>
-							<li>Horarios de entrega flexibles</li>
-						</ul>
-					</div>
-				</article>
-				<article>
-					<i class="material-icons">shopping_basket</i>
-					<div>
-						<h2>Compras inmediatas</h2>
-						<p>Accede a todos nuestros productos y tenlos a tu disposición</p>
-						<ul>
-							<li>Compra a cualquier hora 24/7</li>
-							<li>Información sobre todos nuestros productos</li>
-							<li>Añade cuantos productos quieras a tu carrito</li>
-						</ul>
-					</div>
-				</article>
-				<article>
-					<i class="material-icons">local_atm</i>
-					<div>
-						<h2>Pagos Seguros</h2>
-						<p>Paga con tarjeta o en efectivo, todo completamente seguro</p>
-						<ul>
-							<li>Diferentes formas de pago</li>
-							<li>Pagos 100% seguros</li>
-							<li>Facturas electrónicas y comprobantes</li>
-						</ul>
-					</div>
-				</article>
-				<article>
-					<i class="material-icons">store_mall_directory</i>
-					<div>
-						<h2>Fácil Acceso</h2>
-						<p>Realiza tus compras desde casa de forma fácil y segura</p>
-						<ul>
-							<li>Crea tu cuenta fácilmente</li>
-							<li>Toda tu información 100% segura</li>
-						</ul>
-					</div>
+					<h1 style="text-align: center; font-size: 72px; background-image: url(../../config/img/construccion.png); background-repeat: no-repeat;background-position: center; background-size: 70%; background-attachment: fixed; padding: 200px 0px;">Página en construcción</h1>
 				</article>
 			</section>
 		</div>
 
-		<br style="clear: both;">
-		<br>
-		<br>
-		<br>
-		<br>
 
-		<div id="img_go">
-			<img src="../../config/img/go.png" id="go">
-		</div>
 
-		<br style="clear: both;">
-		<br>
-		<br>
-
-		<div id="start">
-			<section>
-				<h1 id="start_title">Es fácil empezar!</h1>
-				<article>
-					<h1>1</h1>
-					<p>Escoge todos los productos que necesites</p>
-				</article>
-				<article>
-					<h1>2</h1>
-					<p>Elige el horario que mejor se acomode a ti para la entrega</p>
-				</article>
-				<article>
-					<h1>3</h1>
-					<p>Cambia tu pedido hasta un día antes de tu entrega</p>
-				</article>
-			</section>
-		</div>
-
-		<br style="clear: both;">
-		<br>
-		<br>
 
 		<div id="about">
 			<section>
@@ -209,45 +117,6 @@
 			</section>
 		</div>
 
-		<!--div id="contact">
-			<h1>¡Contáctanos!</h1>	
-			<section id="uno">
-				<article>
-					<ul>
-						<li><p><strong>Teléfonos: </strong><ul><li><?php echo $row['ma_telefono1']; ?></li><li><?php echo $row['ma_telefono2']; ?></li></ul></li>
-						<li><p><strong>E-mail: </strong><ul><li><?php echo $row['ma_correo']; ?></li></ul></p></li>
-						<li><p><strong>Dirección: </strong><ul><li><?php echo $row['ma_direccion']; ?></li></ul></p></li>
-						<li><p><strong>WhatsApp: </strong><ul><li><?php echo $row['ma_wpp']; ?></li></ul></p></li>
-					</ul>
-				</article>
-			</section>
-			<section id="dos">
-				<form>
-			  		<table id="tabla2">
-			  			<tr>
-			  				<th>Nombre: </th>
-					  		<td><input type="text" name="nombre"></td>
-			  			</tr>
-			  			<tr>
-			  				<th>Apellido: </th>
-			  				<td><input type="text" name="apellido"></td>
-			  			</tr>
-			  			<tr>
-			  				<th>Email: </th>
-			  				<td><input type="text" name="email"></td>
-			  			</tr>
-			  			<tr>
-			  				<th>Mensaje: </th>
-			  				<td><textarea rows="6" cols="50"></textarea></td>
-			  			</tr>
-			  			<tr>
-			  				<td colspan="2"><button>Enviar</button></td>
-			  			</tr>
-			  		</table>
-			  	</form>
-			</section>
-		</div-->
-
 		<div id="social">
 			<section>
 				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-3 7h-1.924c-.615 0-1.076.252-1.076.889v1.111h3l-.238 3h-2.762v8h-3v-8h-2v-3h2v-1.923c0-2.022 1.064-3.077 3.461-3.077h2.539v3z"/></svg>
@@ -256,11 +125,13 @@
 			</section>
 		</div>
 
+
 		<footer>
 			<div id="pie">
 				<p>
 			        Desarrollado por:<br> Jonathan Matute &#8226; Doménica Merchán &#8226; Mark Orellana &#8226; René Panjón &#8226; John Tenesaca
 			    </p>
+				<!--Cambiar src dependiendo de la ubicación del archivo-->
 			    <a href="https://www.ups.edu.ec" target="_blank"><img style="width: 150px" src="../../config/img/ups.png" alt="logo de la Universidad Politecnica Salesiana"></a>
 			    <p><sub>&#169;</sub><em> Todos los derechos reservados</em></p>
 			    <br>
@@ -268,6 +139,4 @@
 		</footer>
 
 	</body>
-	<script type="text/javascript" src="../controladores/javascript.js"></script>
-	<script type="text/javascript" src="../../config/js/javascript.js"></script>
 </html>
