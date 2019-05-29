@@ -93,7 +93,7 @@
 					</tr>
 
 					<tr>
-						<td id="button" colspan="2"><input type="submit" name="submit" value="Agragar Promoción"></td>
+						<td id="button" colspan="2"><input type="submit" name="submit" value="Agregar Promoción"></td>
 					</tr>
 
 				</table>
