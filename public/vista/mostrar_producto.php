@@ -56,19 +56,16 @@
 					$sql = "SELECT * FROM subcategoria WHERE ca_codigo ='$codigo'";
 					$result = $conn -> query($sql);
 					while($row = $result -> fetch_assoc()) {
-						// echo "<li class='frst'>";
-						echo "<a>".$row['sb_nombre']."</a>";
-						// echo "<br>";
-						// echo "<td><a>".$row['sb_image']."</a>";
-						// echo "<td><a>".$row['sb_image']."</a>";
+						echo "<a><h2>".$row['sb_nombre']."</h2></a>";
 						echo "<ul>";
-						// echo "<a>".$row['sb_nombre']."</a>";
-                	    // $codigo2=$_GET["sb_codigo"];
 						$sql2 = "SELECT * FROM producto WHERE sb_codigo=".$row['sb_codigo'];
 						$result2 = $conn -> query($sql2);
 						while ($row2 = $result2 -> fetch_assoc()) {
+							echo "<div class='producto'>";
 							echo "<br><li><a>".$row2['pr_nombre']."</a><img class='img' src='data:image/jpg;base64,".base64_encode($row2["pr_imagen"])."'/></li>";
-						}
+							echo "</div>";
+							}
+
 						echo "</ul>";
 						
 						echo "</li>";
