@@ -38,21 +38,21 @@
 		<br>
 
 		<div id="formulario">
-			<form method="POST" action="../controladores/agregarPm.php" enctype="multipart/form-data">
+			<form method="POST" action="../controladores/agregarSucursal.php" enctype="multipart/form-data">
 
 				<table>
 
 					<tr>
-						<td><label>Categoría</label></td>
+						<td><label>Sucursal</label></td>
 						<td>
-							<select name="cat">
+							<select name="suc">
 								<?php
 									include'../../../config/conexionBD.php';
-									$sql = "SELECT ca_nombre FROM categoria";
+									$sql = "SELECT su_nombre FROM sucursal";
 									$result = $conn -> query($sql);
 
 									while($row = $result -> fetch_assoc()) {
-										echo "<option value='".$row['ca_nombre']."'>".$row['ca_nombre']."</option>";
+										echo "<option value='".$row['su_nombre']."'>".$row['su_nombre']."</option>";
 									}
 								?>
 							</select>
@@ -65,31 +65,28 @@
 					</tr>
 
 					<tr>
-						<td><label>Porcentaje</label></td>
-						<td><input class="input" type="number" name="por" min="0" max="99" step="1" value="0"></td>
+						<td><label>Direccion</label></td>
+						<td><input class="input" type="text" name="dir"></td>
 					</tr>
 
 					<tr>
-						<td><label>Día que aplica</label></td>
-						<td><select name="dia">
-							<option value="1">Lunes</option>
-							<option value="2">Martes</option>
-							<option value="3">Miércoles</option>
-							<option value="4">Jueves</option>
-							<option value="5">Viernes</option>
-							<option value="6">Sábado</option>
-							<option value="7">Domingo</option>
-						</select></td>
+					   <td><label>Telefono</label></td>
+                       <td><input class="input" type="text" name="tel"></td>
 					</tr>
 
 					<tr>
-						<td><label>Descipción</label></td>
-						<td><textarea rows="4" cols="50" maxlength="300" name="des" placeholder="ingresar una descripción de la categoría"></textarea></td>
+					   <td><label>Ruc</label></td>
+                       <td><input class="input" type="text" name="ruc"></td>
 					</tr>
 
 					<tr>
 						<td><label>Imagen</label></td>
 						<td><input class="input" type="file" name="image"></td>
+					</tr>
+
+					<tr>
+					   <td><label>Fecha Creacion</label></td>
+					   <td><input class="input" type="date" name="fechaCreacion"></td>
 					</tr>
 
 					<tr>
