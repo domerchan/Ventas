@@ -56,13 +56,15 @@
 					$sql = "SELECT * FROM subcategoria WHERE ca_codigo ='$codigo'";
 					$result = $conn -> query($sql);
 					while($row = $result -> fetch_assoc()) {
-						echo "<a><h2>".$row['sb_nombre']."</h2></a>";
-						echo "<ul>";
+						echo "<a><h2>".$row['sb_nombre']."<br></h2></a>";
+						// echo "<br>";
 						$sql2 = "SELECT * FROM producto WHERE sb_codigo=".$row['sb_codigo'];
 						$result2 = $conn -> query($sql2);
 						while ($row2 = $result2 -> fetch_assoc()) {
 							echo "<div class='producto'>";
 							echo "<br><li><a>".$row2['pr_nombre']."</a><img class='img' src='data:image/jpg;base64,".base64_encode($row2["pr_imagen"])."'/></li>";
+							echo "<input type='number' max='100' min='0' id='valorC' name=''>";
+							echo "<button value='".$row2['pr_codigo']."' name='prueba' onclick='anadirProducto(this.value)'>Anadir</button>"; 
 							echo "</div>";
 							}
 
@@ -83,4 +85,10 @@
 		</footer>
 
 </body>
+<script>
+    function anadirProducto(dato){
+        var cantidad=document.getElementById('valorC').value;
+        localStorage.setItem(dato, cantidad);
+    }
+    </script>
 </html>
