@@ -7,6 +7,7 @@
     <title>Productos A Anadir: </title>
 
 		<link rel="stylesheet" type="text/css" href="../../config/css/style.css">
+		<link rel="stylesheet" type="text/css" href="../../public/vista/css/producto.css">
 		<link rel="stylesheet" type="text/css" href="css/ind.css">
 		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 		<link href="https://fonts.googleapis.com/css?family=Didact+Gothic&display=swap" rel="stylesheet">

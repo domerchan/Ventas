@@ -1,0 +1,30 @@
+/*-----------------------------Divs Cajas Productos-----------------------------*/
+.producto {
+	width: 170px;
+	height: 230px;
+	margin: 5px;
+	padding: 20px;
+    float: left;
+    /* border-style: solid; */
+    border: 2px solid cyan;
+    border-radius: 5px;
+    background-color: lightgrey;
+}
+form {
+    /* Sólo para centrar el formulario a la página */
+    margin: 0 auto;
+    margin-top: 18px;
+    /* width: 400px; */
+    width: calc(100% - 60px);
+	/* height: 300px; */
+    /* Para ver el borde del formulario */
+    padding: 5em;
+    border: 1px solid #CCC;
+    border-radius: 1em;
+}
+.imgP {
+max-width: 50px;
+}
+#contenedor h2{
+    clear: both;
+}

@@ -7,6 +7,7 @@
     <title>Productos A Anadir: </title>
 
 		<link rel="stylesheet" type="text/css" href="../../config/css/style.css">
+		<link rel="stylesheet" type="text/css" href="../../public/vista/css/producto.css">
 		<link rel="stylesheet" type="text/css" href="css/ind.css">
 		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 		<link href="https://fonts.googleapis.com/css?family=Didact+Gothic&display=swap" rel="stylesheet">
@@ -50,22 +51,23 @@
 				<a href="../../private/user/vista/carro.php"><i class="material-icons">shopping_cart</i></a>
 			</nav>
 		</header>
+<div id="contenedor">
 <?php
+
                     include'../../config/conexionBD.php';
                     $codigo=$_GET["categoria"];
 					$sql = "SELECT * FROM subcategoria WHERE ca_codigo ='$codigo'";
 					$result = $conn -> query($sql);
 					while($row = $result -> fetch_assoc()) {
-						echo "<a><h2>".$row['sb_nombre']."<br></h2></a>";
-						// echo "<br>";
+						echo "<a><h2>".$row['sb_nombre']."</h2></a>";
 						$sql2 = "SELECT * FROM producto WHERE sb_codigo=".$row['sb_codigo'];
 						$result2 = $conn -> query($sql2);		
 						while ($row2 = $result2 -> fetch_assoc()) {
 							echo "<div class='producto'>";
-							echo "<br><li><a>".$row2['pr_nombre']."</a><img class='img' src='data:image/jpg;base64,".base64_encode($row2["pr_imagen"])."'/></li>";
+							echo "<li><a>".$row2['pr_nombre']."</a><img class='imgP' src='data:image/jpg;base64,".base64_encode($row2["pr_imagen"])."'/></li>";
 							echo "<input type='number' max='100' min='0' id='valorC' name=''>";
 							echo "<button value='".$row2['pr_codigo']."' name='prueba' onclick='anadirProducto(this.value)'>Anadir</button>"; 
-							echo "<br><a><h1>Precio: $".$row2['pr_precio']."</h1></a>";
+							echo "<a><h1>Precio: $".$row2['pr_precio']."</h1></a>";
 							echo "<a href='mostrarProducto.php?producto=".$row2['pr_codigo']."'>Ver</a>";
 							echo "</div>";
 							}
@@ -75,8 +77,9 @@
 						echo "</li>";
 					}
 					?>
-					<!-- <footer>
-			<div id="pieP">
+					</div>
+					<footer>
+			<div id="pie">
 				<p>
 			        Desarrollado por:<br> Jonathan Matute &#8226; Doménica Merchán &#8226; Mark Orellana &#8226; René Panjón &#8226; John Tenesaca
 			    </p>
@@ -84,7 +87,7 @@
 			    <p><sub>&#169;</sub><em> Todos los derechos reservados</em></p>
 			    <br>
 			</div>
-		</footer> -->
+		</footer>
 
 </body>
 <script>

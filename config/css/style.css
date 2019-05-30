@@ -223,28 +223,6 @@ header .frst > a:hover {
 	margin-right: auto;
 	margin-left: auto;
 }
-/*-----------------------------Divs Cajas Productos-----------------------------*/
-.producto {
-	/* width: 170px; */
-	height: 140px;
-	max-width: 170 px;
-	margin: 5px;
-	padding: 20px;
-	float: left;
-}
-form {
-    /* Sólo para centrar el formulario a la página */
-    margin: 0 auto;
-    width: 400px;
-    /* Para ver el borde del formulario */
-    padding: 5em;
-    border: 1px solid #CCC;
-    border-radius: 1em;
-}
-
-
-
-
 /*-----------------------------Pie de Página-----------------------------*/
 
 footer {
