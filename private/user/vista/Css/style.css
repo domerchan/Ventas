@@ -5,7 +5,7 @@ body {
 }
 
 #banner {
-	background-image: url(../img/banner.png);
+	background-image: url(../../../../config/img/banner.png);
 	background-size: 100%;
 	background-repeat: no-repeat;
 	background-position: center;
@@ -101,6 +101,11 @@ header a:hover {
 	text-align: center;
 }
 
+
+#cargar_imagen img{
+	display:block;
+margin:auto;
+}
 #cargar_usuario p{
 	transform: skewX(25deg);
 	margin: 5px 0px;
@@ -146,7 +151,7 @@ footer {
 	margin-top: 15px;
 	text-align: center;
 	clear: both;
-	background-image: url("../img/footer.jpg");
+	background-image: url("../../../../config/img/footer.jpg");
 	background-size: 100%;
 	background-repeat: no-repeat;
 	background-position: center;

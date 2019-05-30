@@ -55,6 +55,10 @@
         $row=$result->fetch_assoc();
         if ($result->num_rows > 0) {
             echo '<div id="cuenta">';
+                echo '<div id="cargar_imagen">';
+                echo "<img class='img' src='data:image/jpg;base64,".base64_encode($row["us_imagen"])."'/>";
+                echo '</div>';
+
                 echo '<div id="cargar_usuario">';  
                     echo '<p>Nombre: '.$row['us_nombres'].'</p>';
                 echo '</div>';
@@ -79,15 +83,14 @@
                     echo '<p>Direccion: '.$row['us_direccion'].'</p>';
                 echo '</div>';
 
-                #echo '<div id="imagen">';  
-                    #echo '<p>Foto: '.base64_encode($row["us_imagen"]).'</p>';
-                    #echo '<img src="'.$row["us_imagen"].'" width="75px" height="75px">';
+               
               
                 echo '</div>';
             
                 echo '<div id="modificar">';  
                     echo '<a href="modificar_cuenta.php">MODIFICAR CUENTA </a> <br>';
                     echo '<a href="cambiar_contrasena.php">CAMBIAR CONTRASENA </a><br> ';
+                    echo '<a href="eliminarusuario.php">ELIMINAR USUARIO </a><br> ';
                 echo '</div>';
             
             echo '</div>';

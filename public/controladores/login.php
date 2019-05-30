@@ -16,13 +16,19 @@
         $_SESSION['us_imagen']= $row['us_imagen'];
         $_SESSION['us_nombres']= $row['us_nombres'];
         $_SESSION['us_apellidos']= $row['us_apellidos'];
+        $_SESSION['us_eliminado']= $row['us_eliminado'];
 
 
         //Si la fila del usuario en la columna usu_rol es U se accede como usuario sino accedera como administrador.
-        if ($row['us_rol'] == "user"){
+        if ($row['us_rol'] == "user" && $row['us_eliminado'] == "N" ){
             header("Location:../../private/user/vista/cuenta_usuario.php");
-        }else{
-            header("Location: ../vista/index.php");
+        }
+        else if ($row['us_rol'] == "user" && $row['us_eliminado'] == "S")
+        {
+            echo " <script language='javascript'>";
+            echo "    var ok = confirm('Recuperar Contasena:');       ";
+            echo(" if (ok) { location.href ='recuperarcuenta.php'; }");           
+            echo " </script> ";
         }
     }else {
        
