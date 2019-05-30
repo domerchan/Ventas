@@ -88,6 +88,7 @@
                 echo '<div id="modificar">';  
                     echo '<a href="modificar_cuenta.php">MODIFICAR CUENTA </a> <br>';
                     echo '<a href="cambiar_contrasena.php">CAMBIAR CONTRASENA </a><br> ';
+                    echo '<a href="eliminarusuario.php">ELIMINAR USUARIO </a><br> ';
                 echo '</div>';
             
             echo '</div>';
