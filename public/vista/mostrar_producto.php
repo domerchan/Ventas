@@ -57,6 +57,9 @@
 				<a href="../../private/user/vista/carro.php"><i class="material-icons">shopping_cart</i></a>
 			</nav>
 		</header>
+
+		<p id="error"></p>
+
 <div id="contenedor">
 <?php
 
@@ -72,7 +75,7 @@
 							echo "<div class='producto'>";
 							echo "<li><a>".$row2['pr_nombre']."</a><img class='imgP' src='data:image/jpg;base64,".base64_encode($row2["pr_imagen"])."'/></li>";
 							echo "<input type='number' max='100' min='0' id='valorC' name='valorC'>";
-							echo "<button type='button' onclick='getData()'>AnadirCarrito</button>";
+							echo "<button type='button' onclick='getData(".$row2['pr_codigo'].")'>AnadirCarrito</button>";
 							echo "<a><h1>Precio: $".$row2['pr_precio']."</h1></a>";
 							echo "<a href='mostrarProducto.php?producto=".$row2['pr_codigo']."'>DETALLES</a>";
 							echo "</div>";
@@ -101,10 +104,23 @@
         var cantidad=document.getElementById('valorC').value;
         localStorage.setItem(dato, cantidad);
     }
-	function getData(){
-		var dato=document.getElementById('crear').value;
-		console.log(dato);
+	function getData(codigo){
+			var cant=document.getElementById("valorC").value;
+			if (window.XMLHttpRequest){
+				xmlhttp=new XMLHttpRequest();
+			}else{
+				xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+			}
+			xmlhttp.onreadystatechange=function(){
+				if(this.readyState==4 && this.status==200){
+					document.getElementById('error').innerHTML=this.responseText;
+					// alert('Funcionando...');
+				}
 
-	}
+			};
+			xmlhttp.open("GET","../../public/vista/carro.php?pr_codigo="+codigo+"&cantidad="+cant,true);
+			xmlhttp.send();
+
+		}
     </script>
 </html>
