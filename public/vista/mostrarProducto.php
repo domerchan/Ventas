@@ -59,20 +59,20 @@
 						echo '<form>';   
 						echo '<div>';
                             echo '<div>';  
-                                echo '<p>Nombre Producto: '.$row['pr_nombre'].'</p>';
+                                echo '<p><h1>Nombre Producto: '.$row['pr_nombre'].'</h1></p>';
                             echo '</div>';
                             
                             echo '<div>';  
-                                echo '<p>Descripcion De Producto: '.$row['pr_descripcion'].'</p>';
+                                echo '<p><h1>Descripcion De Producto: '.$row['pr_descripcion'].'</h1></p>';
                             echo '</div>';
                         
                             echo '<div >';  
-                                echo '<p>Precio Producto: '.$row['pr_precio'].'</p>';
+                                echo '<p><h1>Precio Producto: $'.$row['pr_precio'].'</h1></p>';
                             echo '</div>';
                         
                             echo '<div>';  
-                                echo '<p>Stock: '.$row['pr_stock'].'</p>';
-                            echo '</div>';
+                                echo '<p><h1>Stock: '.$row['pr_stock'].'</h1></p>';
+							echo '</div>';
                         
                         echo '</div>';
 							}
