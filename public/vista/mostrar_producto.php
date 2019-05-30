@@ -1,3 +1,9 @@
+<?php
+    session_start();
+    if(!isset($_SESSION['isLogged']) || $_SESSION['isLogged']==false){
+        header("Location: ../../public/vista/login.html");
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -65,10 +71,10 @@
 						while ($row2 = $result2 -> fetch_assoc()) {
 							echo "<div class='producto'>";
 							echo "<li><a>".$row2['pr_nombre']."</a><img class='imgP' src='data:image/jpg;base64,".base64_encode($row2["pr_imagen"])."'/></li>";
-							echo "<input type='number' max='100' min='0' id='valorC' name=''>";
-							echo "<button value='".$row2['pr_codigo']."' name='prueba' onclick='anadirProducto(this.value)'>Anadir</button>"; 
+							echo "<input type='number' max='100' min='0' id='valorC' name='valorC'>";
+							echo "<button type='button' onclick='getData()'>AnadirCarrito</button>";
 							echo "<a><h1>Precio: $".$row2['pr_precio']."</h1></a>";
-							echo "<a href='mostrarProducto.php?producto=".$row2['pr_codigo']."'>Ver</a>";
+							echo "<a href='mostrarProducto.php?producto=".$row2['pr_codigo']."'>DETALLES</a>";
 							echo "</div>";
 							}
 
@@ -95,5 +101,10 @@
         var cantidad=document.getElementById('valorC').value;
         localStorage.setItem(dato, cantidad);
     }
+	function getData(){
+		var dato=document.getElementById('crear').value;
+		console.log(dato);
+
+	}
     </script>
 </html>
