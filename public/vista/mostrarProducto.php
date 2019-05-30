@@ -52,31 +52,34 @@
 		</header>
 <?php
                     include'../../config/conexionBD.php';
-                    $codigo=$_GET["categoria"];
-					$sql = "SELECT * FROM subcategoria WHERE ca_codigo ='$codigo'";
+                    $codigo=$_GET["producto"];
+					$sql = "SELECT * FROM producto WHERE pr_codigo ='$codigo'";
 					$result = $conn -> query($sql);
 					while($row = $result -> fetch_assoc()) {
-						echo "<a><h2>".$row['sb_nombre']."<br></h2></a>";
-						// echo "<br>";
-						$sql2 = "SELECT * FROM producto WHERE sb_codigo=".$row['sb_codigo'];
-						$result2 = $conn -> query($sql2);		
-						while ($row2 = $result2 -> fetch_assoc()) {
-							echo "<div class='producto'>";
-							echo "<br><li><a>".$row2['pr_nombre']."</a><img class='img' src='data:image/jpg;base64,".base64_encode($row2["pr_imagen"])."'/></li>";
-							echo "<input type='number' max='100' min='0' id='valorC' name=''>";
-							echo "<button value='".$row2['pr_codigo']."' name='prueba' onclick='anadirProducto(this.value)'>Anadir</button>"; 
-							echo "<br><a><h1>Precio: $".$row2['pr_precio']."</h1></a>";
-							echo "<a href='mostrarProducto.php?producto=".$row2['pr_codigo']."'>Ver</a>";
-							echo "</div>";
+						echo '<form>';   
+						echo '<div>';
+                            echo '<div>';  
+                                echo '<p>Nombre Producto: '.$row['pr_nombre'].'</p>';
+                            echo '</div>';
+                            
+                            echo '<div>';  
+                                echo '<p>Descripcion De Producto: '.$row['pr_descripcion'].'</p>';
+                            echo '</div>';
+                        
+                            echo '<div >';  
+                                echo '<p>Precio Producto: '.$row['pr_precio'].'</p>';
+                            echo '</div>';
+                        
+                            echo '<div>';  
+                                echo '<p>Stock: '.$row['pr_stock'].'</p>';
+                            echo '</div>';
+                        
+                        echo '</div>';
 							}
-
-						echo "</ul>";
-						
-						echo "</li>";
-					}
+							echo '</form>';
 					?>
-					<!-- <footer>
-			<div id="pieP">
+					<footer>
+			<div id="pie">
 				<p>
 			        Desarrollado por:<br> Jonathan Matute &#8226; Doménica Merchán &#8226; Mark Orellana &#8226; René Panjón &#8226; John Tenesaca
 			    </p>
@@ -84,7 +87,7 @@
 			    <p><sub>&#169;</sub><em> Todos los derechos reservados</em></p>
 			    <br>
 			</div>
-		</footer> -->
+		</footer>
 
 </body>
 <script>
