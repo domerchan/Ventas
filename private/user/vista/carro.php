@@ -89,14 +89,31 @@
 			</tr>
 		<?php
 		$codigo=$_SESSION['us_codigo'];
+		
 		$sql = "SELECT  * FROM factura WHERE us_codigo=$codigo ";
 		include '../../../config/conexionBD.php'; 
+		
 		$result=$conn->query($sql);
 		if($result->num_rows > 0){
 			while($row=$result->fetch_assoc()){
 				echo "<tr>";
 					echo "<td>" .$row[fa_cantidad]."</td>";
-				echo "</tr>";
+					$codigo2= $row[pr_codigo];
+					$sql2= "SELECT * FROM producto WHERE pr_codigo=$codigo2";
+					include '../../../config/conexionBD.php';
+					$result2=$conn->query($sql2);
+					if($result2->num_rows > 0){
+						while($row2=$result2->fetch_assoc()){
+					echo "<td>" .$row2[pr_nombre]. "</td>";
+					echo "<td>" .$row2[pr_precio]. "</td>";
+						}
+					}else{
+						echo "<tr>";
+							echo "<td colspan='7'> No hay prodcutos agregados </td>";
+						echo "</tr>";
+					}
+
+					echo "</tr>";
 			}	
 			}else{
 				echo "<tr>";
@@ -129,7 +146,7 @@
 					echo "<td>" .$row[us_direccion]."</td>";
 					echo "<td>" .$row[us_telefono]."</td>";
 					echo "<td>" .$row[us_correo]."</td>";?>
-					<input type="text" id="cedula" name="cedula" value="<?php echo $row["us_cedula"]; ?>" required placeholder="Ingresar cedula"/>
+					<td> <input type="text" id="cedula" name="cedula" value="<?php echo $row["us_cedula"]; ?>" required placeholder="Ingresar cedula"/></td>
 				<?php				
 				echo "</tr>";
 			}	
