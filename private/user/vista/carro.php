@@ -89,8 +89,8 @@
 			</tr>
 		<?php
 		$codigo=$_SESSION['us_codigo'];
-		const CONSTANTE = 'N';
-		$sql = "SELECT  * FROM factura WHERE us_codigo=$codigo AND fa_compra_realizada"= CONSTANTE;
+		$N='N';
+		$sql = "SELECT  * FROM factura WHERE us_codigo=$codigo AND fa_compra_realizada= N" ;
 		include '../../../config/conexionBD.php'; 
 		
 		$result=$conn->query($sql);
