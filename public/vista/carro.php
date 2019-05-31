@@ -1,5 +1,5 @@
 <?php
-start_session();
+session_start();
  include'../../config/conexionBD.php';
  $codigo=$_GET['pr_codigo'];
  $cantidad=$_GET['cantidad'];
@@ -8,9 +8,10 @@ start_session();
  $resulta=$conn->query($subt);
  $precio=$resulta->fetch_assoc();
  $pr=(float)$precio['pr_precio']*(int)$cantidad;
- $sql2="INSERT INTO factura VALUES(0,'$codigo',NULL,'$usuario','$cantidad','$pr','N')";
+//  echo $pr;
+ $sql2="INSERT INTO factura VALUES(0,'$codigo',NULL,'$cantidad','$pr','N','$usuario')";
  if($conn->query($sql2)==TRUE){
- echo "<p>BIENVENIDo.</p>";
+//  echo "<p>BIENVENIDo.</p>";
   }else{
         echo"<p class='error'>Error:".$conn->error."</p>";
 
