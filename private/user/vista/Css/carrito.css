@@ -1,27 +1,23 @@
 
 
-table th {
+.tabla {
+	width: 100%; 
+	border: 1px solid #000;
+ }
+ tr, td {
+	width: 25%;
 	text-align: left;
-	width: 100px;
-	padding: 5px 0px;
-}
-
-table input {
-	width: 100%;
-	border-top: none;
-	border-right: none;
-	border-left: none;
-}
-
-#change {
-	width: 60%;
-	padding: 5px;
-}
-
-#modificar, #cancelar {
-	width: 42%;
-	padding: 5px;
-	margin-left: 2%;
-	margin-right: 2%;
-	border-radius: 3px;
-}
+	vertical-align: top;
+	border: 1px solid #000;
+	border-collapse: collapse;
+	padding: 0.3em;
+	caption-side: bottom;
+ }
+ caption {
+	padding: 0.3em;
+	color: #fff;
+	 background: #000;
+ }
+ tr {
+	background: #eee;
+ }
