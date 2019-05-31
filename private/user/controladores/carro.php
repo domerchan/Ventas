@@ -1,23 +1,94 @@
 <?php
-	include '../../config/conexionBD.php';
-
-	$codigo = $_POST["cod"];
-	date_default_timezone_set("America/Guayaquil");
-	$fecha = date('Y-m-d H:i:s', time());
-
-	$cedula = isset($_POST["ced"]) ? trim($_POST["ced"]) : null;
-	$nombres = isset($_POST["nom"]) ? mb_strtoupper(trim($_POST["nom"]), 'utf-8') : null;
-	$apellidos = isset($_POST["ape"]) ? mb_strtoupper(trim($_POST["ape"]), 'utf-8') : null;
-	$direccion = isset($_POST["dir"]) ? mb_strtoupper(trim($_POST["dir"]), 'utf-8') : null;
-	$telefono = isset($_POST["tel"]) ? trim($_POST["tel"]) : null;
-	$fNacimiento = isset($_POST["fec"]) ? trim($_POST["fec"]) : null;
-
-	$sql = "UPDATE usuario SET us_nombres='$nombres',us_apellidos='$apellidos',us_cedula='$cedula',us_direccion='$direccion',us_telefono='$telefono',usu_fecha_nacimiento='$fNacimiento', usu_fecha_modificacion='$fecha'  WHERE usu_codigo = '$codigo'";
-
-	if ($conn -> query($sql) === TRUE) {
-		echo "Se han modificado los datos correctamente";
-	} else {
-		echo "ha ocurrido un error ):";
-	}
-	echo "<br><a href='../vista/index.php'>Regresar</a>";
+    session_start();
+    if(!isset($_SESSION['isLogged']) || $_SESSION['isLogged']==false){
+        echo "<script>alert('No tiene permisos para ingresar');</script>";
+        header("Location: /SistemaDeGestion/public/vista/login.html");
+    }else if($_SESSION['usu_rol'] == "A"){
+        header("Location: ../../../admin/vista/admin/admin_index.php");
+    }
 ?>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta  charset="utf-8">
+    <title>COMPRAR</title>
+</head>
+<body>
+    
+    <?php
+        include '../../../config/conexionBD.php'; 
+        $codigo=$_POST["codigo"];
+        $cedula = isset($_POST["cedula"]) ? trim($_POST["cedula"]):null;
+        $nombres=isset($_POST["nombres"]) ? mb_strtoupper(trim($_POST["nombres"]), 'UTF-8'):null;
+        $apellidos=isset($_POST["apellidos"]) ? mb_strtoupper(trim($_POST["apellidos"]), 'UTF-8'):null;
+        $direccion=isset($_POST["direccion"]) ? mb_strtoupper(trim($_POST["direccion"]), 'UTF-8'):null;
+        $telefono=isset($_POST["telefono"]) ? trim($_POST["telefono"]):null;
+        $correo=isset($_POST["correo"]) ? trim($_POST["correo"]):null;
+        $fechaNacimiento=isset($_POST["fechaNacimiento"]) ? trim($_POST["fechaNacimiento"]):null;
+		$iva = $_POST["iva"];						   
+		$subtotal = $_POST["subtotal"];
+		$total = $_POST["total"];
+		$envio = $_POST["envio"];
+
+		date_default_timezone_set("America/Guayaquil");
+		
+        $modificacion=date('Y-m-d',time());
+		$nombresyap=$nombres . " " . $apellidos;
+		$sql5="INSERT INTO factura-cabecera VALUES (1,'$codigo','$modificacion','$iva','$envio','$subtotal','$total','$nombresyap','$direccion','$cedula','$telefono','$correo')";
+		
+		$cod=$_SESSION['us_codigo'];
+		$sqlf = "SELECT TOP 1 fc_codigo FROM factura-cabecera WHERE us_codigo=$cod ORDER BY 1 fc_codigo  DESC";
+		include '../../../config/conexionBD.php';
+        $resultf=$conn->query ($sqlf);
+		$row=$resultf->fetch_assoc();                                 
+        $codfc=$row['pr_codigo'];
+	       
+	
+	
+	
+		$codigo=$_SESSION['us_codigo'];
+		
+		$sql = "SELECT  * FROM factura WHERE us_codigo=$codigo AND fa_compra_realizada='N'" ;
+		include '../../../config/conexionBD.php'; 
+		
+		$result=$conn->query($sql);
+		if($result->num_rows > 0){
+			$valorT=0;
+			while($row=$result->fetch_assoc()){
+					
+					$sql2= "SELECT * FROM producto WHERE pr_codigo=".$row['pr_codigo'];
+					include '../../../config/conexionBD.php';
+					$result2=$conn->query($sql2);
+					if($result2->num_rows > 0){
+						while($row2=$result2->fetch_assoc()){
+							$stock=$row['pr_stock']-$row['fa_cantidad'];
+							$sql6="UPDATE producto SET pr_stock=$stock WHERE pr_codigo=".$row['pr_codigo'] ;
+      						# echo "<a>$sql</a>";
+						}
+							
+					}else{
+						echo "<tr>";
+							echo "<td colspan='7'> No hay prodcutos agregados </td>";
+						echo "</tr>";
+					}
+					$sql4="UPDATE factura SET fa_compra_realizada='S' WHERE us_codigo=$codigo AND fa_compra_realizada='N'";
+					$sqlff="UPDATE factura SET fc_codigo=$codfc WHERE us_codigo=$codigo AND fa_compra_realizada='N'";
+					echo "</tr>";
+				}
+			}else{
+				echo "<tr>";
+					echo "<td colspan='7'> No hay prodcutos agregados </td>";
+				echo "</tr>";
+			}
+			if ($conn->query($sql4) === TRUE) {
+				echo "COMPRA REALIZADA";
+				
+				header('Refresh: 5; URL=../vista/carro.php');
+			}else {
+				echo "Error: " . $sql . "<br>" . mysqli_error($conn) . "<br>";
+			}
+	
+			$conn->close();
+	?>
+</body>
+</html>
