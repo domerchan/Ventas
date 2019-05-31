@@ -15,8 +15,6 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link href="https://fonts.googleapis.com/css?family=Didact+Gothic&display=swap" rel="stylesheet">
 
-    <script type="text/javascript" src="cssPruebas/web.assets_common.js"></script>
-    <script type="text/javascript" src="cssPruebas/web.assets_frontend.js"></script>
     <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
     <script type="text/javascript" src="../../config/js/javascript.js"></script>
 </head>
@@ -276,26 +274,30 @@
                     </div>
 
         <div class="col-md-8 col-sm-8 col-xs-12 mb32">
+            <section>
             <div class="oe_structure">
             </div>
             <div>
-                <form action="../controladores/crear_usuario.php" method="POST"
+                <form action="agregaPregunta.php" method="POST"
                     class="s_website_form form-horizontal container-fluid mt32" enctype="multipart/form-data">
+                    
+                    <div class="form-group form-field o_website_form_required_custom">
+                        <label class="col-md-3 col-sm-4 control-label" for="description" style="font-size:17px">
+                            Tu pregunta
+                        </label>
+                        <div class="col-md-7 col-sm-8">
+                            <textarea class="form-control o_website_form_input" name="pregunta" required=""
+                            placeholder="Ingrese mensaje"></textarea>
+                        </div>
+                    </div>
+                    
                     <div class="form-group form-field o_website_form_required_custom">
                         <label class="col-md-3 col-sm-4 control-label" for="contact_name" style="font-size:17px">
                             Tu nombre
                         </label>
                         <div class="col-md-7 col-sm-8">
-                        <input type="text" class="form-control o_website_form_input" id="nombre" name="contact_name" 
+                        <input type="text" class="form-control o_website_form_input" name="nombre" 
                         value="" placeholder="Ingrese su nombre" required="">
-                        </div>
-                    </div>
-                    <div class="form-group form-field">
-                        <label class="col-md-3 col-sm-4 control-label" for="phone" style="font-size:17px">Nº
-                            teléfono</label>
-                        <div class="col-md-7 col-sm-8">
-                        <input type="text" class="form-control o_website_form_input" id="telefono" name="phone" 
-                        value="" placeholder="Ingrese su teléfono o celular"/>
                         </div>
                     </div>
                     <div class="form-group form-field o_website_form_required_custom">
@@ -303,42 +305,30 @@
                             Correo electrónico
                         </label>
                         <div class="col-md-7 col-sm-8">
-                            <input type="text" class="form-control o_website_form_input" id="correo" name="email_from" 
+                            <input type="text" class="form-control o_website_form_input" id="correo" name="correo" 
                             required="" value="" placeholder="Ingrese su Correo Electrónico"/>
                         </div>
                     </div>
-                    <div class="form-group form-field o_website_form_required_custom">
-                        <label class="col-md-3 col-sm-4 control-label" for="partner_name" style="font-size:17px">
-                            Dirección
-                        </label>
-                        <div class="col-md-7 col-sm-8">
-                            <input type="text" class="form-control o_website_form_input" id="direccion" name="partner_name" required=""
-                                value="" placeholder="Ingrese su direccion"/>
-                        </div>
-                    </div>
+
                     <div class="form-group form-field o_website_form_required">
                         <label class="col-md-3 col-sm-4 control-label" for="name" style="font-size:17px">Asunto</label>
                         <div class="col-md-7 col-sm-8">
-                            <input type="text" class="form-control o_website_form_input" id="asunto" name="name" required=""
+                            <input type="text" class="form-control o_website_form_input" id="asunto" name="asunto" required=""
                                 value="" placeholder="Ingrese el asunto"/>
                         </div>
                     </div>
-                    <div class="form-group form-field o_website_form_required_custom">
-                        <label class="col-md-3 col-sm-4 control-label" for="description" style="font-size:17px">
-                            Tu mensaje
-                        </label>
-                        <div class="col-md-7 col-sm-8">
-                            <textarea class="form-control o_website_form_input" name="description" required=""
-                            placeholder="Ingrese mensaje"></textarea>
-                        </div>
-                    </div>
+
                     <div class="form-group">
                         <div class="col-md-offset-3 col-sm-offset-4 col-sm-8 col-md-7">
-                        <input type="submit" id="crear" name="button2" value="ENVIAR" class="btn btn-primary btn-lg o_website_form_send">
+                        <input type="submit" id="enviar" name="button2" value="ENVIAR" class="btn btn-primary btn-lg o_website_form_send"
+                         onclick="location.href='agregaPregunta.php'; alert('Pregunta enviada')">
+                        <input type="reset" id="cancelar" name="cancelar" value="CANCELAR" class="btn btn-primary btn-lg o_website_form_send"
+                         onclick="location.href='index.php'">
                         <span id="o_website_form_result"></span>
                         </div>
                     </div>
                 </form>
+                <section>
             </div>
         </div>
         </div>
