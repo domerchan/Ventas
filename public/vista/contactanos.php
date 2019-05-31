@@ -279,23 +279,23 @@
             <div class="oe_structure">
             </div>
             <div>
-                <form action="/website_form/" method="post" data-model_name="crm.lead"
-                    data-success_page="/page/website_crm.contactus_thanks"
+                <form action="../controladores/crear_usuario.php" method="POST"
                     class="s_website_form form-horizontal container-fluid mt32" enctype="multipart/form-data">
                     <div class="form-group form-field o_website_form_required_custom">
                         <label class="col-md-3 col-sm-4 control-label" for="contact_name" style="font-size:17px">
                             Tu nombre
                         </label>
                         <div class="col-md-7 col-sm-8">
-                            <input type="text" class="form-control o_website_form_input" name="contact_name" required=""
-                                value="" />
+                        <input type="text" class="form-control o_website_form_input" id="nombre" name="contact_name" 
+                        value="" placeholder="Ingrese su nombre" required="">
                         </div>
                     </div>
                     <div class="form-group form-field">
                         <label class="col-md-3 col-sm-4 control-label" for="phone" style="font-size:17px">Nº
                             teléfono</label>
                         <div class="col-md-7 col-sm-8">
-                            <input type="text" class="form-control o_website_form_input" name="phone" value="" />
+                        <input type="text" class="form-control o_website_form_input" id="telefono" name="phone" 
+                        value="" placeholder="Ingrese su teléfono o celular"/>
                         </div>
                     </div>
                     <div class="form-group form-field o_website_form_required_custom">
@@ -303,8 +303,8 @@
                             Correo electrónico
                         </label>
                         <div class="col-md-7 col-sm-8">
-                            <input type="text" class="form-control o_website_form_input" name="email_from" required=""
-                                value="" />
+                            <input type="text" class="form-control o_website_form_input" id="correo" name="email_from" 
+                            required="" value="" placeholder="Ingrese su Correo Electrónico"/>
                         </div>
                     </div>
                     <div class="form-group form-field o_website_form_required_custom">
@@ -312,15 +312,15 @@
                             Dirección
                         </label>
                         <div class="col-md-7 col-sm-8">
-                            <input type="text" class="form-control o_website_form_input" name="partner_name" required=""
-                                value="" />
+                            <input type="text" class="form-control o_website_form_input" id="direccion" name="partner_name" required=""
+                                value="" placeholder="Ingrese su direccion"/>
                         </div>
                     </div>
                     <div class="form-group form-field o_website_form_required">
                         <label class="col-md-3 col-sm-4 control-label" for="name" style="font-size:17px">Asunto</label>
                         <div class="col-md-7 col-sm-8">
-                            <input type="text" class="form-control o_website_form_input" name="name" required=""
-                                value="" />
+                            <input type="text" class="form-control o_website_form_input" id="asunto" name="name" required=""
+                                value="" placeholder="Ingrese el asunto"/>
                         </div>
                     </div>
                     <div class="form-group form-field o_website_form_required_custom">
@@ -328,13 +328,13 @@
                             Tu mensaje
                         </label>
                         <div class="col-md-7 col-sm-8">
-                            <textarea class="form-control o_website_form_input" name="description" required="">
-        </textarea>
+                            <textarea class="form-control o_website_form_input" name="description" required=""
+                            placeholder="Ingrese mensaje"></textarea>
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="col-md-offset-3 col-sm-offset-4 col-sm-8 col-md-7">
-                        <button class="btn btn-primary btn-lg o_website_form_send" name="button2" onclick="location.href='thanks.php'">ENVIAR</button>
+                        <input type="submit" id="crear" name="button2" value="ENVIAR" class="btn btn-primary btn-lg o_website_form_send">
                         <span id="o_website_form_result"></span>
                         </div>
                     </div>
