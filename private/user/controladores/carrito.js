@@ -9,7 +9,7 @@ var posicionFinal;
 var nuevoMarcador;
 var directionsDisplay;
 var directionsService = new google.maps.DirectionsService();
-
+var trgt ='Tarjeta de Credito'
 function detalle() {
 	if (window.XMLHttpRequest) {
 		xmlhttp = new XMLHttpRequest();
@@ -37,18 +37,10 @@ function pago(total) {
 	xmlhttp.onreadystatechange = function() {
 		if (this.readyState == 4 && this.status == 200) {
 			document.getElementById('htitle').innerHTML = 'Ingresa tu Forma de Pago';
-			if(document.getElementById()='tar'){
-				document.getElementById().innerHTML = 'Ingrese el numero de tarjeta';
 				document.getElementById('s2').classList.add('pr');
 				document.getElementById('s1').classList.remove('pr');
 				document.getElementById('s3').classList.remove('pr');
 				document.getElementById('compras').innerHTML = this.responseText;
-			}else{
-				document.getElementById('s2').classList.add('pr');
-				document.getElementById('s1').classList.remove('pr');
-				document.getElementById('s3').classList.remove('pr');
-				document.getElementById('compras').innerHTML = this.responseText;
-			}
 		}
 	};
 	xmlhttp.open("GET", "../controladores/pago.php?total="+total, true);
