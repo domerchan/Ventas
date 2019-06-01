@@ -34,58 +34,46 @@
 		
         $modificacion=date('Y-m-d',time());
 		$nombresyap=$nombres . " " . $apellidos;
-		$sql5="INSERT INTO factura-cabecera VALUES (1,'$codigo','$modificacion','$iva','$envio','$subtotal','$total','$nombresyap','$direccion','$cedula','$telefono','$correo')";
+		$sql5="INSERT INTO factura-cabecera VALUES (0,'$codigo','$modificacion','$iva','$envio','$subtotal','$total','$nombresyap','$direccion','$cedula','$telefono','$correo')";
 		
 		$cod=$_SESSION['us_codigo'];
 		$sqlf = "SELECT TOP 1 fc_codigo FROM factura-cabecera WHERE us_codigo=$cod ORDER BY 1 fc_codigo  DESC";
-		include '../../../config/conexionBD.php';
-        $resultf=$conn->query ($sqlf);
-		$row=$resultf->fetch_assoc();                                 
-        $codfc=$row['pr_codigo'];
-	       
+        $resultf=$conn->query($sqlf);
+		$rowft=$resultf->fetch_assoc();                                
+		$codfc=$rowft['fc_codigo'];
+		
 	
 	
 	
 		$codigo=$_SESSION['us_codigo'];
 		
-		$sql = "SELECT  * FROM factura WHERE us_codigo=$codigo AND fa_compra_realizada='N'" ;
-		include '../../../config/conexionBD.php'; 
-		
+		$sql = "SELECT  * FROM factura WHERE us_codigo=$codigo AND fa_compra_realizada='N' AND fa_eliminada ='N'" ;
 		$result=$conn->query($sql);
 		if($result->num_rows > 0){
 			$valorT=0;
 			while($row=$result->fetch_assoc()){
-					
-					$sql2= "SELECT * FROM producto WHERE pr_codigo=".$row['pr_codigo'];
-					include '../../../config/conexionBD.php';
+				$sql2= "SELECT * FROM producto WHERE pr_codigo=".$row['pr_codigo'];
 					$result2=$conn->query($sql2);
 					if($result2->num_rows > 0){
 						while($row2=$result2->fetch_assoc()){
 							$stock=$row['pr_stock']-$row['fa_cantidad'];
-							$sql6="UPDATE producto SET pr_stock=$stock WHERE pr_codigo=".$row['pr_codigo'] ;
-      						# echo "<a>$sql</a>";
-						}
-							
+							$sql6="UPDATE producto SET pr_stock='$stock' WHERE pr_codigo=".$row['pr_codigo'];	
+						}		
 					}else{
-						echo "<tr>";
-							echo "<td colspan='7'> No hay prodcutos agregados </td>";
-						echo "</tr>";
+						echo "<p> No hay prodcutos agregados </p>";
 					}
-					$sql4="UPDATE factura SET fa_compra_realizada='S' WHERE us_codigo=$codigo AND fa_compra_realizada='N'";
-					$sqlff="UPDATE factura SET fc_codigo=$codfc WHERE us_codigo=$codigo AND fa_compra_realizada='N'";
-					echo "</tr>";
+				$sql4="UPDATE factura SET fa_compra_realizada='S' WHERE us_codigo=$codigo AND fa_compra_realizada='N' AND fa_eliminada ='N'";
+				$sqlff="UPDATE factura SET fc_codigo=$codfc WHERE us_codigo=$codigo AND fa_compra_realizada='N' AND fa_eliminada ='N'";
 				}
 			}else{
-				echo "<tr>";
-					echo "<td colspan='7'> No hay prodcutos agregados </td>";
-				echo "</tr>";
+				echo "<p> No hay prodcutos agregados </p>";
 			}
 			if ($conn->query($sql4) === TRUE) {
 				echo "COMPRA REALIZADA";
 				
 				header('Refresh: 5; URL=../vista/carro.php');
 			}else {
-				echo "Error: " . $sql . "<br>" . mysqli_error($conn) . "<br>";
+				echo "Error: " . $sql4 . "<br>" . mysqli_error($conn) . "<br>";
 			}
 	
 			$conn->close();
