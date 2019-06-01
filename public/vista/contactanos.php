@@ -79,13 +79,13 @@
                     </div>
                 </div>
             </section>
-            
+
             <div class="container mt16 mb16">
                 <div class="row  pad15">
                     <div class="col-md-4 col-sm-4 col-xs-12">
 
                         <div>
-                        <?php
+                            <?php
                 include'../../config/conexionBD.php';
                
                 $sql = "SELECT * FROM market";
@@ -99,7 +99,7 @@
                     }
                 }
             ?>
-  <div class="address-description description mb8">
+                            <div class="address-description description mb8">
                                 <span></span>
                             </div>
                             <div class="address-text first mb8">
@@ -115,7 +115,7 @@
                                         <div itemprop="address" itemscope="itemscope"
                                             itemtype="http://schema.org/PostalAddress">
                                             <div>
-                                            <?php
+                                                <?php
                 $sql = "SELECT * FROM market";
                 $result = $conn -> query($sql);
                 if($result -> num_rows > 0) {
@@ -133,7 +133,7 @@
                                 </span>
                             </div>
 
-                           
+
                             <div class="address-text second mb8">
                                 <div class="content"><i class="fa fa-phone"></i>&nbsp;Teléfonos<span
                                         class="address-label">:</span>
@@ -151,7 +151,7 @@
 
 
                                             <div>
-                                            <?php
+                                                <?php
                 $sql = "SELECT * FROM market";
                 $result = $conn -> query($sql);
                 if($result -> num_rows > 0) {
@@ -181,12 +181,10 @@
                                     data-oe-contact-options="{&quot;widget&quot;: &quot;contact&quot;, &quot;inherit_branding&quot;: null, &quot;fields&quot;: [&quot;address&quot;], &quot;tagName&quot;: &quot;span&quot;, &quot;type&quot;: &quot;contact&quot;, &quot;translate&quot;: null, &quot;expression&quot;: &quot;res_company.partner_id&quot;}">
                                     <address class="mb0" itemscope="itemscope"
                                         itemtype="http://schema.org/Organization">
-
-
                                         <div itemprop="address" itemscope="itemscope"
                                             itemtype="http://schema.org/PostalAddress">
                                             <div>
-                                            <?php
+                                                <?php
                 $sql = "SELECT * FROM market";
                 $result = $conn -> query($sql);
                 if($result -> num_rows > 0) {
@@ -214,12 +212,10 @@
                                     data-oe-contact-options="{&quot;widget&quot;: &quot;contact&quot;, &quot;inherit_branding&quot;: null, &quot;fields&quot;: [&quot;address&quot;], &quot;tagName&quot;: &quot;span&quot;, &quot;type&quot;: &quot;contact&quot;, &quot;translate&quot;: null, &quot;expression&quot;: &quot;res_company.partner_id&quot;}">
                                     <address class="mb0" itemscope="itemscope"
                                         itemtype="http://schema.org/Organization">
-
-
                                         <div itemprop="address" itemscope="itemscope"
                                             itemtype="http://schema.org/PostalAddress">
                                             <div>
-                                            <?php
+                                                <?php
                 $sql = "SELECT * FROM market";
                 $result = $conn -> query($sql);
                 if($result -> num_rows > 0) {
@@ -245,16 +241,12 @@
                                     data-oe-contact-options="{&quot;widget&quot;: &quot;contact&quot;, &quot;inherit_branding&quot;: null, &quot;fields&quot;: [&quot;phone&quot;, &quot;mobile&quot;], &quot;tagName&quot;: &quot;span&quot;, &quot;type&quot;: &quot;contact&quot;, &quot;translate&quot;: null, &quot;expression&quot;: &quot;res_company.partner_id&quot;}">
                                     <address class="mb0" itemscope="itemscope"
                                         itemtype="http://schema.org/Organization">
-                                        <div class="css_non_editable_mode_hidden">
-                                            --<span class="text-muted">Wanlla</span>--
-                                        </div>
-
                                         <div itemprop="address" itemscope="itemscope"
                                             itemtype="http://schema.org/PostalAddress">
 
 
                                             <div>
-                                            <?php
+                                                <?php
                 $sql = "SELECT * FROM market";
                 $result = $conn -> query($sql);
                 if($result -> num_rows > 0) {
@@ -273,67 +265,75 @@
                         </div>
                     </div>
 
-        <div class="col-md-8 col-sm-8 col-xs-12 mb32">
-            <section>
-            <div class="oe_structure">
-            </div>
-            <div>
-                <form action="agregaPregunta.php" method="POST"
-                    class="s_website_form form-horizontal container-fluid mt32" enctype="multipart/form-data">
-                    
-                    <div class="form-group form-field o_website_form_required_custom">
-                        <label class="col-md-3 col-sm-4 control-label" for="description" style="font-size:17px">
-                            Tu pregunta
-                        </label>
-                        <div class="col-md-7 col-sm-8">
-                            <textarea class="form-control o_website_form_input" name="pregunta" required=""
-                            placeholder="Ingrese mensaje"></textarea>
-                        </div>
-                    </div>
-                    
-                    <div class="form-group form-field o_website_form_required_custom">
-                        <label class="col-md-3 col-sm-4 control-label" for="contact_name" style="font-size:17px">
-                            Tu nombre
-                        </label>
-                        <div class="col-md-7 col-sm-8">
-                        <input type="text" class="form-control o_website_form_input" name="nombre" 
-                        value="" placeholder="Ingrese su nombre" required="">
-                        </div>
-                    </div>
-                    <div class="form-group form-field o_website_form_required_custom">
-                        <label class="col-md-3 col-sm-4 control-label" for="email_from" style="font-size:17px">
-                            Correo electrónico
-                        </label>
-                        <div class="col-md-7 col-sm-8">
-                            <input type="text" class="form-control o_website_form_input" id="correo" name="correo" 
-                            required="" value="" placeholder="Ingrese su Correo Electrónico"/>
-                        </div>
-                    </div>
+                    <div class="col-md-8 col-sm-8 col-xs-12 mb32">
+                        <section>
+                            <div class="oe_structure">
+                            </div>
+                            <div>
+                                <form action="agregaPregunta.php" method="POST"
+                                    class="s_website_form form-horizontal container-fluid mt32"
+                                    enctype="multipart/form-data">
 
-                    <div class="form-group form-field o_website_form_required">
-                        <label class="col-md-3 col-sm-4 control-label" for="name" style="font-size:17px">Asunto</label>
-                        <div class="col-md-7 col-sm-8">
-                            <input type="text" class="form-control o_website_form_input" id="asunto" name="asunto" required=""
-                                value="" placeholder="Ingrese el asunto"/>
-                        </div>
-                    </div>
+                                    <div class="form-group form-field o_website_form_required_custom">
+                                        <label class="col-md-3 col-sm-4 control-label" for="description"
+                                            style="font-size:17px">
+                                            Tu pregunta
+                                        </label>
+                                        <div class="col-md-7 col-sm-8">
+                                            <textarea class="form-control o_website_form_input" name="pregunta"
+                                                required="" placeholder="Ingrese mensaje"></textarea>
+                                        </div>
+                                    </div>
 
-                    <div class="form-group">
-                        <div class="col-md-offset-3 col-sm-offset-4 col-sm-8 col-md-7">
-                        <input type="submit" id="enviar" name="button2" value="ENVIAR" class="btn btn-primary btn-lg o_website_form_send"
-                         onclick="location.href='agregaPregunta.php'; alert('Pregunta enviada')">
-                        <input type="reset" id="cancelar" name="cancelar" value="CANCELAR" class="btn btn-primary btn-lg o_website_form_send"
-                         onclick="location.href='index.php'">
-                        <span id="o_website_form_result"></span>
-                        </div>
+                                    <div class="form-group form-field o_website_form_required_custom">
+                                        <label class="col-md-3 col-sm-4 control-label" for="contact_name"
+                                            style="font-size:17px">
+                                            Tu nombre
+                                        </label>
+                                        <div class="col-md-7 col-sm-8">
+                                            <input type="text" class="form-control o_website_form_input" name="nombre"
+                                                value="" placeholder="Ingrese su nombre" required="">
+                                        </div>
+                                    </div>
+                                    <div class="form-group form-field o_website_form_required_custom">
+                                        <label class="col-md-3 col-sm-4 control-label" for="email_from"
+                                            style="font-size:17px">
+                                            Correo electrónico
+                                        </label>
+                                        <div class="col-md-7 col-sm-8">
+                                            <input type="text" class="form-control o_website_form_input" id="correo"
+                                                name="correo" required="" value=""
+                                                placeholder="Ingrese su Correo Electrónico" />
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group form-field o_website_form_required">
+                                        <label class="col-md-3 col-sm-4 control-label" for="name"
+                                            style="font-size:17px">Asunto</label>
+                                        <div class="col-md-7 col-sm-8">
+                                            <input type="text" class="form-control o_website_form_input" id="asunto"
+                                                name="asunto" required="" value="" placeholder="Ingrese el asunto" />
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="col-md-offset-3 col-sm-offset-4 col-sm-8 col-md-7">
+                                            <input type="submit" id="enviar" name="button2" value="ENVIAR"
+                                                class="btn btn-primary btn-lg o_website_form_send"
+                                                onclick="location.href='agregaPregunta.php'; alert('Pregunta enviada')">
+                                            <input type="reset" id="cancelar" name="cancelar" value="CANCELAR"
+                                                class="btn btn-primary btn-lg o_website_form_send"
+                                                onclick="location.href='index.php'">
+                                            <span id="o_website_form_result"></span>
+                                        </div>
+                                    </div>
+                                </form>
+                                <section>
+                            </div>
                     </div>
-                </form>
-                <section>
+                </div>
             </div>
-        </div>
-        </div>
-        </div>
-        <div class="oe_structure"></div>
+            <div class="oe_structure"></div>
         </div>
     </main>
 
