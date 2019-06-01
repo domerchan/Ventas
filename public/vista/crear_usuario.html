@@ -1,51 +1,92 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <link rel="stylesheet" type="text/css" href="Css/crear_usuario.css">
-        
-    </head>
-    <body>
-        <div id="panelInicial">
-            <span id="titulo">Registrarse</span>
-            <span id="errorRegister"></span>
-            <form id="formulario01" method="post" action="../controladores/crear_usuario.php" enctype="multipart/form-data">
-                <label for="cedula" id="label1">Cedula</label>
-                <input type="number" id="cedula" name="cedula" value="" placeholder="Ingrese el numero de cedula" required/>
-                <br>
-                <label for="nombres" id="label1">Nombres</label>
-                <input type="text" id="nombres" name="nombres" style="text-transform:uppercase" value="" placeholder="Ingrese sus dos nombres" required/>
-                <br>
-                <label for="apellidos" id="label1">Apelidos</label>
-                <input type="text" id="apellidos" name="apellidos" style="text-transform:uppercase" value="" placeholder="Ingrese sus dos apellidos" required/>
-                <br>
+<head>
+	<meta charset="utf-8">
+	<title>PHP</title>
+	<script type="text/javascript" src="../controladores/validaciones.js"></script>
+	<!--script src="https://code.jquery.com/jquery-1.10.2.js"></script-->
+	<link rel="stylesheet" type="text/css" href="css/login.css">
+	<link rel="stylesheet" type="text/css" href="../../config/css/style.css">
+	<link href="https://fonts.googleapis.com/css?family=Didact+Gothic&display=swap" rel="stylesheet">
+</head>
+<body>
 
-                <label for="nickname" id="label1">NickName</label>
-                <input type="text" id="nickname" name="nickname" style="text-transform:uppercase" value="" placeholder="Ingrese sus NickName" required/>
-                <br>
+	<section>
 
-                <label for="direccion" id="label1">Dirección</label>
-                <input type="text" id="direccion" name="direccion" style="text-transform:uppercase" value="" placeholder="Ingrese su dirección" required/>
-                <br>
-                <label for="telefono" id="label1">Teléfono</label>
-                <input type="number" id="telefono" name="telefono" value="" placeholder="Ingrese su número telefónico" required/>
-                <br>
-                <label for="fecha" id="label1">Fecha Nacimiento</label>
-                <input type="date" id="fechaNacimiento" name="fechaNacimiento" value="" placeholder="Ingrese su fecha de nacimiento" required/>
-                <br>
+		<div id="foto">
+			<section><div id="img"><img src="../../config/img/logo2.png"></div></section>
+		</div>
 
-            
+		<div id="form">
+			<h1>Registrarse</h1>
+			<form method="POST" action="../controladores/crear_usuario.php" onsubmit="return validar()">
+				<table>
 
-                <label for="correo" id="label1">Correo electrónico</label>
-                <input type="email" id="correo" name="correo" value="" placeholder="Ingrese su correo electrónico" required/>
-                <br>
-                <label for="contraseña" id="label1">Contraseña</label>
-                <input type="password" id="contraseña" name="contraseña" value="" placeholder="Ingrese su contraseña" required/>
-                <br>
+					<tr>
+						<td><label>Cedula</label></td>
+						<td><input type="text" id="ced" name="ced" placeholder="ingresa tu cédula" onfocus="escribe(this)" onkeyup="this.value = val_numero(this.value)"></td>
+						<td><spam id="c" style="display: none;">*error</spam></td>
+					</tr>
 
-                <input type="submit" id="crear" name="crear" value="Aceptar" />
-                <input type="reset" id="cancelar" name="cancelar" value="Cancelar" onclick="window.location.href='../vista/index.php'"/>
-            </form>
-        </div>    
-    </body>
+					<tr>
+						<td><label>Nombre</label></td>
+						<td><input type="text" name="nom" placeholder="ingresa tu nombre" onfocus="escribe(this)" onkeyup="this.value = val_letra(this.value)" onchange="this.value = dos_valores(this.value)"></td>
+					</tr>
+
+					<tr>
+						<td><label>Apellido</label></td>
+						<td><input type="text" name="ape" placeholder="ingresa tu apellido" onfocus="escribe(this)" onkeyup="this.value = val_letra(this.value)" onchange="this.value = dos_valores(this.value)"></td>
+					</tr>
+
+					<tr>
+						<td><label>Nick</label></td>
+						<td><input type="text" name="nic" placeholder="ingresa tu nick" onfocus="escribe(this)" onkeyup="this.value = val_letra(this.value)" onchange="this.value = dos_valores(this.value)"></td>
+					</tr>
+
+					<tr>
+						<td><label>Sexo</label></td>
+						<td><select name="sex"><option value="masculino">Masculino</option><option value="femenino">Femenino</option></select></td>
+					</tr>
+
+					<tr>
+						<td><label>Dirección</label></td>
+						<td><input type="text" name="dir" placeholder="ingresa tu dirección" onfocus="escribe(this)"></td>
+					</tr>
+
+					<tr>
+						<td><label>Teléfono</label></td>
+						<td><input type="text" name="tel" placeholder="ingresa tu número telefónico" onfocus="escribe(this)" onkeyup="this.value = val_numero(this.value)"></td>
+					</tr>
+
+					<tr>
+						<td><label>Fecha de Nacimiento</label></td>
+						<td><input type="date" id="fec" name="fec" placeholder="dd/mm/yyyy" onfocus="escribe(this)"></td>
+						<td><spam id="f" style="display: none;">*error</spam></td>
+					</tr>
+
+					<tr>
+						<td><label>Email</label></td>
+						<td><input type="text" id="ema" name="ema" placeholder="ingresa tu email" onfocus="escribe(this)"></td>
+						<td><spam id="e" style="display: none;">*error</spam></td>
+					</tr>
+
+					<tr>
+						<td><label>Contraseña</label></td>
+						<td><input type="password" name="con" placeholder="ingrese su contraseña" onchange="escribe(this)"></td>
+					</tr>
+
+					<tr>
+						<td colspan="2">
+							<div id="btn">
+								<input type="submit" id="crear" name="crear" value="Aceptar">
+								<a href="login.html"><input type="button" id="cancelar" name="cancelar" value="Cancelar"></a>
+							</div>
+						</td>
+					</tr>
+				</table>
+			</form>
+			<p id="p" style="display: none;">Error, campos incompletos!</p>
+		</div>
+	</section>
+</body>
 </html>

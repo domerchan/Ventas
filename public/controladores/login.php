@@ -1,38 +1,32 @@
+
+<script type="text/javascript">localStorage.clear();</script>
 <?php
-    session_start();
-    include '../../config/conexionBD.php';
-    $usuario = isset($_POST["correo"]) ? trim($_POST["correo"]) : null;
-    $contrasena = isset($_POST["contrasena"]) ? trim($_POST["contrasena"]) : null;
-    $sql="SELECT * FROM usuario  WHERE us_correo='$usuario' and us_contrasena=MD5('$contrasena')";
-    $result = $conn->query($sql);
-    //Obtiene una fila de la consulta como un arreglo
-    $row= mysqli_fetch_array($result);
-    if ($result->num_rows > 0) {
-        $_SESSION['isLogged'] = TRUE;
-        //En la variable global SESSION se almacenan variables del usuario conectado
-        $_SESSION['us_codigo']= $row['us_codigo'];
-        $_SESSION['us_correo'] = $row['us_correo'];
-        $_SESSION['us_rol']= $row['us_rol'];
-        $_SESSION['us_imagen']= $row['us_imagen'];
-        $_SESSION['us_nombres']= $row['us_nombres'];
-        $_SESSION['us_apellidos']= $row['us_apellidos'];
-        $_SESSION['us_eliminado']= $row['us_eliminado'];
+	session_start();
 
+	include '../../config/conexionBD.php';
 
-        //Si la fila del usuario en la columna usu_rol es U se accede como usuario sino accedera como administrador.
-        if ($row['us_rol'] == "user" && $row['us_eliminado'] == "N" ){
-            header("Location:../../private/user/vista/cuenta_usuario.php");
-        }
-        else if ($row['us_rol'] == "user" && $row['us_eliminado'] == "S")
-        {
-            echo " <script language='javascript'>";
-            echo "    var ok = confirm('Recuperar Contasena:');       ";
-            echo(" if (ok) { location.href ='recuperarcuenta.php'; }");           
-            echo " </script> ";
-        }
-    }else {
-       
-        header("Location: ../vista/login.html");
-    }
-    $conn->close();
+	$usuario = isset($_POST["usu"]) ? trim($_POST["usu"]) : null;
+	$contrasena = isset($_POST["con"]) ? trim($_POST["con"]) : null;
+
+	$sql = "SELECT * FROM usuario WHERE us_correo = '$usuario' and us_contrasena = MD5('$contrasena')";
+
+	$result = $conn -> query($sql);
+
+	if ($result -> num_rows > 0) {
+		$row = $result -> fetch_assoc();
+		$_SESSION['isLogged'] = TRUE;
+		if ($row['us_rol'] == 'user') {
+			$_SESSION['rol'] = 'user';
+			$_SESSION['codigo'] = $row['us_codigo'];
+			header("Location: ../../public/vista/index.php");
+		} else {
+			$_SESSION['rol'] = 'admin';
+			$_SESSION['codigo'] = $row['us_codigo'];
+			header("Location: ../../private/admin/vista/usuarios.php");
+		}
+	} else {
+		header("Location: ../../public/vista/login.html");
+	}
+
+	$conn -> close();
 ?>

@@ -1,7 +1,9 @@
 <?php
-
 	include'../../../config/conexionBD.php';
-	
+
+	$categoria = $_POST['cat'];
+	$nombre = isset($_POST['nom']) ? trim($_POST['nom']) : null;
+
  	$sql = "SELECT ca_codigo FROM categoria WHERE ca_nombre = '$categoria'";
  	$result = $conn -> query($sql);
  	$row = $result -> fetch_assoc();

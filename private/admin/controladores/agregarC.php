@@ -42,7 +42,7 @@
 				if ($conn -> query($sql) == TRUE) {
 					echo "se han cargado los datos correctamente";
 				} else {
-					echo "<p class = 'error'>Error: ".mysqli.error($conn)."<p/>";
+					echo "<p class = 'error'>Error: ".$conn->error."<p/>";
 				}
 				
     		}
@@ -55,7 +55,7 @@
 
     }
 
-	echo "<br><a href='../vista/agregarC.html'>Regresar</a>";
+	echo "<br><a href='../vista/agregarC.php'>Regresar</a>";
 	echo "<br><a href='../vista/categorias.php'>Categorías</a>";
 
 ?>

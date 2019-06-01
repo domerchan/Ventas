@@ -1,23 +1,117 @@
+h1 {
+	color: rgb(191, 215, 58);
+	margin-left: 30px;
+}
 
+#navegacion {
+	border-radius: 30px;
+	border: 2px solid rgb(191, 215, 58);
+	width: 565px;
+	float: right;
+	margin-right: 25px;
+	padding: 10px 20px;
+	clear: both;
+}
 
-.tabla {
-	width: 100%; 
-	border: 1px solid #000;
- }
- tr, td {
-	width: 25%;
-	text-align: left;
-	vertical-align: top;
-	border: 1px solid #000;
-	border-collapse: collapse;
-	padding: 0.3em;
-	caption-side: bottom;
- }
- caption {
-	padding: 0.3em;
-	color: #fff;
-	 background: #000;
- }
- tr {
-	background: #eee;
- }
+#navegacion .pr {
+	color: rgb(191, 215, 58) !important;
+	font-weight: bold;
+}
+
+#navegacion spam {
+	padding: 30px 2px;
+	color: black;
+	text-decoration: none;
+	font-size: 18px;
+}
+
+#compras {
+	margin-left: 25px;
+}
+
+#compras i {
+	cursor: pointer;
+	color: orange;
+	transition: all .5s ease-in-out;
+}
+
+#compras i:hover {
+	cursor: pointer;
+	color: orange;
+	transform: rotate(360deg);
+}
+
+#compras #bordes {
+	border: 1px solid black;
+	width: 50%;
+}
+
+#bordes td, #bordes th {
+	border: 1px solid black;
+	padding: 5px;
+}
+
+#compras #bordes img {
+	max-width: 150px;
+}
+
+#compras #bordes input {
+	width: 100%;
+	border: none;
+}
+
+#avanzar {
+	border-radius: 30px;
+	padding: 5px 15px;
+	margin-right: 400px;
+	margin-bottom: 200px;
+	background-color: rgb(191, 215, 58);
+	font-family: 'Didact Gothic', sans-serif;
+	font-size: 18px;
+	color: white;
+	float: right;
+}
+
+#retroceder {
+	border-radius: 30px;
+	padding: 5px 15px;
+	margin-right: 40px;
+	margin-bottom: 200px;
+	background-color: rgb(191, 215, 58);
+	font-family: 'Didact Gothic', sans-serif;
+	font-size: 18px;
+	color: white;
+	float: right;
+}
+
+#factura {
+	border: 1px solid black;
+	width: 50%;
+}
+
+#cabecera {
+	width: 100%;
+	border: 1px solid black;
+}
+
+#cabecera img {
+	max-width: 150px;
+	margin-left: 25px;
+}
+
+#detalle {
+	width: 100%;
+	border: 1px solid black;
+}
+
+#detalle td, #detalle th {
+	border: 1px solid black;
+}
+
+#mapa {
+	width: 100%;
+	height: 300px;
+	float: left;
+	margin-top: 8px;
+	clear: both;
+}

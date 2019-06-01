@@ -1,0 +1,199 @@
+#mensaje {
+	text-align: center;
+	padding: 15px 0px;
+	background-color: #FF9C4A;
+}
+
+#productos {
+	margin: 0px 25px;
+}
+
+#prtitle {
+	color: rgb(191, 215, 58);
+}
+
+#sbtitle {
+	clear: both;
+}
+
+.prod {
+	width: 15%;
+	height: 350px;
+	float: left;
+	margin: 5px;
+	background-color: rgba(238, 234, 7, 0.15);
+	border-radius: 5px;
+	border: 1.3px solid rgba(165,165,165,0.3);
+}
+
+.prod:hover {
+	box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.3);
+}
+
+.imgPop {
+	width: 80%;
+	height: 180px;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: 95%;
+	background-color: #fff;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 20px;
+	cursor: pointer;
+}
+
+.prod img {
+	max-height: 120px;
+}
+
+.prod p {
+	text-align: center;
+	margin: 0;
+}
+
+.prod i {
+	color: #ECDC16;
+}
+
+.prnom {
+	font-weight: bold;
+	margin: 0;
+}
+
+.prpre {
+	margin: 0;
+}
+
+.center {
+	width: 110px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.prcant {
+	width: 40px;
+	border-radius: 3px;
+	margin: 0px 2px;
+}
+
+.pradd {
+	border-radius: 3px;
+	margin: 0px 2px;
+}
+
+
+/*-------------------------------------Detalle-------------------------------------*/
+
+
+#info {
+	width: 45%;
+	height: 250px;
+	border: 2px solid rgb(191, 215, 58);
+	border-radius: 10px;
+	background-color: #FFFDF7;
+	box-shadow: 0 0 20px 0 rgba(0,0,0,0.6);
+}
+
+.pop {
+ 	visibility: hidden;
+ 	position: fixed;
+ 	z-index: 10;
+}
+
+.show {
+	visibility: visible;
+	-webkit-animation: fadeIn .5s;
+	animation: fadeIn .5s;
+	top: 25%;
+	right: 27%;
+}
+
+@-webkit-keyframes fadeIn {
+	from {opacity: 0;} 
+ 	to {opacity: 1;}
+}
+
+@keyframes fadeIn {
+	from {opacity: 0;}
+	to {opacity:1 ;}
+}
+
+#semaforo {
+	width: 34%;
+	float: left;
+	margin: 5% 4%;
+	border: 1px solid rgba(63, 63, 63, 0.3);
+	border-radius: 10px;
+	background-color: #fff;
+}
+
+#semaforo li {
+	text-decoration: none;
+	list-style-type: none;
+	margin-top: 3px;
+}
+
+#semaforo li div {
+	margin: 10px 0;
+}
+
+.smf {
+	height: 40px;
+	width: 130px;
+	text-align: center;
+	border-radius: 25px;
+	vertical-align: middle;
+	font-weight: bold;
+}
+
+#detalle {
+	width: 55%;
+	float: left;
+}
+
+#detalle #close {
+	float: right;
+	margin-top: 10px;
+	padding: 0;
+	cursor: pointer;
+}
+
+
+/*-------------------------------------Calificar-------------------------------------*/
+
+
+#form {
+	width: 250px;
+	margin: 0 auto;
+	height: 50px;
+}
+
+#form p {
+ 	text-align: center;
+}
+
+#form label {
+ 	font-size: 20px;
+}
+
+input[type="radio"] {
+ 	display: none;
+}
+
+label {
+ 	color: grey;
+}
+
+.clasificacion {
+ 	direction: rtl;
+ 	unicode-bidi: bidi-override;
+}
+
+label:hover, label:hover ~ label {
+ 	color: orange;
+}
+
+input[type="radio"]:checked ~ label {
+ 	color: orange;
+}

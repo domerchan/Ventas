@@ -1,28 +1,44 @@
-
-
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset="UTF-8">
-    <title>Iniciar sesion</title>
-    <link rel="stylesheet" type="text/css" href="Css/login.css">
-    <script type="text/javascript" src="../../admin/JS/validarLogin.js"></script>
-</head>
-<body>
-    <div id="panelInicial">
-        <span id="titulo">Iniciar Sesion</span>
-        <span id="errorLogin"></span>
-        <form id="formulario01" method="POST" action="../controladores/login.php">
-            <label for="correo" id="label1">Correo Electronico</label>
-            <input type="text" id="correo" name="correo" value="" placeholder="Ingrese el correo" required/>
+	<head>
+		<meta charset="utf-8">
+		<title>Login</title>
+		<link rel="stylesheet" type="text/css" href="css/login.css">
+		<link rel="stylesheet" type="text/css" href="../../config/css/style.css">
+		<link href="https://fonts.googleapis.com/css?family=Didact+Gothic&display=swap" rel="stylesheet">
+	</head>
+	
+	<body>
 
-            <br>
-            <label for="contrasena" id="label1">Contraseña</label>
-            <input type="password" id="contrasena" name="contrasena" value="" placeholder="Ingrese su contraseña" required/>
-            <br>
-            <input type="submit" id="login" name="login" value="Iniciar Sesion" />
-        </form>
-        <span id="crearusuario"><a href="crear_usuario.html">Crear Usuario</a></span>
-    </div>
-</body>
+		<section>
+			<div id="foto">
+				<section><div id="img"><img src="../../config/img/logo2.png"></div></section>
+			</div>
+
+			<div id="form">
+				<h1>Inicio de Sesión</h1>
+				<form method="POST" action="../controladores/login.php">
+					<table>
+						<tr>
+							<td><label for="usu">Email</label></td>
+							<td><input type="text" name="usu" placeholder="ingrese su email" required="true"></td>
+						</tr>
+
+						<tr>
+							<td><label for="con">Contraseña</label></td>
+							<td><input type="password" name="con" placeholder="ingrese su contraseña" required="true"></td>
+						</tr>
+
+						<tr>
+							<td colspan="2"><div id="btn"><input type="submit" id="login" name="login" value="Iniciar Sesión"><a href="crear_usuario.html"><input type="button" id="crear" name="crear" value="Registrarse"></a></div></td>
+						</tr>
+						<tr>
+							<td><a id="volver" href="index.php">Regresar a Market Online</a></td>
+						</tr>
+					</table>
+				</form>
+			</div>
+		</section>
+
+	</body>
 </html>

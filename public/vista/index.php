@@ -1,3 +1,7 @@
+<?php
+	session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 	<head>
@@ -34,27 +38,47 @@
 						echo "<li class='frst'>";
 						echo "<a>".$row['ar_nombre']."</a>";
 						
-						echo "<ul>";
+						echo "<ul id='categorias'>";
 						$sql2 = "SELECT * FROM categoria WHERE ar_codigo = ".$row['ar_codigo'];
 						$result2 = $conn -> query($sql2);
 						while ($row2 = $result2 -> fetch_assoc()) {
-							echo "<li><a href='mostrar_producto.php?categoria=".$row2['ca_codigo']."'>".$row2['ca_nombre']."</a><img class='img' src='data:image/jpg;base64,".base64_encode($row2["ca_imagen"])."'/></li>";
+							echo "<li><a href='productos.php?categoria=".$row2['ca_codigo']."&n_categoria=".$row2['ca_nombre']."'>".$row2['ca_nombre']."</a><div class='img' style=\"background-image: url('data:image/jpg;base64,".base64_encode($row2["ca_imagen"])."')\"></div></li>";
 						}
 						echo "</ul>";
 						
 						echo "</li>";
 					}
 					?>
-					<li class="frst"><a href="">Promociones</a></li>
-					<li class="frst"><a href="login.html">Iniciar Sesión</a></li>
+					<li class="frst"><a href="promociones.php">Promociones</a></li>
+					<li class='frst'>
+						<?php
+						if(!isset($_SESSION['isLogged']) || $_SESSION['isLogged'] === FALSE)
+							echo "<a href='login.html'>Iniciar Sesión</a>";
+						if($_SESSION['isLogged'] === TRUE) {
+							echo "<a>Cuenta</a>";
+							echo "<ul id='cuenta'>";
+							echo "<li><a href='../../private/user/vista/perfil.php'>Perfil</a></li>";
+							echo "<li><a href='../../config/cerrar_sesion.php'>Cerrar Sesión</a></li>";
+							echo "</ul>";
+						}
+						?>
+					</li>
+					
 				</ul>
-				<a href="../../private/user/vista/carro.php"><i class="material-icons">shopping_cart</i></a>
+				<?php
+				if(isset($_SESSION['rol']) && $_SESSION['rol'] == 'user')
+					echo "<a href='../../private/user/vista/carro.php'><i class='material-icons'>shopping_cart</i></a>";
+				?>
 			</nav>
 		</header>
 
 		<br>
 
-		<a href="../../private/admin/vista/categorias.php">Ingresar como administrador</a>
+		<?php
+		if(isset($_SESSION['rol']) && $_SESSION['rol'] == 'admin')
+			echo "<a href='../../private/admin/vista/categorias.php'>Ingresar como administrador</a>";
+		?>
+		
 
 		<div id="promociones">
 			<div id="lista">
@@ -67,11 +91,15 @@
 				</ul>
 			</div>
 			<div id="imagen">
-				<!--img id="img1" class="mySlides" src="img1.jpg">
-				<img id="img2" class="mySlides" src="img2.jpg" style="display: none;">
-				<img id="img3" class="mySlides" src="img3.jpg" style="display: none;">
-				<img id="img4" class="mySlides" src="img4.jpg" style="display: none;">
-				<img id="img5" class="mySlides" src="img5.jpg" style="display: none;"-->			
+				<?php
+				$i = 0;
+				$sql = "SELECT pm_imagen FROM promocion";
+				$result = $conn -> query($sql);
+				while ($row = $result -> fetch_assoc()) {	
+					echo "<div id='div".$i."' style=\"display:none; background-image: url('data:image/jpg;base64,".base64_encode($row["pm_imagen"])."')\"></div>";
+					$i++;
+				}
+				?>		
 			</div>
 			<div id="promocion">
 				
@@ -180,7 +208,7 @@
 							$sql = "SELECT * FROM area";
 							$result = $conn -> query($sql);
 							while($row = $result -> fetch_assoc()) {
-								echo "<li><a href=''>".$row['ar_nombre']."</a></li>";
+								echo "<li><a>".$row['ar_nombre']."</a></li>";
 							}
 							?>
 						</ul>
@@ -191,62 +219,23 @@
 						<ul>
 							<li><a href="somos.php">¿Quiénes somos?</a></li>
 							<li><a href="servicio.php">Nuestro Servicio</a></li>
-							<li><a href="">Proveedores</a></li>
-							<li><a href="">Contáctanos</a></li>
+							<li><a href="proveedores.php">Proveedores</a></li>
+							<li><a href="contactanos.php">Contáctanos</a></li>
 						</ul>
 					</article>
 
 					<article id="tres">
 						<p>Servicio al Cliente</p>
 						<ul>
-							<li><a href="">Preguntas Frecuentes</a></li>
-							<li><a href="">¿Cómo comprar?</a></li>
-							<li><a href="">Formas de pago</a></li>
-							<li><a href="">Nuestras sucursales</a></li>
+							<li><a href="preguntas.php">Preguntas Frecuentes</a></li>
+							<li><a href="como.php">¿Cómo comprar?</a></li>
+							<li><a href="pago.php">Formas de pago</a></li>
+							<li><a href="sucursales.php">Nuestras sucursales</a></li>
 						</ul>
 					</article>
 				</div>
 			</section>
 		</div>
-
-		<!--div id="contact">
-			<h1>¡Contáctanos!</h1>	
-			<section id="uno">
-				<article>
-					<ul>
-						<li><p><strong>Teléfonos: </strong><ul><li><?php echo $row['ma_telefono1']; ?></li><li><?php echo $row['ma_telefono2']; ?></li></ul></li>
-						<li><p><strong>E-mail: </strong><ul><li><?php echo $row['ma_correo']; ?></li></ul></p></li>
-						<li><p><strong>Dirección: </strong><ul><li><?php echo $row['ma_direccion']; ?></li></ul></p></li>
-						<li><p><strong>WhatsApp: </strong><ul><li><?php echo $row['ma_wpp']; ?></li></ul></p></li>
-					</ul>
-				</article>
-			</section>
-			<section id="dos">
-				<form>
-			  		<table id="tabla2">
-			  			<tr>
-			  				<th>Nombre: </th>
-					  		<td><input type="text" name="nombre"></td>
-			  			</tr>
-			  			<tr>
-			  				<th>Apellido: </th>
-			  				<td><input type="text" name="apellido"></td>
-			  			</tr>
-			  			<tr>
-			  				<th>Email: </th>
-			  				<td><input type="text" name="email"></td>
-			  			</tr>
-			  			<tr>
-			  				<th>Mensaje: </th>
-			  				<td><textarea rows="6" cols="50"></textarea></td>
-			  			</tr>
-			  			<tr>
-			  				<td colspan="2"><button>Enviar</button></td>
-			  			</tr>
-			  		</table>
-			  	</form>
-			</section>
-		</div-->
 
 		<div id="social">
 			<section>

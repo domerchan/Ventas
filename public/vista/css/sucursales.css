@@ -1,0 +1,33 @@
+#sucursales {
+	width: 25%;
+	height: 76vh;
+	float: left;
+	border-right: 15px solid white;
+	border-style: ridge;
+	z-index: 10;
+	margin-top: 8px;
+}
+
+#sucursales #ruta {
+	border-radius: 3px;
+	margin: 20px;
+}
+
+#sucursales .su {
+	cursor: pointer;
+	border: 1px solid black;
+	transition: all .5s ease-in-out;
+	margin: 10px 10px 0px 20px;
+	padding: 10px;
+}
+
+#sucursales .su:hover {
+	transform: scale(1.08);
+}
+
+#mapa {
+	width: 73%;
+	height: 76vh;
+	float: left;
+	margin-top: 8px;
+}

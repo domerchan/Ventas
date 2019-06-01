@@ -22,17 +22,22 @@
 			<div id="gradient"></div>
 			<nav class="navHeader">
 				<ul class="ul1">
-					<li class="frst"><a href="../../../public/vista/index.php">Inicio</a></li>
-					<li class="frst"><a href="sucursal.php">Sucursal</a></li>
+					<li class="frst"><a href="usuarios.php">Usuarios</a></li>
+					<li class="frst"><a href="sucursales.php">Sucursales</a></li>
 					<li class="frst"><a href="categorias.php">Categorías</a></li>
 					<li class="frst"><a href="subcategorias.php">Subcategorías</a></li>
 					<li class="frst"><a href="productos.php">Productos</a></li>
 					<li class="frst"><a href="promociones.php">Promociones</a></li>
+					<li class='frst'><a href='../../../config/cerrar_sesion.php'>Cerrar Sesión</a></li>
 				</ul>
 			</nav>
 		</header>
 		<br>
-		<a href="agregarP.php">Agregar un nuevo Producto</a>
+
+		<div id="title">
+			<h1>PRODUCTOS</h1>
+			<a href="agregarP.php">Agregar un nuevo Producto</a>
+		</div>
 
 		<div id="listado">
 			<table>
@@ -50,11 +55,12 @@
 					<th>NIVEL DE AZUCAR</th>
 					<th>NIVEL DE GRASA</th>
 					<th>NIVEL DE SAL</th>
+					<th>ELIMINAR</th>
 				</tr>
 
 				<?php
 					include'../../../config/conexionBD.php';
-					$sql = "SELECT * FROM producto, subcategoria, categoria WHERE producto.sb_codigo = subcategoria.sb_codigo and subcategoria.ca_codigo = categoria.ca_codigo";
+					$sql = "SELECT * FROM producto, subcategoria, categoria WHERE producto.sb_codigo = subcategoria.sb_codigo and subcategoria.ca_codigo = categoria.ca_codigo AND producto.pr_eliminado = 'N'";
 					$result = $conn -> query($sql);
 
 					if($result -> num_rows > 0) {
@@ -73,6 +79,7 @@
 							echo "<td class='azc'>".$row["pr_nivel_azucar"]."</td>";
 							echo "<td class='grs'>".$row["pr_nivel_grasa"]."</td>";
 							echo "<td class='sal'>".$row["pr_nivel_sal"]."</td>";
+							echo "<td><button onclick='eliminarProducto(".$row['pr_codigo'].")'>Eliminar</button></td>";
 							echo "</tr>";
 						}
 					}
@@ -92,4 +99,5 @@
 		</footer>
 
 	</body>
+	<script type="text/javascript" src="../controladores/javascript.js"></script>
 </html>

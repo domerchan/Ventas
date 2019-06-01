@@ -65,13 +65,16 @@ html {
 }
 
 #imagen {
-	background-image: url(../img1.jpg);
-	background-repeat: no-repeat;
-	background-size: cover;
-	background-position: center;
 	width: 45%;
 	height: 250px;
 	float: left;
+}
+
+#imagen div {
+	height: 250px;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
 }
 
 #promocion {
@@ -113,6 +116,7 @@ html {
 	color: black;
 }
 */
+
 #buscador {
 	clear: both;
 	float: right;

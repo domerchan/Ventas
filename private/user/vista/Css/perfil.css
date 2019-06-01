@@ -1,0 +1,85 @@
+#datos {
+	width: 100%;
+}
+
+#contrasena {
+	width: 50%;
+}
+
+table th {
+	text-align: left;
+	width: 100px;
+	padding: 5px 0px;
+}
+
+table input {
+	width: 100%;
+	border-top: none;
+	border-right: none;
+	border-left: none;
+	background-color: #fff;
+}
+
+.editar {
+	width: 50%;
+	right: 75%
+	padding: 5px;
+	border-radius: 3px;
+	cursor: pointer;
+}
+
+#modificar, #cancelar {
+	width: 42%;
+	padding: 5px;
+	margin-left: 2%;
+	margin-right: 2%;
+	border-radius: 3px;
+	cursor: pointer;
+}
+
+#modificarC, #cancelarC {
+	width: 42%;
+	padding: 5px;
+	margin-left: 2%;
+	margin-right: 2%;
+	border-radius: 3px;
+	cursor: pointer;
+}
+
+#modificar:hover, #cancelar:hover, .editar:hover, #modificarC:hover, #cancelarC:hover {
+	background-color: rgba(154, 187, 181, 0.2);
+}
+
+#sec0 {
+  width: 20%;
+  margin-top: 0px;
+  margin-right: 3%;
+  float: left;
+  padding: 20px 0px 0px 15px;
+}
+
+#sec0 input {
+  width: 100%;
+}
+
+#sec0 img {
+  width: 80%;
+  border: 6px solid white;
+  border-style: ridge;
+  box-shadow: 0 0 15px 0 rgba(63, 63, 63, 0.6);
+  padding: 10px 5px;
+  margin: 10px;
+}
+
+#sec2 {
+  width: 70%;
+  float: left;
+  padding: 15px 0px 0px 15px;
+}
+
+#sec2 #datos {
+  width: 100%;
+  padding: 0px 0px 0px 15px;
+  border-bottom: 1px solid rgba(154, 187, 181, 0.2);
+  z-index: 10;
+}

@@ -23,19 +23,23 @@
 			<div id="gradient"></div>
 			<nav class="navHeader">
 				<ul class="ul1">
-					<li class="frst"><a href="../../../public/vista/index.php">Inicio</a></li>
-					<li class="frst"><a href="sucursal.php">Sucursal</a></li>
+					<li class="frst"><a href="usuarios.php">Usuarios</a></li>
+					<li class="frst"><a href="sucursales.php">Sucursales</a></li>
 					<li class="frst"><a href="categorias.php">Categorías</a></li>
 					<li class="frst"><a href="subcategorias.php">Subcategorías</a></li>
 					<li class="frst"><a href="productos.php">Productos</a></li>
 					<li class="frst"><a href="promociones.php">Promociones</a></li>
+					<li class='frst'><a href='../../../config/cerrar_sesion.php'>Cerrar Sesión</a></li>
 				</ul>
 			</nav>
 		</header>
 
 		<br>
 		<br>
-		<br>
+		
+		<div id="title">
+			<h2>AGREGAR NUEVA SUB CATEGORÍA</h2>
+		</div>
 
 		<div id="formulario">
 			<form method="POST" action="../controladores/agregarS.php" enctype="multipart/form-data">

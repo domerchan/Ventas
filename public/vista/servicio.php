@@ -1,5 +1,9 @@
+<?php
+	session_start();
+?>
+
 <!DOCTYPE html>
-<html lang="es" ng-app="market">
+<html lang="es">
 	<head>
 		<title>Market Online</title>
 
@@ -16,12 +20,10 @@
 		<script type="text/javascript" src="../../config/js/javascript.js"></script>
 	</head>
 
-	<body ng-controller="ProductListCtrl">
+	<body>
 
 		<header>
 			<div id="banner">
-
-				<!--Cambiar src dependiendo de la ubicación del archivo-->
 				<img src="../../config/img/logo4.png">
 			</div>
 			<div id="gradient"></div>
@@ -30,40 +32,51 @@
 				<ul class="ul1">
 					<li class="frst"><a href="index.php">Inicio</a></li>
 					<?php
-
-					#Cambiar dependiendo de la ubicación del archivo
 					include'../../config/conexionBD.php';
-
-
 					$sql = "SELECT * FROM area";
 					$result = $conn -> query($sql);
 					while($row = $result -> fetch_assoc()) {
 						echo "<li class='frst'>";
 						echo "<a>".$row['ar_nombre']."</a>";
 						
-						echo "<ul>";
+						echo "<ul id='categorias'>";
 						$sql2 = "SELECT * FROM categoria WHERE ar_codigo = ".$row['ar_codigo'];
 						$result2 = $conn -> query($sql2);
 						while ($row2 = $result2 -> fetch_assoc()) {
-
-							#Cambiar href dependiendo de la ubicación del archivo
-							echo "<li><a href='mostrar_producto.php?categoria=".$row2['ca_codigo']."'>".$row2['ca_nombre']."</a><img class='img' src='data:image/jpg;base64,".base64_encode($row2["ca_imagen"])."'/></li>";
+							echo "<li><a href='productos.php?categoria=".$row2['ca_codigo']."&n_categoria=".$row2['ca_nombre']."'>".$row2['ca_nombre']."</a><div class='img' style=\"background-image: url('data:image/jpg;base64,".base64_encode($row2["ca_imagen"])."')\"></div></li>";
 						}
 						echo "</ul>";
 						
 						echo "</li>";
 					}
 					?>
-					<li class="frst"><a href="">Promociones</a></li>
-					<li class="frst"><a href="">Iniciar Sesión</a></li>
+					<li class="frst"><a href="promociones.php">Promociones</a></li>
+					<li class='frst'>
+						<?php
+						if(!isset($_SESSION['isLogged']) || $_SESSION['isLogged'] === FALSE)
+							echo "<a href='login.html'>Iniciar Sesión</a>";
+						if($_SESSION['isLogged'] === TRUE) {
+							echo "<a>Cuenta</a>";
+							echo "<ul id='cuenta'>";
+							echo "<li><a href='../../private/user/vista/perfil.php'>Perfil</a></li>";
+              				echo "<li><a href='../../config/cerrar_sesion.php'>Cerrar Sesión</a></li>";
+							echo "</ul>";
+						}
+						?>
+					</li>
+					
 				</ul>
-				<a href="carro.php"><i class="material-icons">shopping_cart</i></a>
+				<?php
+				if(isset($_SESSION['rol']) && $_SESSION['rol'] == 'user')
+					echo "<a href='../../private/user/vista/carro.php'><i class='material-icons'>shopping_cart</i></a>";
+				?>
 			</nav>
 		</header>
 
 
 
 
+		<h1>Nuestro Servicio</h1>
 
 
 		<!--Reemplazar esta sección con el contenido de la página-->
@@ -88,7 +101,7 @@
 							$sql = "SELECT * FROM area";
 							$result = $conn -> query($sql);
 							while($row = $result -> fetch_assoc()) {
-								echo "<li><a href=''>".$row['ar_nombre']."</a></li>";
+								echo "<li><a>".$row['ar_nombre']."</a></li>";
 							}
 							?>
 						</ul>
@@ -99,18 +112,18 @@
 						<ul>
 							<li><a href="somos.php">¿Quiénes somos?</a></li>
 							<li><a href="servicio.php">Nuestro Servicio</a></li>
-							<li><a href="">Proveedores</a></li>
-							<li><a href="">Contáctanos</a></li>
+							<li><a href="proveedores.php">Proveedores</a></li>
+							<li><a href="contactanos.php">Contáctanos</a></li>
 						</ul>
 					</article>
 
 					<article id="tres">
 						<p>Servicio al Cliente</p>
 						<ul>
-							<li><a href="">Preguntas Frecuentes</a></li>
-							<li><a href="">¿Cómo comprar?</a></li>
-							<li><a href="">Formas de pago</a></li>
-							<li><a href="">Nuestras sucursales</a></li>
+							<li><a href="preguntas.php">Preguntas Frecuentes</a></li>
+							<li><a href="como.php">¿Cómo comprar?</a></li>
+							<li><a href="pago.php">Formas de pago</a></li>
+							<li><a href="sucursales.php">Nuestras sucursales</a></li>
 						</ul>
 					</article>
 				</div>

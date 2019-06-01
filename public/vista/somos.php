@@ -1,5 +1,9 @@
+<?php
+	session_start();
+?>
+
 <!DOCTYPE html>
-<html lang="es" ng-app="market">
+<html lang="es">
 	<head>
 		<title>Market Online</title>
 
@@ -9,6 +13,7 @@
 
 		<!--Cambiar href dependiendo de la ubicación del archivo-->
 		<link rel="stylesheet" type="text/css" href="../../config/css/style.css">
+		<link rel="stylesheet" type="text/css" href="css/somos.css">
 		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 		<link href="https://fonts.googleapis.com/css?family=Didact+Gothic&display=swap" rel="stylesheet">
 		
@@ -16,12 +21,10 @@
 		<script type="text/javascript" src="../../config/js/javascript.js"></script>
 	</head>
 
-	<body ng-controller="ProductListCtrl">
+	<body>
 
 		<header>
 			<div id="banner">
-
-				<!--Cambiar src dependiendo de la ubicación del archivo-->
 				<img src="../../config/img/logo4.png">
 			</div>
 			<div id="gradient"></div>
@@ -30,49 +33,93 @@
 				<ul class="ul1">
 					<li class="frst"><a href="index.php">Inicio</a></li>
 					<?php
-
-					#Cambiar dependiendo de la ubicación del archivo
 					include'../../config/conexionBD.php';
-
-
 					$sql = "SELECT * FROM area";
 					$result = $conn -> query($sql);
 					while($row = $result -> fetch_assoc()) {
 						echo "<li class='frst'>";
 						echo "<a>".$row['ar_nombre']."</a>";
 						
-						echo "<ul>";
+						echo "<ul id='categorias'>";
 						$sql2 = "SELECT * FROM categoria WHERE ar_codigo = ".$row['ar_codigo'];
 						$result2 = $conn -> query($sql2);
 						while ($row2 = $result2 -> fetch_assoc()) {
-
-							#Cambiar href dependiendo de la ubicación del archivo
-							echo "<li><a href='mostrar_producto.php?categoria=".$row2['ca_codigo']."'>".$row2['ca_nombre']."</a><img class='img' src='data:image/jpg;base64,".base64_encode($row2["ca_imagen"])."'/></li>";
+							echo "<li><a href='productos.php?categoria=".$row2['ca_codigo']."&n_categoria=".$row2['ca_nombre']."'>".$row2['ca_nombre']."</a><div class='img' style=\"background-image: url('data:image/jpg;base64,".base64_encode($row2["ca_imagen"])."')\"></div></li>";
 						}
 						echo "</ul>";
 						
 						echo "</li>";
 					}
 					?>
-					<li class="frst"><a href="">Promociones</a></li>
-					<li class="frst"><a href="">Iniciar Sesión</a></li>
+					<li class="frst"><a href="promociones.php">Promociones</a></li>
+					<li class='frst'>
+						<?php
+						if(!isset($_SESSION['isLogged']) || $_SESSION['isLogged'] === FALSE)
+							echo "<a href='login.html'>Iniciar Sesión</a>";
+						if($_SESSION['isLogged'] === TRUE) {
+							echo "<a>Cuenta</a>";
+							echo "<ul id='cuenta'>";
+							echo "<li><a href='../../private/user/vista/perfil.php'>Perfil</a></li>";
+              				echo "<li><a href='../../config/cerrar_sesion.php'>Cerrar Sesión</a></li>";
+							echo "</ul>";
+						}
+						?>
+					</li>
+					
 				</ul>
-				<a href="carro.php"><i class="material-icons">shopping_cart</i></a>
+				<?php
+				if(isset($_SESSION['rol']) && $_SESSION['rol'] == 'user')
+					echo "<a href='../../private/user/vista/carro.php'><i class='material-icons'>shopping_cart</i></a>";
+				?>
 			</nav>
 		</header>
 
 
 
+		<h1>¿Quiénes Somos?</h1>
 
 
+		<div id="quienes">
+			<section id="somos">
+				<img src="../../config/img/logo2.png">
+				<div id="article">
+					<?php
+					$sql = "SELECT * FROM market";
+					$result = $conn -> query($sql);
+					$row = $result -> fetch_assoc();
 
-		<!--Reemplazar esta sección con el contenido de la página-->
-		<div>
-			<section>
-				<article>
-					<h1 style="text-align: center; font-size: 72px; background-image: url(../../config/img/construccion.png); background-repeat: no-repeat;background-position: center; background-size: 70%; background-attachment: fixed; padding: 200px 0px;">Página en construcción</h1>
-				</article>
+					echo "<h1>".$row['ma_nombre']."</h1>";
+					echo "<p>".$row['ma_acerca']."</p>";
+					?>	
+				</div>
 			</section>
+
+			<br>
+			<br>
+			<br>
+
+			<div id="imagen"></div>
+
+			<article>
+				<section id="mision">
+					<h1>MISIÓN</h1>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+				</section>
+				<section id="vision">
+					<h1>VISIÓN</h1>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+				</section>
+			</article>
 		</div>
 
 
@@ -88,7 +135,7 @@
 							$sql = "SELECT * FROM area";
 							$result = $conn -> query($sql);
 							while($row = $result -> fetch_assoc()) {
-								echo "<li><a href=''>".$row['ar_nombre']."</a></li>";
+								echo "<li><a>".$row['ar_nombre']."</a></li>";
 							}
 							?>
 						</ul>
@@ -98,19 +145,19 @@
 						<p>Nosotros</p>
 						<ul>
 							<li><a href="somos.php">¿Quiénes somos?</a></li>
-							<li><a href="">Nuestro Servicio</a></li>
-							<li><a href="">Proveedores</a></li>
-							<li><a href="">Contáctanos</a></li>
+							<li><a href="servicio.php">Nuestro Servicio</a></li>
+							<li><a href="proveedores.php">Proveedores</a></li>
+							<li><a href="contactanos.php">Contáctanos</a></li>
 						</ul>
 					</article>
 
 					<article id="tres">
 						<p>Servicio al Cliente</p>
 						<ul>
-							<li><a href="">Preguntas Frecuentes</a></li>
-							<li><a href="">¿Cómo comprar?</a></li>
-							<li><a href="">Formas de pago</a></li>
-							<li><a href="">Nuestras sucursales</a></li>
+							<li><a href="preguntas.php">Preguntas Frecuentes</a></li>
+							<li><a href="como.php">¿Cómo comprar?</a></li>
+							<li><a href="pago.php">Formas de pago</a></li>
+							<li><a href="sucursales.php">Nuestras sucursales</a></li>
 						</ul>
 					</article>
 				</div>

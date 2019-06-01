@@ -2,8 +2,12 @@
 <html>
 
 	<head>
-		<meta charset="utf-8">
 		<title></title>
+
+		<meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
 		<link rel="stylesheet" type="text/css" href="../../../config/css/style.css">
 		<link rel="stylesheet" type="text/css" href="css/listados.css">
 		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -20,50 +24,66 @@
 				<img src="../../../config/img/logo4.png">
 			</div>
 			<div id="gradient"></div>
+
 			<nav class="navHeader">
 				<ul class="ul1">
-					<li class="frst"><a href="../../../public/vista/index.php">Inicio</a></li>
-					<li class="frst"><a href="sucursal.php">Sucursal</a></li>
+					<li class="frst"><a href="usuarios.php">Usuarios</a></li>
+					<li class="frst"><a href="sucursales.php">Sucursales</a></li>
 					<li class="frst"><a href="categorias.php">Categorías</a></li>
-					<li class="frst"><a href="subcategorias.php">Subcategorías</a></li>
+					<li class="frst"><a href="subcategorias.php">Subcategorías</p></a></li>
 					<li class="frst"><a href="productos.php">Productos</a></li>
 					<li class="frst"><a href="promociones.php">Promociones</a></li>
+					<li class='frst'><a href='../../../config/cerrar_sesion.php'>Cerrar Sesión</a></li>
 				</ul>
 			</nav>
 		</header>
 		<br>
-		<a href="agregarPm.php">Agregar una nueva Promoción</a>
+
+		<div id="title">
+			<h1>SUCURSALES</h1>
+
+			<a href="agregarSu.php">Agregar una nueva Sucursal</a>
+		</div>
 
 		<div id="listado">
 			<table>
 				<tr>
-					<th>ID</th>
-					<th>MARKET</th>
 					<th>NOMBRE</th>
 					<th>DIRECCION</th>
 					<th>TELEFONO</th>
 					<th>RUC</th>
 					<th>IMAGEN</th>
-                    <th>FECHA CREACION</th>
+					<th>AREAS</th>
 				</tr>
 
 				<?php
 					include'../../../config/conexionBD.php';
-					$sql = "SELECT * FROM sucursal, market WHERE sucursal.su_codigo = market.ma_codigo";
+					$sql = "SELECT * FROM `sucursal`";
 					$result = $conn -> query($sql);
 
 					if($result -> num_rows > 0) {
 						while ($row = $result -> fetch_assoc()) {
+
+							$sql2 = "SELECT * FROM `sucursal_area` WHERE su_codigo = ".$row['su_codigo'];
+							$result2 = $conn -> query($sql2);
+
 							echo "<tr>";
-							echo "<td class='id'>".$row["su_codigo"]."</td>";
-							echo "<td class='nom'>".$row["ma_nombre"]."</td>";
 							echo "<td class='nom'>".$row["su_nombre"]."</td>";
 							echo "<td class='dir'>".$row["su_direccion"]."</td>";
 							echo "<td class='tel'>".$row["su_telefono"]."</td>";
 							echo "<td class='ruc'>".$row["su_ruc"]."</td>";
-                            echo "<td class='img'><img src='data:image/jpg;base64,".base64_encode($row["su_imagen"])."'/></td>";
-                            echo "<td class='fechaCreacion'>".$row["su_fecha_creacion"]."</td>";
+							echo "<td class='img'><img src='data:image/jpg;base64,".base64_encode($row["su_imagen"])."'/></td>";
+							echo "<td class='are'><ul>";
+							while($row2 = $result2 -> fetch_assoc()) {
+								$sql3 = "SELECT ar_nombre FROM area WHERE ar_codigo = ".$row2['ar_codigo'];
+								$result3 = $conn -> query($sql3);
+								$row3 = $result3 -> fetch_assoc();
+
+								echo "<li>".$row3['ar_nombre']."</li>";
+							}
+							echo "</ul></td>";
 							echo "</tr>";
+
 						}
 					}
 				?>

@@ -3,11 +3,13 @@ carousel();
 var x = document.getElementsByClassName("lista");
 
 function mouseOver(value) {
-	for (j = 0; j < x.length; j++)
+	for (j = 0; j < 5; j++) {
 		document.getElementById('li'+j).classList.remove('hover');
+		document.getElementById('div'+j).style.display = "none";
+	}
 	i = value - 1;
 	document.getElementById('li'+i).classList.add('hover');
-	document.getElementById('imagen').style.backgroundImage = "url('../vista/img"+value+".jpg')";
+	document.getElementById('div'+i).style.display = "block";
 	i = value;
 	if (i == 5)
 		i = 0; 

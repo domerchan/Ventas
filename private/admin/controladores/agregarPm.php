@@ -1,5 +1,5 @@
 <?php
-	include'../../../config/vista/conexionBD.php';
+	include'../../../config/conexionBD.php';
 
 	$categoria = $_POST['cat'];
 	$nombre = isset($_POST['nom']) ? trim($_POST['nom']) : null;

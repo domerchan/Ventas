@@ -1,3 +1,15 @@
+#title {
+	margin-left: 20px;
+}
+
+#title h1 {
+	color: rgb(191, 215, 58);
+}
+
+#title a {
+	color: black;
+}
+
 #listado {
 	margin: 20px;
 }
