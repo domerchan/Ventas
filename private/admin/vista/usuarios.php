@@ -82,8 +82,8 @@
 							echo "<td class=''>".$row["us_fecha_nacimiento"]."</td>";
 							echo "<td class=''>".$row["us_fecha_creacion"]."</td>";
 							echo "<td class=''>".$row["us_eliminado"]."</td>";
-							echo "<td><button onclick='editar(".$row['us_codigo'].")'>Editar</button></td>";
-							echo "<td><button onclick='cambiarContrasena(".$row['us_codigo'].")'>Cambiar</button></td>";
+							echo "<td><i class='material-icons editar' onclick='editar(".$row['us_codigo'].")'>supervised_user_circle</i></td>";
+							echo "<td><i class='material-icons cambiar' onclick='cambiarContrasena(".$row['us_codigo'].")'>swap_horizontal_circle</i></td>";
 							echo "<td><i class='material-icons quitar' onclick='eliminarUsuario(".$row['us_codigo'].")'>remove_circle_outline</i></td>";
 							echo "</tr>";
 						}
