@@ -6,7 +6,7 @@
 <body>
 
 	<select>
-		<option id='tar'>Tarje de Credito</option>
+		<option></option>
 		<option>Efectivo</option>
 	</select>
 	<br>
