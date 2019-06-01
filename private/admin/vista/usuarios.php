@@ -84,7 +84,7 @@
 							echo "<td class=''>".$row["us_eliminado"]."</td>";
 							echo "<td><button onclick='editar(".$row['us_codigo'].")'>Editar</button></td>";
 							echo "<td><button onclick='cambiarContrasena(".$row['us_codigo'].")'>Cambiar</button></td>";
-							echo "<td><button onclick='eliminarUsuario(".$row['us_codigo'].")'>Eliminar</button></td>";
+							echo "<td><i class='material-icons quitar' onclick='eliminarUsuario(".$row['us_codigo'].")'>remove_circle_outline</i></td>";
 							echo "</tr>";
 						}
 					}
