@@ -27,7 +27,7 @@
     }else {
         echo "<p>Error: " . $sql . "<br>" . mysqli_error($conn) . "</p>";
     }
-    echo "<a href='../../vista/admin/admin_usuarios.php'>Regresar</a>";
+    echo "<a href='../../../config/cerrar_sesion.php'>Regresar</a>";
     $conn->close();
     ?>
 </body>
