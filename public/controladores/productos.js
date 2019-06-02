@@ -11,6 +11,7 @@ function agregar(producto) {
 		}
 		xmlhttp.onreadystatechange = function() {
 			if (this.readyState == 4 && this.status == 200) {
+				document.getElementById('exito').innerHTML = this.responseText;
 			}
 		};
 		xmlhttp.open("GET", "../controladores/subir_producto.php?producto="+producto+"&cantidad="+cantidad, true);
