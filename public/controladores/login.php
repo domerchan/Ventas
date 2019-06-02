@@ -15,13 +15,18 @@
 	if ($result -> num_rows > 0) {
 		$row = $result -> fetch_assoc();
 		$_SESSION['isLogged'] = TRUE;
-		if ($row['us_rol'] == 'user') {
-			$_SESSION['rol'] = 'user';
-			$_SESSION['codigo'] = $row['us_codigo'];
+		$_SESSION['codigo']= $row['us_codigo'];
+		$_SESSION['rol'] = 'user';
+		if ($row['us_rol'] == 'user' && $row['us_eliminado'] == "N") {
 			header("Location: ../../public/vista/index.php");
-		} else {
-			$_SESSION['rol'] = 'admin';
-			$_SESSION['codigo'] = $row['us_codigo'];
+		}else if ($row['us_rol'] == "user" && $row['us_eliminado'] == "S")
+        {
+            echo " <script language='javascript'>";
+            echo "    var ok = confirm('Recuperar Cuenta:');       ";
+            echo(" if (ok) { location.href ='recuperarcuenta.php'; }");           
+            echo " </script> ";
+        }
+		 else {
 			header("Location: ../../private/admin/vista/usuarios.php");
 		}
 	} else {

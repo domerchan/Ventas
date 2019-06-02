@@ -35,7 +35,7 @@
 				<ul class="ul1">
 					<li class="frst"><a href="../../../public/vista/index.php">Inicio</a></li>
 					<?php
-					include'../../../config/conexionBD.php';
+					include '../../../config/conexionBD.php';
 					$sql = "SELECT * FROM area";
 					$result = $conn -> query($sql);
 					while($row = $result -> fetch_assoc()) {
@@ -86,9 +86,11 @@
 				$result = $conn -> query($sql);
 				$row = $result -> fetch_assoc();
 
-				echo "<form method='POST'>";
+				echo "<form  action='valida_photo.php' method='POST' enctype='multipart/form-data'>";
 				echo "<a onclick='chooseFile()'><img id='foto' src='data:image/jpg;base64,".base64_encode($row["us_imagen"])."'/></a>";
-				echo "<input type='file' id='image' name='image' onchange='submit()'>";
+				echo "<input class='input' type='file' id='img' name='image'>"; 
+				#echo "<input type='file' id='image' name='image' onchange='submit()'>";
+				echo "<input type='submit' name='enviar' value='Subir Foto'>";
 				echo "</form>";
 
 			?>
@@ -162,6 +164,12 @@
 					echo "</table>";
 				?>
 			</div>
+		</section>
+
+		<section id="sec3">
+		<div>
+		<a href="eliminarusuario.php">ELIMINAR USUARIO </a><br>
+		</div>
 		</section>
 
 		<footer>
