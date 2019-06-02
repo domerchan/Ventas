@@ -79,7 +79,7 @@
 		<br style="clear: both;">
 		
 		<div class='pop' id='info'></div>
-		<p id="calificacion"></p>
+		<p id="exito"></p>
 
 
 		<div id="productos">

@@ -35,7 +35,7 @@ function eliminarUsuario(usuario) {
 }
 
 function cambiarContrasena(usuario) {
-	var contrasena = prompt("Editar la contraseña del usuario "+usuario+"?").trim();
+	var contrasena = prompt("Ingresa la nueva contraseña para el usuario "+usuario).trim();
 
 	if (contrasena == null || contrasena == "") {
 		alert('Cancelado, datos inválidos');

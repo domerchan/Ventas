@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html lang="es">
 	<head>
-		<title>Market Online</title>
+		<title> Promociones | Market Online</title>
 
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,12 +13,31 @@
 
 		<!--Cambiar href dependiendo de la ubicación del archivo-->
 		<link rel="stylesheet" type="text/css" href="../../config/css/style.css">
+		<link rel="stylesheet" href="css/promociones.css">
 		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 		<link href="https://fonts.googleapis.com/css?family=Didact+Gothic&display=swap" rel="stylesheet">
 		
 		<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
 		<script type="text/javascript" src="../../config/js/javascript.js"></script>
 	</head>
+
+	<style>
+.mySlides {display:none;
+    width: 500px; 
+    height: 300px;
+    align: center;
+    position: relative;
+    top: 20px;
+}
+
+.mySlides img {
+    align: center;
+    max-height: 250px;
+    position: relative;
+    top: 20px;
+}
+
+</style>
 
 	<body>
 
@@ -76,17 +95,80 @@
 
 
 
-		<h1>Nuestros Proveedores</h1>
+		<center><div class='center-block'>
+    <section class='center-block'>
+        <table class='center-block'>
+            <?php
+            include'../../config/conexionBD.php';
+           
+            $sql = "SELECT pm_imagen FROM promocion";
+            $result = $conn -> query($sql);
+
+            if($result -> num_rows > 0) {
+                while ($row = $result -> fetch_assoc()) {
+                    echo "<tr>";
+                    echo "<td class='mySlides'><img  class='center-block' src='data:image/jpg;base64,".base64_encode($row["pm_imagen"])."'/></td>";
+                    echo "</tr>";
+                }
+            }
+        ?>
+
+            <script>
+                var myIndex = 0;
+                carousel();
+
+                function carousel() {
+                    var i;
+                    var x = document.getElementsByClassName("mySlides");
+                    for (i = 0; i < x.length; i++) {
+                        x[i].style.display = "none";
+                    }
+                    myIndex++;
+                    if (myIndex > x.length) { myIndex = 1 }
+                    x[myIndex - 1].style.display = "block";
+                    setTimeout(carousel, 2000); // Change image every 2 seconds
+                }
+            </script>
+        </table>
+    </section>
+</div></center>
 
 
-		<!--Reemplazar esta sección con el contenido de la página-->
-		<div>
+		<div id="listado">
+            <h1>Promociones</h1>
 			<section>
-				<article>
-					<h1 style="text-align: center; font-size: 72px; background-image: url(../../config/img/construccion.png); background-repeat: no-repeat;background-position: center; background-size: 70%; background-attachment: fixed; padding: 200px 0px;">Página en construcción</h1>
-				</article>
+			<table id="tableListado">
+            <tr>
+					<th>CATEGORÍA</th>
+					<th>NOMBRE</th>
+					<th>PORCENTAJE</th>
+					<th>DÍA QUE APLICA</th>
+					<th>DESCRIPCIÓN</th>
+					<th>IMAGEN</th>
+            </tr>
+                
+				<?php
+                    include'../../config/conexionBD.php';
+                   
+					$sql = "SELECT * FROM promocion, categoria WHERE promocion.ca_codigo = categoria.ca_codigo";
+					$result = $conn -> query($sql);
+
+					if($result -> num_rows > 0) {
+						while ($row = $result -> fetch_assoc()) {
+							echo "<tr>";
+							echo "<td id='tdlistado' class='nom'>".$row["ca_nombre"]."</td>";
+							echo "<td id='tdlistado' class='nom'>".$row["pm_nombre"]."</td>";
+							echo "<td id='tdlistado' class='por'>".$row["pm_porcentaje"]."</td>";
+							echo "<td id='tdlistado' class='dia'>".$row["pm_dia"]."</td>";
+							echo "<td id='tdlistado' class='des'>".$row["pm_descripcion"]."</td>";
+							echo "<td id='tdlistado' class='img'><img id='imglistado' src='data:image/jpg;base64,".base64_encode($row["pm_imagen"])."'/></td>";
+							echo "</tr>";
+						}
+					}
+                ?>
+                    </table>
 			</section>
-		</div>
+        </div>
 
 
 

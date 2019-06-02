@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html lang="es">
 	<head>
-		<title>Market Online</title>
+		<title>Contáctanos | Market Online</title>
 
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -14,6 +14,7 @@
 		<!--Cambiar href dependiendo de la ubicación del archivo-->
 		<link rel="stylesheet" type="text/css" href="../../config/css/style.css">
 		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+		<link href="css/contactanos.css" rel="stylesheet" />
 		<link href="https://fonts.googleapis.com/css?family=Didact+Gothic&display=swap" rel="stylesheet">
 		
 		<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
@@ -79,15 +80,164 @@
 		<h1>Contáctanos</h1>
 
 
-		<!--Reemplazar esta sección con el contenido de la página-->
-		<div>
-			<section>
-				<article>
-					<h1 style="text-align: center; font-size: 72px; background-image: url(../../config/img/construccion.png); background-repeat: no-repeat;background-position: center; background-size: 70%; background-attachment: fixed; padding: 200px 0px;">Página en construcción</h1>
-				</article>
-			</section>
-		</div>
+		<main>
+        <div id="wrap">
+            <div class="container mt16 mb16">
+                <div class="row  pad15">
+                    <div class="col-md-4 col-sm-4 col-xs-12">
+                        <div>
+                            <?php
+                            include'../../config/conexionBD.php';
+                            $sql = "SELECT * FROM market";
+                            $result = $conn -> query($sql);
+                            if($result -> num_rows > 0) {
+                            while ($row = $result -> fetch_assoc()) {
+                            echo "<tr>";
+                            echo "<u><b><td class='small-title mb8'>".$row["ma_nombre"]."</td></b></u>";
+                            echo "</tr>";
+                            } }
+                            ?>
 
+            <div class="address-description description mb8"></div>
+                <div class="address-text first mb8">
+                    <div class="content"><i class="fa fa-map-marker"></i><b>&nbsp;Acerca de Nosotros</b>
+                        </div>
+                            <div>
+                                <div>
+                                <?php
+                                $sql = "SELECT * FROM market";
+                                $result = $conn -> query($sql);
+                                if($result -> num_rows > 0) {
+                                while ($row = $result -> fetch_assoc()) {
+                                echo "<tr>";
+                                echo "<td class='fa fa-map-marker'>".$row["ma_acerca"]."</td>";
+                                echo "</tr>";
+                                } }
+                                ?>
+                                </div></div></div>
+
+            <div class="address-text second mb8">
+                <div class="content"><i class="fa fa-phone"></i><b>&nbsp;Teléfonos</b></div>
+                    <div></div>
+                        <div>
+                            <div>
+                            <?php
+                            $sql = "SELECT * FROM market";
+                            $result = $conn -> query($sql);
+                            if($result -> num_rows > 0) {
+                            while ($row = $result -> fetch_assoc()) {
+                            echo "<tr>";
+                            echo "<td class='fa fa-phone'>".$row["ma_telefono1"]."</td>";
+                            echo "<p></p>";
+                            echo "<td class='fa fa-phone'>".$row["ma_telefono2"]."</td>";
+                            echo "</tr>";
+                            } }
+                            ?>
+                            </div></div></div>
+
+            <div class="address-description description mb8"></div>
+                <div class="address-text first mb8">
+                    <div class="content"><i class="fa fa-map-marker"></i><b>&nbsp;Dirección</b></div>
+                        <div>
+                            <div>
+                            <?php
+                            $sql = "SELECT * FROM market";
+                            $result = $conn -> query($sql);
+                            if($result -> num_rows > 0) {
+                            while ($row = $result -> fetch_assoc()) {
+                            echo "<tr>";
+                            echo "<td class='fa fa-map-marker'>".$row["ma_direccion"]."</td>";
+                            echo "</tr>";
+                            } }
+                            ?>
+                            </div></div></div>
+
+            <div class="address-description description mb8"></div>
+                <div class="address-text first mb8">
+                    <div class="content"><i class="fa fa-map-marker"></i><b>&nbsp;Correo</b></div>
+                        <div>
+                            <div>
+                            <?php
+                            $sql = "SELECT * FROM market";
+                            $result = $conn -> query($sql);
+                            if($result -> num_rows > 0) {
+                            while ($row = $result -> fetch_assoc()) {
+                            echo "<tr>";
+                            echo "<td class='fa fa-map-marker'>".$row["ma_correo"]."</td>";
+                            echo "</tr>";
+                            } }
+                            ?>
+                            </div></div></div>
+
+            <div class="address-text second mb8">
+                <div class="content"><i class="fa fa-phone"></i><b>&nbsp;Whatsapp</b></div>
+                    <div>
+                        <div>
+                        <?php
+                        $sql = "SELECT * FROM market";
+                        $result = $conn -> query($sql);
+                        if($result -> num_rows > 0) {
+                        while ($row = $result -> fetch_assoc()) {
+                        echo "<tr>";
+                        echo "<td class='fa fa-phone'>".$row["ma_wpp"]."</td>";
+                        echo "</tr>";
+                        } }
+                        ?>
+                        </div></div></div></div></div>
+
+            <div class="col-md-8 col-sm-8 col-xs-12 mb32">
+                <section>
+                    <div class="oe_structure"></div>
+                        <div>
+                            <form action="agregaPregunta.php" method="POST"
+                            class="s_website_form form-horizontal container-fluid mt32" enctype="multipart/form-data">
+                                <div class="form-group form-field o_website_form_required_custom">
+                                    <label class="col-md-3 col-sm-4 control-label" style="font-size:17px">
+                                        Tu pregunta
+                                    </label>
+                                    <div class="col-md-7 col-sm-8">
+                                        <textarea class="form-control o_website_form_input" name="pregunta"
+                                        placeholder="Ingrese mensaje" required=""></textarea>
+                                    </div>
+                                </div>
+
+                                <div class="form-group form-field o_website_form_required_custom">
+                                    <label class="col-md-3 col-sm-4 control-label" style="font-size:17px">
+                                        Tu nombre
+                                    </label>
+                                    <div class="col-md-7 col-sm-8">
+                                    <input type="text" class="form-control o_website_form_input" name="nombre"
+                                    placeholder="Ingrese su nombre" required="">
+                                    </div>
+                                </div>
+
+                                <div class="form-group form-field o_website_form_required_custom">
+                                    <label class="col-md-3 col-sm-4 control-label" style="font-size:17px">
+                                        Correo electrónico
+                                    </label>
+                                    <div class="col-md-7 col-sm-8">
+                                    <input type="text" class="form-control o_website_form_input" name="correo" 
+                                    placeholder="Ingrese su Correo Electrónico" required=""/>
+                                    </div>
+                                </div>
+
+                                <div class="form-group form-field o_website_form_required">
+                                    <label class="col-md-3 col-sm-4 control-label" style="font-size:17px">
+                                        Asunto
+                                    </label>
+                                    <div class="col-md-7 col-sm-8">
+                                    <input type="text" class="form-control o_website_form_input"name="asunto" 
+                                    placeholder="Ingrese el asunto" required=""/>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="col-md-offset-3 col-sm-offset-4 col-sm-8 col-md-7">
+                                    <input type="submit" name="button2" value="ENVIAR"class="btn btn-primary btn-lg o_website_form_send"
+                                            onclick="location.href='agregaPregunta.php')">
+                                    <input type="reset" name="cancelar" value="CANCELAR" class="btn btn-primary btn-lg o_website_form_send"
+                                            onclick="location.href='index.php'">
+    </div> </div></form> </section></div></div> </div></div></div> </main>
 
 
 

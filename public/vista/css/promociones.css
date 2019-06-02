@@ -6,6 +6,11 @@
 	border: 1px solid black;
 }
 
+#tableListado tr th {
+	border: 1px solid black;
+	padding: 5px;
+}
+
 #tableListado img {
 	max-height: 50px;
 }
