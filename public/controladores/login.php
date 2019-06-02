@@ -16,7 +16,7 @@
 		$row = $result -> fetch_assoc();
 		$_SESSION['isLogged'] = TRUE;
 		$_SESSION['codigo']= $row['us_codigo'];
-		$_SESSION['rol'] = 'user';
+		$_SESSION['rol'] = $row['us_rol'];
 		if ($row['us_rol'] == 'user' && $row['us_eliminado'] == "N") {
 			header("Location: ../../public/vista/index.php");
 		}else if ($row['us_rol'] == "user" && $row['us_eliminado'] == "S")

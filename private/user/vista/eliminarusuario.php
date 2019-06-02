@@ -1,8 +1,9 @@
 <?php
     session_start();
-    if(!isset($_SESSION['isLogged']) || $_SESSION['isLogged']==false){
-        header("Location: /SistemaDeGestion/public/vista/login.html");
-    }
+    if (!isset($_SESSION['isLogged']) || $_SESSION['isLogged']==false)
+		header("Location: /ProgramacionHipermedial/Ventas/public/vista/index.php");
+    else if($_SESSION['rol'] == "admin")
+        header("Location: /ProgramacionHipermedial/Ventas/private/admin/vista/perfil.php");  
 ?>
 <!DOCTYPE html>
 <html>

@@ -38,7 +38,11 @@ function mostrarMapa(posicionInicial) {
 	});
 }
 
-function mostrarSucursal(direccion) {
+function mostrarSucursal(elemento, direccion) {
+	var oculto = document.getElementsByClassName('oculto');
+	for (var i=0; i<oculto.length; i++)
+		oculto[i].style.display = 'none';
+	elemento.getElementsByClassName('oculto')[0].style.display = 'block';
 	var geocoder = new google.maps.Geocoder();
 
 	geocoder.geocode({
@@ -94,4 +98,18 @@ function mostrarRuta() {
 	            alert('Error en el servicio!!: ' + estado);
 	    });
 	}
+}
+
+function calificar(valor, codigo) {
+	if (window.XMLHttpRequest) {
+		xmlhttp = new XMLHttpRequest();
+	} else {
+		xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+	}
+	xmlhttp.onreadystatechange = function() {
+		if (this.readyState == 4 && this.status == 200) {
+		}
+	};
+	xmlhttp.open("GET", "../controladores/calificarSu.php?valor="+valor+"&codigo="+codigo, true);
+	xmlhttp.send();
 }

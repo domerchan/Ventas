@@ -44,9 +44,12 @@
 			<h1>USUARIOS</h1>
 		</div>
 
+		<input type="text" id="buscador" name="buscador" placeholder="Buscar por cédula" onkeyup="buscar(this.value)">
+
 		<div id="listado">
 			<table>
 				<tr>
+					<th></th>
 					<th>ID</th>
 					<th>NOMBRES</th>
 					<th>SEXO</th>
@@ -57,20 +60,22 @@
 					<th>CORREO</th>
 					<th>NACIMIENTO</th>
 					<th>CREACIÓN</th>
-					<th>ELIMINADO</th>
+					<th>BORRADO</th>
 					<th>EDITAR</th>
 					<th>CONTRASEÑA</th>
-					<th>ELIMINAR</th>
+					<th>BORRAR</th>
 				</tr>
 
 				<?php
 					include'../../../config/conexionBD.php';
+					$i = 1;
 					$sql = "SELECT * FROM usuario WHERE us_rol = 'user'";
 					$result = $conn -> query($sql);
 
 					if($result -> num_rows > 0) {
 						while ($row = $result -> fetch_assoc()) {
 							echo "<tr>";
+							echo "<td>".$i."</td>";
 							echo "<td class='id'>".$row["us_codigo"]."</td>";
 							echo "<td class='nom'>".$row["us_nombres"]." ".$row["us_apellidos"]."</td>";
 							echo "<td class=''>".$row["us_sexo"]."</td>";
@@ -86,6 +91,7 @@
 							echo "<td><i class='material-icons cambiar' onclick='cambiarContrasena(".$row['us_codigo'].")'>swap_horizontal_circle</i></td>";
 							echo "<td><i class='material-icons quitar' onclick='eliminarUsuario(".$row['us_codigo'].")'>remove_circle_outline</i></td>";
 							echo "</tr>";
+							$i++;
 						}
 					}
 				?>
