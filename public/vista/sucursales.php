@@ -74,19 +74,53 @@
 
     <div id="sucursales">
       <input type="button" id="ruta" value="Mostrar Ruta" onclick="mostrarRuta()"> 
+
       <?php
       include'../../config/conexionBD.php';
       $sql = "SELECT * FROM sucursal";
       $result = $conn -> query($sql);
+
       while ($row = $result -> fetch_assoc()) {
-        echo "<div class='su' onclick=\"mostrarSucursal('".$row['su_direccion']."')\">";
-        echo "<label>".$row['su_nombre']."</label><br>";
-        echo "<label>".$row['su_direccion']."</label><br>";
-        echo "<label>".$row['su_telefono']."</label>";
+        echo "<div class='su' onclick=\"mostrarSucursal(this,'".$row['su_direccion']."')\">";
+          echo "<label>".$row['su_nombre']."</label><br>";
+          echo "<label>".$row['su_direccion']."</label><br>";
+          echo "<label>".$row['su_telefono']."</label>";
+          if($row['su_no_calificaciones'] == 0) {
+            echo "<p><i class='material-icons'>star_border</i><i class='material-icons'>star_border</i><i class='material-icons'>star_border</i><i class='material-icons'>star_border</i><i class='material-icons'>star_border</i></p>";
+          } else {
+            echo "<p>";
+            $cal = round($row['su_calificacion']/$row['su_no_calificaciones']);
+            for($i = 0; $i < $cal; $i++)
+              echo "<i class='material-icons'>star</i>";
+            for($i = 0; $i < 5 - $cal; $i++)
+              echo "<i class='material-icons'>star_border</i>";
+            echo "</p>";
+          }
+          echo "<div class='oculto'>";
+            echo "<div class='imgSu' style=\"background-image: url('data:image/jpg;base64,".base64_encode($row["su_imagen"])."')\"></div>";
+            echo "<p>Califica esta sucursal</p>";
+      ?>
+            <form id="form">
+              <p class="clasificacion">
+              <input id="radio1" type="radio" name="estrellas" value="5" onchange="calificar(this.value, <?php echo $row['su_codigo']; ?>)">
+              <label for="radio1">★</label>
+              <input id="radio2" type="radio" name="estrellas" value="4" onchange="calificar(this.value, <?php echo $row['su_codigo']; ?>)">
+              <label for="radio2">★</label>
+              <input id="radio3" type="radio" name="estrellas" value="3" onchange="calificar(this.value, <?php echo $row['su_codigo']; ?>)">
+              <label for="radio3">★</label>
+              <input id="radio4" type="radio" name="estrellas" value="2" onchange="calificar(this.value, <?php echo $row['su_codigo']; ?>)">
+              <label for="radio4">★</label>
+              <input id="radio5" type="radio" name="estrellas" value="1" onchange="calificar(this.value, <?php echo $row['su_codigo']; ?>)">
+              <label for="radio5">★</label>
+              </p>
+            </form>
+      <?php
+          echo "</div>";
         echo "</div>";
         echo "<br>";
       }
       ?>
+
     </div>
 
     <div data-role="content" id="mapa"></div>
