@@ -93,14 +93,14 @@
                             if($result -> num_rows > 0) {
                             while ($row = $result -> fetch_assoc()) {
                             echo "<tr>";
-                            echo "<td class='small-title mb8'>".$row["ma_nombre"]."</td>";
+                            echo "<u><b><td class='small-title mb8'>".$row["ma_nombre"]."</td></b></u>";
                             echo "</tr>";
                             } }
                             ?>
 
             <div class="address-description description mb8"></div>
                 <div class="address-text first mb8">
-                    <div class="content"><i class="fa fa-map-marker"></i>&nbsp;Acerca de Nosotros
+                    <div class="content"><i class="fa fa-map-marker"></i><b>&nbsp;Acerca de Nosotros</b>
                         </div>
                             <div>
                                 <div>
@@ -117,7 +117,7 @@
                                 </div></div></div>
 
             <div class="address-text second mb8">
-                <div class="content"><i class="fa fa-phone"></i>&nbsp;Teléfonos</div>
+                <div class="content"><i class="fa fa-phone"></i><b>&nbsp;Teléfonos</b></div>
                     <div></div>
                         <div>
                             <div>
@@ -137,7 +137,7 @@
 
             <div class="address-description description mb8"></div>
                 <div class="address-text first mb8">
-                    <div class="content"><i class="fa fa-map-marker"></i>&nbsp;Dirección</div>
+                    <div class="content"><i class="fa fa-map-marker"></i><b>&nbsp;Dirección</b></div>
                         <div>
                             <div>
                             <?php
@@ -154,7 +154,7 @@
 
             <div class="address-description description mb8"></div>
                 <div class="address-text first mb8">
-                    <div class="content"><i class="fa fa-map-marker"></i>&nbsp;Correo</div>
+                    <div class="content"><i class="fa fa-map-marker"></i><b>&nbsp;Correo</b></div>
                         <div>
                             <div>
                             <?php
@@ -170,7 +170,7 @@
                             </div></div></div>
 
             <div class="address-text second mb8">
-                <div class="content"><i class="fa fa-phone"></i>&nbsp;Whatsapp</div>
+                <div class="content"><i class="fa fa-phone"></i><b>&nbsp;Whatsapp</b></div>
                     <div>
                         <div>
                         <?php

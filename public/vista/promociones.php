@@ -133,6 +133,7 @@
     </section>
 </div></center>
 
+
 		<div id="listado">
             <h1>Promociones</h1>
 			<section>
