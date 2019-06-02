@@ -150,7 +150,7 @@
 				<?php
                     include'../../config/conexionBD.php';
                    
-					$sql = "SELECT * FROM promocion, categoria WHERE promocion.ca_codigo = categoria.ca_codigo";
+					$sql = "SELECT * FROM promocion, categoria WHERE promocion.ca_codigo = categoria.ca_codigo ORDER BY pm_porcentaje DESC ";
 					$result = $conn -> query($sql);
 
 					if($result -> num_rows > 0) {
