@@ -1,10 +1,9 @@
 <?php
     session_start();
     if (!isset($_SESSION['isLogged']) || $_SESSION['isLogged']==false)
-        header("Location: /SistemaDeGestion/public/vista/login.html");
+		header("Location: /ProgramacionHipermedial/Ventas/public/vista/index.php");
     else if($_SESSION['rol'] == "admin")
-        header("Location: ../../admin/vista/perfil.php");
-    
+        header("Location: /ProgramacionHipermedial/Ventas/private/admin/vista/perfil.php");  
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -86,11 +85,14 @@
 				$result = $conn -> query($sql);
 				$row = $result -> fetch_assoc();
 
-				echo "<form  action='valida_photo.php' method='POST' enctype='multipart/form-data'>";
+				echo "<form  action='valida_photo.php' method='POST' enctype='multipart/form-data' name='foto'>";
 				echo "<a onclick='chooseFile()'><img id='foto' src='data:image/jpg;base64,".base64_encode($row["us_imagen"])."'/></a>";
-				echo "<input class='input' type='file' id='img' name='image'>"; 
+				echo "<input class='input' type='file' id='img' name='image' onclick=datosg()>"; 
+				echo " <script language='javascript'>";
+           		 echo "   function datosg(){ enviar.disabled = false;	}";
+           		 echo " </script> ";
 				#echo "<input type='file' id='image' name='image' onchange='submit()'>";
-				echo "<input type='submit' name='enviar' value='Subir Foto'>";
+				echo "<input type='submit' id='enviar' name='enviar' value='Subir Foto' disabled='true' >";
 				echo "</form>";
 
 			?>
