@@ -1,0 +1,28 @@
+#listado {
+	margin: 20px;
+}
+
+#tableListado {
+	border: 1px solid black;
+}
+
+#tableListado img {
+	max-height: 50px;
+}
+
+#tdlistado {
+	border: 1px solid black;
+	padding: 5px;
+}
+
+#tdlistado .id {
+	width: 50px;
+}
+
+.des {
+	width: 400px;
+}
+
+.nom {
+	width: 150px;
+}
