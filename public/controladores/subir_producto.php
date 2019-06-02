@@ -12,6 +12,7 @@
 	$row = $result -> fetch_assoc();
 	if ($row['count(*)'] == 0) {
 		$sql = "INSERT INTO `factura-cabecera` VALUES(0, '$usuario', null, null, null, null, null, null, null, null, null, 'creada')";
+		$conn -> query($sql);
 	}
 
 	$sql = "SELECT fc_codigo FROM `factura-cabecera` WHERE us_codigo = ".$usuario." ORDER BY fc_codigo DESC LIMIT 1";
