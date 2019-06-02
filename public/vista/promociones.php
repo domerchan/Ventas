@@ -1,5 +1,9 @@
 <?php
-	session_start();
+    session_start();
+    if (!isset($_SESSION['isLogged']) || $_SESSION['isLogged']==false)
+        header("Location: /ProgramacionHipermedial/Ventas/public/vista/index.php");
+    else if($_SESSION['rol'] == "admin")
+        header("Location: /ProgramacionHipermedial/Ventas/private/admin/vista/perfil.php");  
 ?>
 
 <!DOCTYPE html>
@@ -13,15 +17,16 @@
 
 		<!--Cambiar href dependiendo de la ubicación del archivo-->
 		<link rel="stylesheet" type="text/css" href="../../config/css/style.css">
-		<link rel="stylesheet" href="css/promociones.css">
+		<link rel="stylesheet" type="text/css" href="css/promociones.css">
 		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 		<link href="https://fonts.googleapis.com/css?family=Didact+Gothic&display=swap" rel="stylesheet">
 		
+		<script type="text/javascript" src="../controladores/productos.js"></script>
 		<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
 		<script type="text/javascript" src="../../config/js/javascript.js"></script>
 	</head>
 
-	<style>
+<style>
 .mySlides {display:none;
     width: 500px; 
     height: 300px;
@@ -93,9 +98,8 @@
 		</header>
 
 
-
-
-		<center><div class='center-block'>
+	<center>
+	<div class='center-block'>
     <section class='center-block'>
         <table class='center-block'>
             <?php
@@ -112,7 +116,6 @@
                 }
             }
         ?>
-
             <script>
                 var myIndex = 0;
                 carousel();
@@ -126,27 +129,17 @@
                     myIndex++;
                     if (myIndex > x.length) { myIndex = 1 }
                     x[myIndex - 1].style.display = "block";
-                    setTimeout(carousel, 2000); // Change image every 2 seconds
+                    setTimeout(carousel, 1000); // Change image every 2 seconds
                 }
             </script>
         </table>
     </section>
-</div></center>
+</div>
+</center>
 
-
-		<div id="listado">
-            <h1>Promociones</h1>
-			<section>
-			<table id="tableListado">
-            <tr>
-					<th>CATEGORÍA</th>
-					<th>NOMBRE</th>
-					<th>PORCENTAJE</th>
-					<th>DÍA QUE APLICA</th>
-					<th>DESCRIPCIÓN</th>
-					<th>IMAGEN</th>
-            </tr>
-                
+	<div id="promociones">
+		<h1>Promociones</h1>
+			<section>                
 				<?php
                     include'../../config/conexionBD.php';
                    
@@ -155,20 +148,63 @@
 
 					if($result -> num_rows > 0) {
 						while ($row = $result -> fetch_assoc()) {
-							echo "<tr>";
-							echo "<td id='tdlistado' class='nom'>".$row["ca_nombre"]."</td>";
-							echo "<td id='tdlistado' class='nom'>".$row["pm_nombre"]."</td>";
-							echo "<td id='tdlistado' class='por'>".$row["pm_porcentaje"]."</td>";
-							echo "<td id='tdlistado' class='dia'>".$row["pm_dia"]."</td>";
-							echo "<td id='tdlistado' class='des'>".$row["pm_descripcion"]."</td>";
-							echo "<td id='tdlistado' class='img'><img id='imglistado' src='data:image/jpg;base64,".base64_encode($row["pm_imagen"])."'/></td>";
-							echo "</tr>";
+							echo "<div class='prom'>";
+							echo "<p class='prnom'>".$row['pm_nombre']."</p>";
+							echo "<div class='imgP popup' style=\"background-image: url('data:image/jpg;base64,".base64_encode($row["pm_imagen"])."')\"></div>";
+							echo "<p class='popre'>".$row["pm_descripcion"]."</p>";
+							echo "</div>";
 						}
 					}
                 ?>
-                    </table>
+                </section>   
+		</div>
+		
+		<br style="clear: both;">
+		<div class='pop' id='info'></div>
+		<p id="exito"></p>
+
+		<div id="productos">
+		<h1>Ofertas</h1>
+		<section>
+			<?php
+			$sql = "SELECT * FROM producto, subcategoria, categoria WHERE producto.sb_codigo = subcategoria.sb_codigo and subcategoria.ca_codigo = categoria.ca_codigo  ORDER BY pr_oferta DESC limit 6";
+			$result = $conn -> query($sql);
+			if($result -> num_rows > 0) {
+				while ($row2 = $result -> fetch_assoc()) {
+					
+					echo "<div class='prod'>";
+
+						echo "<div class='imgPop popup' onclick='pop(".$row2['pr_codigo'].")' style=\"background-image: url('data:image/jpg;base64,".base64_encode($row2["pr_imagen"])."')\"></div>";
+						echo "<p class='prnom'>".$row2['pr_nombre']."</p>";
+						echo "<p class='prpre'>".$row2['pr_precio']."$ / ".$row2['pr_unidad']."</p>";
+
+						if ($row2['pr_oferta'] != 0)
+							echo "<p class='profe'>oferta: ".$row2['pr_oferta']."%</p>";
+
+						if($row2['pr_no_calificaciones'] == 0) {
+							echo "<p><i class='material-icons'>star_border</i><i class='material-icons'>star_border</i><i class='material-icons'>star_border</i><i class='material-icons'>star_border</i><i class='material-icons'>star_border</i></p>";
+						} else {
+							echo "<p>";
+							$cal = round($row2['pr_calificacion']/$row2['pr_no_calificaciones']);
+							for($i = 0; $i < $cal; $i++)
+								echo "<i class='material-icons'>star</i>";
+							for($i = 0; $i < 5 - $cal; $i++)
+								echo "<i class='material-icons'>star_border</i>";
+							echo "</p>";
+						}
+
+
+						echo "<div class='center'><input id='".$row2['pr_codigo']."' class='prcant' type='number' value='0' min='0' max='20'>";
+						if(!isset($_SESSION['rol']) || $_SESSION['rol'] == 'user')
+							echo "<button class='pradd' value='".$row2['pr_codigo']."' onclick='agregar(this.value)'>Añadir</button>";
+						echo "</div>";
+					echo "</div>";
+				}
+			}
+			?>
 			</section>
-        </div>
+		</div>
+
 
 
 
