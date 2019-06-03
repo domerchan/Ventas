@@ -27,6 +27,7 @@
 			<tr>
 				<td><strong>Nombres: </strong></td>
 				<td colspan="3"><?php echo $_GET['nombre']; ?></td>
+				<input id='nombre' name='nombre' type='hidden' value='".$_GET['nombre']."'>
 			</tr>
 
 			<tr>
@@ -91,14 +92,19 @@
 				echo "<th>Total:</th>";
 				echo "<td>".$total."</td>";
 				echo "</tr>";
+				echo "<input id='nom' type='hidden' value='".$_GET['nombre']."'>";
+				echo "<input id='dir' type='hidden' value='".$_GET['direccion']."'>";
+				echo "<input id='ced' type='hidden' value='".$_GET['cedula']."'>";
+				echo "<input id='tel' type='hidden' value='".$_GET['direccion']."'>";
+				echo "<input id='sub' type='hidden' value='".$sub."'>";
+				echo "<input id='envio' type='hidden' value='".$envio."'>";
 			?>
 		</table>
 	</div>
-
 	<?php
 		$total = $_GET['total'];
 		echo "<br>";
-		echo "<button id='avanzar' onclick='confirmar(".$total.")'>Confirma tu compra!</button>";
+		echo "<button id='avanzar' onclick='comprar(".$total.")'>Confirma tu compra!</button>";
 		echo "<button id='retroceder' onclick='factura(".$total.")'>< Datos Factura</button>";
 	?>
 </body>
