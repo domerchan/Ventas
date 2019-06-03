@@ -1,4 +1,11 @@
 <?php
+    session_start();
+    if (!isset($_SESSION['isLogged']) || $_SESSION['isLogged']==false)
+		header("Location: /ProgramacionHipermedial/Ventas/public/vista/index.php");
+    else if($_SESSION['rol'] == "admin")
+        header("Location: /ProgramacionHipermedial/Ventas/private/admin/vista/perfil.php");  
+?>
+<?php
 			include'conexionBD.php';
 
 			$sql = "SELECT * FROM categoria WHERE ca_nombre LIKE '%".$_GET['filtro']."%'";
