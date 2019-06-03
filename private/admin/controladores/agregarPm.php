@@ -1,4 +1,12 @@
 <?php
+    session_start();
+    if (!isset($_SESSION['isLogged']) || $_SESSION['isLogged']==false)
+		header("Location: /ProgramacionHipermedial/Ventas/public/vista/index.php");
+    else if($_SESSION['rol'] == "user")
+        header("Location: /ProgramacionHipermedial/Ventas/private/user/vista/perfil.php");  
+?>
+
+<?php
 	include'../../../config/conexionBD.php';
 
 	$categoria = $_POST['cat'];
