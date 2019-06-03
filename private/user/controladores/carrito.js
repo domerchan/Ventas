@@ -109,6 +109,28 @@ function confirmar(total) {
 	xmlhttp.open("GET", "../controladores/confirmar.php?total="+total+"&distancia="+distancia+"&nombre="+nombre+"&telefono="+telefono+"&cedula="+cedula+"&direccion="+direccion, true);
 	xmlhttp.send();
 }
+function comprar(total) {
+
+	var nombre = document.getElementById('nom').value;
+	var telefono = document.getElementById('tel').value;
+	var cedula = document.getElementById('ced').value;
+	var direccion = document.getElementById('dir').value;
+	var subt = document.getElementById('sub').value;
+	var envios = document.getElementById('envio').value;
+	
+	if (window.XMLHttpRequest) {
+		xmlhttp = new XMLHttpRequest();
+	} else {
+		xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+	}
+	xmlhttp.onreadystatechange = function() {
+		if (this.readyState == 4 && this.status == 200) {
+			alert('Su compra Se ha Realizado!!!');
+		}
+	};
+	xmlhttp.open("GET", "../controladores/comprar.php?total="+total+"&distancia="+distancia+"&nombre="+nombre+"&telefono="+telefono+"&cedula="+cedula+"&direccion="+direccion+"&subt="+subt+"&envios="+envios, true);
+	xmlhttp.send();
+}
 
 function mostrarPosicion(position) {
 	latFinal = position.coords.latitude;
@@ -228,4 +250,15 @@ function quitarProducto(codigo) {
 	};
 	xmlhttp.open("GET", "../controladores/quitarProducto.php?codigo="+codigo, true);
 	xmlhttp.send();
+}
+function forma(){ 
+	
+	var textoEscogido = document.getElementById('options').value; 
+	if(textoEscogido=='0'){
+	 
+
+ 	}
+	if(textoEscogido=='1'){
+ 
+ 	}
 }
