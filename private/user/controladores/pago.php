@@ -5,10 +5,11 @@
 </head>
 <body>
 
-	<select>
-		<option></option>
-		<option>Efectivo</option>
-	</select>
+<select id="options" name="options" onchange='forma()'> 
+
+<option value="1" >Tarjeta de Credito </option>
+<option value="0" selected>Efectivo </option>
+</select> 
 	<br>
 	<br>
 	<br>
