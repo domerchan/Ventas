@@ -68,3 +68,39 @@ function calificar(valor, codigo) {
 	xmlhttp.open("GET", "../controladores/calificar.php?valor="+valor+"&codigo="+codigo, true);
 	xmlhttp.send();
 }
+
+function buscarProducto(categoria, n_categoria) {
+	var producto = document.getElementById('busca').value;
+	if (producto == "") {
+		if (window.XMLHttpRequest) {
+		xmlhttp = new XMLHttpRequest();
+	} else {
+		xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+	}
+	xmlhttp.onreadystatechange = function() {
+		if (this.readyState == 4 && this.status == 200) {
+			document.getElementById('productos').innerHTML = this.responseText;
+		}
+	};
+	xmlhttp.open("GET", "../controladores/mostrar.php?categoria="+categoria+"&n_categoria="+n_categoria, true);
+	xmlhttp.send();
+	} else {
+		if (window.XMLHttpRequest) {
+		xmlhttp = new XMLHttpRequest();
+	} else {
+		xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+	}
+	xmlhttp.onreadystatechange = function() {
+		if (this.readyState == 4 && this.status == 200) {
+			document.getElementById('productos').innerHTML = this.responseText;
+		}
+	};
+	xmlhttp.open("GET", "../controladores/buscar.php?categoria="+categoria+"&n_categoria="+n_categoria+"&producto="+producto, true);
+	xmlhttp.send();
+	}
+}
+
+function mostrarProducto(categoria, n_categoria) {
+	document.getElementById('busca').value = "";
+	buscarProducto(categoria, n_categoria);
+}

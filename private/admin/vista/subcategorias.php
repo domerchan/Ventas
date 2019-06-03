@@ -23,12 +23,20 @@
 			<nav class="navHeader">
 				<ul class="ul1">
 					<li class="frst"><a href="usuarios.php">Usuarios</a></li>
+					<li class="frst"><a href="preguntas.php">Preguntas</a></li>
+					<li class="frst"><a href="facturas.php">Facturas</a></li>
 					<li class="frst"><a href="sucursales.php">Sucursales</a></li>
 					<li class="frst"><a href="categorias.php">Categorías</a></li>
 					<li class="frst"><a href="subcategorias.php">Subcategorías</a></li>
 					<li class="frst"><a href="productos.php">Productos</a></li>
 					<li class="frst"><a href="promociones.php">Promociones</a></li>
-					<li class='frst'><a href='../../../config/cerrar_sesion.php'>Cerrar Sesión</a></li>
+					<li class='frst'>
+						<a>Cuenta</a>
+						<ul id="cuenta">
+							<li><a href='../controladores/perfil.php'>Perfil</a></li>
+					<li><a href='../../../config/cerrar_sesion.php'>Cerrar Sesión</a></li>
+						</ul>
+					</li>
 				</ul>
 			</nav>
 		</header>

@@ -1,8 +1,8 @@
 var distancia;
-var latInicial = -2.8756655;
-var lonInicial = -78.9806085;
-var posicionInicial = new google.maps.LatLng(latInicial, lonInicial);
-var centro;
+var latInicial;
+var lonInicial;
+var posicionInicial;
+var centro = new google.maps.LatLng(-2.901893, -79.002355);
 var latFinal;
 var lonFinal;
 var posicionFinal;
@@ -28,7 +28,18 @@ function detalle() {
 	xmlhttp.send();
 }
 
-function pago(total) {
+function pago(total, direccion) {
+	var geocoder = new google.maps.Geocoder();
+	geocoder.geocode({
+		'address': direccion
+	}, function(results, status) {
+		if (status == google.maps.GeocoderStatus.OK) {
+    		latInicial = results[0].geometry.location.lat();
+    		lonInicial = results[0].geometry.location.lng();
+    		posicionInicial = new google.maps.LatLng(latInicial, lonInicial);
+    	} 
+	});
+
 	if (window.XMLHttpRequest) {
 		xmlhttp = new XMLHttpRequest();
 	} else {
@@ -92,6 +103,7 @@ function confirmar(total) {
 	var telefono = document.getElementById('tel').value;
 	var cedula = document.getElementById('ced').value;
 	var direccion = document.getElementById('dir').value;
+	var correo = document.getElementById('cor').value;
 
 	if (window.XMLHttpRequest) {
 		xmlhttp = new XMLHttpRequest();
@@ -106,18 +118,21 @@ function confirmar(total) {
 			document.getElementById('compras').innerHTML = this.responseText;
 		}
 	};
-	xmlhttp.open("GET", "../controladores/confirmar.php?total="+total+"&distancia="+distancia+"&nombre="+nombre+"&telefono="+telefono+"&cedula="+cedula+"&direccion="+direccion, true);
+	xmlhttp.open("GET", "../controladores/confirmar.php?total="+total+"&distancia="+distancia+"&nombre="+nombre+"&telefono="+telefono+"&cedula="+cedula+"&direccion="+direccion+"&correo="+correo, true);
 	xmlhttp.send();
 }
-function comprar(total) {
+
+function crearPedido() {
 
 	var nombre = document.getElementById('nom').value;
 	var telefono = document.getElementById('tel').value;
 	var cedula = document.getElementById('ced').value;
 	var direccion = document.getElementById('dir').value;
-	var subt = document.getElementById('sub').value;
-	var envios = document.getElementById('envio').value;
-	
+	var correo = document.getElementById('cor').value;
+	var subtotal = document.getElementById('sub').value;
+	var total = document.getElementById('tot').value;
+	var envio = document.getElementById('env').value;
+
 	if (window.XMLHttpRequest) {
 		xmlhttp = new XMLHttpRequest();
 	} else {
@@ -125,10 +140,10 @@ function comprar(total) {
 	}
 	xmlhttp.onreadystatechange = function() {
 		if (this.readyState == 4 && this.status == 200) {
-			alert('Su compra Se ha Realizado!!!');
+			document.getElementById('compras').innerHTML = this.responseText;
 		}
 	};
-	xmlhttp.open("GET", "../controladores/comprar.php?total="+total+"&distancia="+distancia+"&nombre="+nombre+"&telefono="+telefono+"&cedula="+cedula+"&direccion="+direccion+"&subt="+subt+"&envios="+envios, true);
+	xmlhttp.open("GET", "../controladores/crearPedido.php?total="+total+"&distancia="+distancia+"&nombre="+nombre+"&telefono="+telefono+"&cedula="+cedula+"&direccion="+direccion+"&correo="+correo+"&subtotal="+subtotal+"&total="+total+"&envio="+envio, true);
 	xmlhttp.send();
 }
 
@@ -136,7 +151,6 @@ function mostrarPosicion(position) {
 	latFinal = position.coords.latitude;
 	lonFinal = position.coords.longitude;
 	posicionFinal = new google.maps.LatLng(latFinal, lonFinal);
-	centro = new google.maps.LatLng(-2.901893, -79.002355);
 	mostrarMapa(posicionFinal);
 
 	var dx = latInicial - latFinal;
@@ -250,15 +264,4 @@ function quitarProducto(codigo) {
 	};
 	xmlhttp.open("GET", "../controladores/quitarProducto.php?codigo="+codigo, true);
 	xmlhttp.send();
-}
-function forma(){ 
-	
-	var textoEscogido = document.getElementById('options').value; 
-	if(textoEscogido=='0'){
-	 
-
- 	}
-	if(textoEscogido=='1'){
- 
- 	}
 }

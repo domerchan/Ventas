@@ -35,6 +35,10 @@
 			echo "<td>Dirección: </td>";
 			echo "<td><input id='dir' type='text' value='".$row['us_direccion']."'></td>";
 			echo "</tr>";
+			echo "<tr>";
+			echo "<td>Correo: </td>";
+			echo "<td><input id='cor' type='text' value='".$row['us_correo']."'></td>";
+			echo "</tr>";
 		?>
 	</table>
 	<?php

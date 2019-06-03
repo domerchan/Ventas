@@ -83,3 +83,9 @@ table input {
   border-bottom: 1px solid rgba(154, 187, 181, 0.2);
   z-index: 10;
 }
+
+#sec3 {
+	clear: both;
+	color: black;
+	margin: 50px
+}

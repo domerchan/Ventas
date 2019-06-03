@@ -16,7 +16,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
 		<link rel="stylesheet" type="text/css" href="../../../config/css/style.css">
-		<link rel="stylesheet" type="text/css" href="css/perfil.css">
+		<link rel="stylesheet" type="text/css" href="css/facturas.css">
 		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 		<link href="https://fonts.googleapis.com/css?family=Didact+Gothic&display=swap" rel="stylesheet">
 
@@ -102,100 +102,102 @@
 			</nav>
 		</header>
 		<br>
-		<h1>Tu Cuenta</h1>
 
 
-		<section id="sec0">
-			<?php
-				include '../../../config/conexionBD.php';
-				$sql = "SELECT * FROM usuario WHERE ".$_SESSION['codigo']." = usuario.us_codigo";
-				$result = $conn -> query($sql);
-				$row = $result -> fetch_assoc();
 
-				echo "<form  action='../controladores/valida_photo.php' method='POST' enctype='multipart/form-data' name='foto'>";
-				echo "<a onclick='chooseFile()'><img id='foto' src='data:image/jpg;base64,".base64_encode($row["us_imagen"])."'/></a>";
-				echo "<input class='input' type='file' id='img' name='image' onclick=datosg()>"; 
-				echo "<input type='submit' id='enviar' name='enviar' value='Subir Foto' disabled='true' >";
-				echo "</form>";
+		<h1>Mis Facturas</h1>
 
-			?>
-		</section>
+		<?php
+		$sql = "SELECT * FROM `factura-cabecera` fc WHERE fc_estado <> 'creada' AND fc.us_codigo = ".$_SESSION['codigo'];
+		$result = $conn -> query($sql);
+		while ($row = $result -> fetch_assoc()) {
+		
+			echo "<div class='factura'>";
+				echo "<table class='cabecera'>";
+					
+					$sql = "SELECT * FROM market";
+					$result2 = $conn -> query($sql);
+					$row2 = $result2 -> fetch_assoc();
 
-		<section id="sec2">
-			<div>
-				<?php
-					echo "<table id='datos'>";
-					echo "<tr>";
-					echo "<td colspan='2'><input type='button' class='editar' value='Editar datos' onclick='editar()' name=''></td>";
-					echo "</tr>";
-					echo "<tr>";
-					echo "<th>Nombres</th>";
-					echo "<td><input id='nom' name='nom' value= '".$row['us_nombres']."' disabled='true'></td>";
-					echo "</tr>";
-					echo "<tr>";
-					echo "<th>Apellidos</th>";
-					echo "<td><input id='ape' name='ape' value= '".$row['us_apellidos']."' disabled='true'></td>";
-					echo "</tr>";
-					echo "<tr>";
-					echo "<th>Nick</th>";
-					echo "<td><input id='nic' name='nic' value= '".$row['us_nick']."' disabled='true'></td>";
-					echo "</tr>";
-					echo "<tr>";
-					echo "<th>Cédula</th>";
-					echo "<td><input id='ced' name='ced' value= '".$row['us_cedula']."' disabled='true'></td>";
-					echo "</tr>";
-					echo "<tr>";
-					echo "<th>Dirección</th>";
-					echo "<td><input id='dir' name='dir' value= '".$row['us_direccion']."' disabled='true'></td>";
-					echo "</tr>";
-					echo "<tr>";
-					echo "<th>Teléfono</th>";
-					echo "<td><input id='tel' name='tel' value= '".$row['us_telefono']."' disabled='true'></td>";
-					echo "</tr>";
-					echo "<tr>";
-					echo "<th>Fecha de Nacimiento</th>";
-					echo "<td><input id='fec' name='fec' type='date' value= '".$row['us_fecha_nacimiento']."' disabled='true'></td>";
-					echo "</tr>";
-					echo "<tr>";
-					echo "<td colspan='2'><input type='hidden' id='modificar' value='Guardar Cambios' onclick='modificarUsuario()'>";
-					echo "<input type='hidden' id='cancelar' value='Cancelar' onclick='cancelar()'></td>";
-					echo "</tr>";
-					echo "</table>";
-				
-				echo "<br>";
-				echo "<br>";
+					$sql = "SELECT su_direccion FROM sucursal WHERE su_codigo = ".$row['su_codigo'];
+					$result3 = $conn -> query($sql);
+					$row3 = $result3 -> fetch_assoc();
+					
 
-					echo "<p id='exito'></p>";				
-					echo "<table id='contrasena'>";
 					echo "<tr>";
-					echo "<td colspan='2'><input type='button' class='editar' value='Editar datos' onclick='editarC()' name=''></td>";
-					echo "</tr>";
-					echo "<tr>";
-					echo "<th>Contraseña actual:</th>";
-					echo "<td><input type='password' id='act' disabled='true'></td>";
-					echo "</tr>";
-					echo "<tr>";
-					echo "<th>Nueva contraseña:</th>";
-					echo "<td><input type='password' id='new' disabled='true'></td>";
-					echo "</tr>";
-					echo "<tr>";
-					echo "<th>Confirmar contraseña:</th>";
-					echo "<td><input type='password' id='rep' disabled='true'></td>";
-					echo "</tr>";
-					echo "<tr>";
-					echo "<td colspan='2'><input type='hidden' id='modificarC' value='Guardar Cambios' onclick='modificarContrasena()'>";
-					echo "<input type='hidden' id='cancelarC' value='Cancelar' onclick='cancelarC()'></td>";
-					echo "</tr>";
-					echo "</table>";
-				?>
-			</div>
-		</section>
+						echo "<td><img src='../../../config/img/logo1.png'></td>";
+						echo "<td colspan='3'><h2>".$row2['ma_nombre']."</h2><p>".$row3['su_direccion']."</p><p>".$row2['ma_telefono1']."</p><p>".$row2['ma_telefono2']."</p></td>";
+					echo  "</tr>";
 
-		<section id="sec3">
-		<div>
-		<a href="../controladores/eliminarusuario.php">ELIMINAR CUENTA</a><br>
-		</div>
-		</section>
+					echo "<tr>";
+						echo "<td><strong>Nombres: </strong></td>";
+						echo "<td colspan='3'> <input type='text' id='nom' disabled='true' value=".$row['fc_nombres']." > </td>";
+					echo "</tr>";
+
+					echo "<tr>";
+						echo "<td><strong>Teléfono: </strong></td>";
+						echo "<td> <input type='text' id='tel' disabled='true' value=".$row['fc_telefono']." > </td>";
+						echo "<td><strong>Cédula: </strong></td>";
+						echo "<td> <input type='text' id='ced' disabled='true' value=".$row['fc_cedula']." > </td>";
+					echo "</tr>";
+
+					echo "<tr>";
+						echo "<td><strong>Dirección: </strong></td>";
+						echo "<td colspan='3'> <input type='text' id='dir' disabled='true' value=".$row['fc_direccion']." > </td>";
+					echo "</tr>";
+
+					echo "<tr>";
+						echo "<td><strong>Correo: </strong></td>";
+						echo "<td colspan='3'> <input type='text' id='cor' disabled='true' value=".$row['fc_correo']." > </td>";
+					echo "</tr>";
+				echo "</table>";
+				echo "<table class='detalle'>";
+					echo "<tr>";
+						echo "<th>CANTIDAD</th>";
+						echo "<th>DESCRIPCION</th>";
+						echo "<th>P.U.</th>";
+						echo "<th>VENTA</th>";
+					echo "</tr>";
+						$sql = "SELECT * FROM factura WHERE fc_codigo = ".$row['fc_codigo'];
+						$result2 = $conn -> query($sql);
+						while ($row3 = $result2 -> fetch_assoc()) {
+							$sql2 = "SELECT * FROM producto WHERE pr_codigo = ".$row3['pr_codigo'];
+							$result3 = $conn -> query($sql2);
+							$row2 = $result3 -> fetch_assoc();
+							echo "<tr>";
+							echo "<td>".$row3['fa_cantidad']."</td>";
+							echo "<td>".$row2['pr_nombre']."</td>";
+							echo "<td>".$row2['pr_precio']."</td>";
+							echo "<td>".$row3['fa_subtotal']."</td>";
+							echo "</tr>";
+						}
+						echo "<tr>";
+						echo "<td rowspan='4' colspan='2'><label id='estado".$row['fc_codigo']."'>Estado: ".$row['fc_estado']."</label>";
+						if ($row['fc_estado'] == 'confirmada')
+							echo "<i class='material-icons' onclick='cancelarFactura(".$row['fc_codigo'].")'>cancel</i>";
+						echo "</td>";
+						echo "<th>Sub Total:</th>";
+						echo "<td><input id='sub' type='number' disabled='true' value='".$row['fc_subtotal']."'></td>";
+						echo "</tr>";
+
+						echo "<tr>";
+						echo "<th>iva 12%:</th>";
+						echo "<td>".number_format(0.12*$row['fc_subtotal'],2)."</td>";
+						echo "</tr>";
+
+						echo "<tr>";
+						echo "<th>Envío:</th>";
+						echo "<td><input id='env' type='number' disabled='true' value='".$row['fc_envio']."'></td>";
+						echo "</tr>";
+
+						echo "<tr>";
+						echo "<th>Total:</th>";
+						echo "<td><input id='tot' type='number' disabled='true' value='".$row['fc_total']."'></td>";
+						echo "</tr>";
+				echo "</table>";
+			echo "</div>";
+		}
+		?>
 
 		<footer>
 			<div id="pie">

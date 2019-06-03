@@ -17,29 +17,37 @@
 			$sql = "SELECT * FROM market";
 			$result = $conn -> query($sql);
 			$row = $result -> fetch_assoc();
+
+			$sql = "SELECT su_direccion FROM sucursal WHERE su_codigo = ".$_SESSION['sucursal'];
+			$result = $conn -> query($sql);
+			$row2 = $result -> fetch_assoc();
 			?>
 
 			<tr>
 				<td><img src="../../../config/img/logo1.png"></td>
-				<td colspan="3"><h2><?php echo $row['ma_nombre']; ?></h2><p><?php echo $row['ma_direccion']; ?></p><p><?php echo $row['ma_telefono1']; ?></p><p><?php echo $row['ma_telefono2']; ?></p></td>
+				<td colspan="3"><h2><?php echo $row['ma_nombre']; ?></h2><p><?php echo $row2['su_direccion']; ?></p><p><?php echo $row['ma_telefono1']; ?></p><p><?php echo $row['ma_telefono2']; ?></p></td>
 			</tr>
 
 			<tr>
 				<td><strong>Nombres: </strong></td>
-				<td colspan="3"><?php echo $_GET['nombre']; ?></td>
-				<input id='nombre' name='nombre' type='hidden' value='".$_GET['nombre']."'>
+				<td colspan="3"> <input type="text" id="nom" disabled="true" value=<?php echo $_GET['nombre']; ?> > </td>
 			</tr>
 
 			<tr>
 				<td><strong>Teléfono: </strong></td>
-				<td><?php echo $_GET['telefono']; ?></td>
+				<td> <input type="text" id="tel" disabled="true" value=<?php echo $_GET['telefono']; ?> > </td>
 				<td><strong>Cédula: </strong></td>
-				<td><?php echo $_GET['cedula']; ?></td>
+				<td> <input type="text" id="ced" disabled="true" value=<?php echo $_GET['cedula']; ?> > </td>
 			</tr>
 
 			<tr>
 				<td><strong>Dirección: </strong></td>
-				<td colspan="3"><?php echo $_GET['direccion']; ?></td>
+				<td colspan="3"> <input type="text" id="dir" disabled="true" value=<?php echo $_GET['direccion']; ?> > </td>
+			</tr>
+
+			<tr>
+				<td><strong>Correo: </strong></td>
+				<td colspan="3"> <input type="text" id="cor" disabled="true" value=<?php echo $_GET['correo']; ?> > </td>
 			</tr>
 		</table>
 		<table id="detalle">
@@ -75,7 +83,7 @@
 				echo "<tr>";
 				echo "<td rowspan='4' colspan='2'></td>";
 				echo "<th>Sub Total:</th>";
-				echo "<td>".$sub."</td>";
+				echo "<td><input id='sub' type='number' disabled='true' value='".$sub."'></td>";
 				echo "</tr>";
 
 				echo "<tr>";
@@ -85,26 +93,21 @@
 
 				echo "<tr>";
 				echo "<th>Envío:</th>";
-				echo "<td>".$envio."</td>";
+				echo "<td><input id='env' type='number' disabled='true' value='".$envio."'></td>";
 				echo "</tr>";
 
 				echo "<tr>";
 				echo "<th>Total:</th>";
-				echo "<td>".$total."</td>";
+				echo "<td><input id='tot' type='number' disabled='true' value='".$total."'></td>";
 				echo "</tr>";
-				echo "<input id='nom' type='hidden' value='".$_GET['nombre']."'>";
-				echo "<input id='dir' type='hidden' value='".$_GET['direccion']."'>";
-				echo "<input id='ced' type='hidden' value='".$_GET['cedula']."'>";
-				echo "<input id='tel' type='hidden' value='".$_GET['direccion']."'>";
-				echo "<input id='sub' type='hidden' value='".$sub."'>";
-				echo "<input id='envio' type='hidden' value='".$envio."'>";
 			?>
 		</table>
 	</div>
+
 	<?php
 		$total = $_GET['total'];
 		echo "<br>";
-		echo "<button id='avanzar' onclick='comprar(".$total.")'>Confirma tu compra!</button>";
+		echo "<button id='avanzar' onclick='crearPedido()'>Confirma tu compra!</button>";
 		echo "<button id='retroceder' onclick='factura(".$total.")'>< Datos Factura</button>";
 	?>
 </body>

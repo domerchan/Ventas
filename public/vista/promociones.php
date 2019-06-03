@@ -1,15 +1,11 @@
 <?php
-    session_start();
-    if (!isset($_SESSION['isLogged']) || $_SESSION['isLogged']==false)
-        header("Location: /ProgramacionHipermedial/Ventas/public/vista/index.php");
-    else if($_SESSION['rol'] == "admin")
-        header("Location: /ProgramacionHipermedial/Ventas/private/admin/vista/perfil.php");  
+	session_start();
 ?>
 
 <!DOCTYPE html>
 <html lang="es">
 	<head>
-		<title> Promociones | Market Online</title>
+		<title>Market Online</title>
 
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -21,32 +17,30 @@
 		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 		<link href="https://fonts.googleapis.com/css?family=Didact+Gothic&display=swap" rel="stylesheet">
 		
-		<script type="text/javascript" src="../controladores/productos.js"></script>
 		<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
 		<script type="text/javascript" src="../../config/js/javascript.js"></script>
+		<style>
+			.mySlides {display:none;
+			    width: 500px; 
+			    height: 300px;
+			    align: center;
+			    position: relative;
+			    top: 20px;
+			}
+
+			.mySlides img {
+			    align: center;
+			    max-height: 250px;
+			    position: relative;
+			    top: 20px;
+			}
+
+			</style>
 	</head>
-
-<style>
-.mySlides {display:none;
-    width: 500px; 
-    height: 300px;
-    align: center;
-    position: relative;
-    top: 20px;
-}
-
-.mySlides img {
-    align: center;
-    max-height: 250px;
-    position: relative;
-    top: 20px;
-}
-
-</style>
 
 	<body>
 
-		<header>
+		<header id="header">
 			<div id="banner">
 				<img src="../../config/img/logo4.png">
 			</div>
@@ -54,10 +48,35 @@
 
 			<nav class="navHeader">
 				<ul class="ul1">
-					<li class="frst"><a href="index.php">Inicio</a></li>
+					
 					<?php
 					include'../../config/conexionBD.php';
-					$sql = "SELECT * FROM area";
+
+					if($_SESSION['isLogged'] === TRUE) {
+						$sql = "SELECT count(*) FROM factura WHERE fa_eliminada = 'N' AND fa_compra_realizada = 'N'  AND us_codigo = ".$_SESSION['codigo'];
+						$result = $conn -> query($sql);
+						$row = $result -> fetch_assoc();
+						$factura = $row['count(*)'];
+
+						$sql =  "SELECT su_nombre, su_codigo FROM sucursal";
+						$result = $conn -> query($sql);
+						echo "<li class='frst'>";
+						echo "<select id='suc' onchange=\"cambioSucursal(this.value, '".$factura."', '".$_SESSION['sucursal']."')\">";
+						while ($row = $result -> fetch_assoc()) {
+							if ($row['su_codigo'] == $_SESSION['sucursal'])
+								echo "<option value='".$row['su_codigo']."' selected>".$row['su_nombre']."</option>";
+							else
+								echo "<option value='".$row['su_codigo']."'>".$row['su_nombre']."</option>";
+						}
+						echo "</select>";
+						echo "</li>";
+					}
+					echo "<li class='frst'><a href='index.php'>Inicio</a></li>";
+
+					if($_SESSION['isLogged'] === TRUE)
+						$sql = "SELECT a.ar_nombre, a.ar_codigo FROM area a, sucursal s, `sucursal_area` sa WHERE ".$_SESSION['sucursal']." = s.su_codigo AND ".$_SESSION['sucursal']." = sa.su_codigo AND a.ar_codigo = sa.ar_codigo";
+					else
+						$sql = "SELECT * FROM area";
 					$result = $conn -> query($sql);
 					while($row = $result -> fetch_assoc()) {
 						echo "<li class='frst'>";
@@ -83,7 +102,8 @@
 							echo "<a>Cuenta</a>";
 							echo "<ul id='cuenta'>";
 							echo "<li><a href='../../private/user/vista/perfil.php'>Perfil</a></li>";
-              				echo "<li><a href='../../config/cerrar_sesion.php'>Cerrar Sesión</a></li>";
+							echo "<li><a href='../../private/user/vista/facturas.php'>Mis Facturas</a></li>";
+							echo "<li><a href='../../config/cerrar_sesion.php'>Cerrar Sesión</a></li>";
 							echo "</ul>";
 						}
 						?>
@@ -98,7 +118,9 @@
 		</header>
 
 
-	<center>
+
+
+		<center>
 	<div class='center-block'>
     <section class='center-block'>
         <table class='center-block'>

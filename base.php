@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es" ng-app="market">
+<html lang="es">
 	<head>
 		<title>Market Online</title>
 
@@ -17,7 +17,7 @@
 		<script type="text/javascript" src="config/js/javascript.js"></script>
 	</head>
 
-	<body ng-controller="ProductListCtrl">
+	<body>
 
 		<header>
 			<div id="banner">

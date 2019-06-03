@@ -64,7 +64,14 @@ td{
 	transition: all .2s ease-in-out;
 }
 
-.quitar:hover, .editar:hover, .cambiar:hover {
+.enviar {
+	margin-left: 40%;
+	cursor: pointer;
+	color: orange;
+	transition: all .2s ease-in-out;
+}
+
+.quitar:hover, .editar:hover, .cambiar:hover, .enviar:hover {
 	cursor: pointer;
 	transform: scale(1.2);
 }

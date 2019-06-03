@@ -99,6 +99,11 @@ h1 {
 	margin-left: 25px;
 }
 
+#cabecera input {
+	border: none;
+	color: black;
+}
+
 #detalle {
 	width: 100%;
 	border: 1px solid black;
@@ -106,6 +111,11 @@ h1 {
 
 #detalle td, #detalle th {
 	border: 1px solid black;
+}
+
+#detalle input {
+	border: none;
+	color: black;
 }
 
 #mapa {

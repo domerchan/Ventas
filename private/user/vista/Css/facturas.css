@@ -1,0 +1,46 @@
+.factura {
+	width: 45%;
+	margin: 10px 2%;
+	float: left;
+	height: 550px;
+}
+
+.cabecera {
+	width: 100%;
+	border: 1px solid black;
+}
+
+.cabecera img {
+	max-width: 150px;
+	margin-left: 25px;
+}
+
+.cabecera input {
+	border: none;
+	color: black;
+}
+
+.detalle {
+	width: 100%;
+	border: 1px solid black;
+}
+
+.detalle input {
+	border: none;
+	color: black;
+}
+
+.detalle td, #detalle th {
+	border: 1px solid black;
+}
+
+.factura i {
+	margin-left: 20%;
+	cursor: pointer;
+	transition: all .2s ease-in-out;
+}
+
+.factura i:hover {
+	cursor: pointer;
+	transform: scale(1.2);
+}

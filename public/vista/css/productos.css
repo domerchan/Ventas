@@ -82,6 +82,37 @@
 	margin: 0px 2px;
 }
 
+#divB {
+	float: right;
+}
+
+#busca, #buscaB, #muestraB {
+	padding: 7px;
+}
+
+#busca {
+	border-top-left-radius: 15px;
+	border-bottom-left-radius: 15px;
+	border-top-color: rgb(191, 215, 58);
+	border-bottom-color: rgb(191, 215, 58);
+	border-left-color: rgb(191, 215, 58);
+}
+
+#buscaB {
+	border-top-color: rgb(191, 215, 58);
+	border-bottom-color: rgb(191, 215, 58);
+	background-color: rgba(191, 215, 58, 0.6)
+}
+
+#muestraB {
+	border-top-right-radius: 15px;
+	border-bottom-right-radius: 15px;
+	border-top-color: rgb(191, 215, 58);
+	border-bottom-color: rgb(191, 215, 58);
+	border-right-color: rgb(191, 215, 58);
+	background-color: rgba(191, 215, 58, 0.6)
+}
+
 
 /*-------------------------------------Detalle-------------------------------------*/
 

@@ -43,52 +43,55 @@
 		<br>
 
 		<div id="title">
-			<h1>PRODUCTOS</h1>
-			<a href="agregarP.php">Agregar un nuevo Producto</a>
+			<h1>FACTURAS</h1>
 		</div>
 
 		<div id="listado">
 			<table>
 				<tr>
+					<th></th>
 					<th>ID</th>
-					<th>CATEGORIA</th>
-					<th>SUBCATEGORIA</th>
+					<th>USUARIO</th>
 					<th>NOMBRE</th>
-					<th>DESCRIPCION</th>
-					<th>PRECIO</th>
-					<th>UNIDAD</th>
-					<th>IMAGEN</th>
-					<th>STOCK</th>
-					<th>OFERTA</th>
-					<th>NIVEL DE AZUCAR</th>
-					<th>NIVEL DE GRASA</th>
-					<th>NIVEL DE SAL</th>
-					<th>ELIMINAR</th>
+					<th>DIRECCIÓN</th>
+					<th>CEDULA</th>
+					<th>CORREO</th>
+					<th>TELEFONO</th>
+					<th>FECHA EMISIÓN</th>
+					<th>SUBTOTAL</th>
+					<th>TOTAL</th>
+					<th>ESTADO</th>
+					<th>ENVIAR</th>
 				</tr>
 
 				<?php
 					include'../../../config/conexionBD.php';
-					$sql = "SELECT * FROM producto, subcategoria, categoria WHERE producto.sb_codigo = subcategoria.sb_codigo and subcategoria.ca_codigo = categoria.ca_codigo AND producto.pr_eliminado = 'N'";
+					$i = 1;
+					$sql = "SELECT * FROM `factura-cabecera`";
 					$result = $conn -> query($sql);
 
 					if($result -> num_rows > 0) {
 						while ($row = $result -> fetch_assoc()) {
 							echo "<tr>";
-							echo "<td class='id'>".$row["pr_codigo"]."</td>";
-							echo "<td class='id'>".$row["ca_nombre"]."</td>";
-							echo "<td class='id'>".$row["sb_nombre"]."</td>";
-							echo "<td class='nom'>".$row["pr_nombre"]."</td>";
-							echo "<td class='des'>".$row["pr_descripcion"]."</td>";
-							echo "<td class='pre'>".$row["pr_precio"]."</td>";
-							echo "<td class='uni'>".$row["pr_unidad"]."</td>";
-							echo "<td class='img'><img src='data:image/jpg;base64,".base64_encode($row["pr_imagen"])."'/></td>";
-							echo "<td class='stk'>".$row["pr_stock"]."</td>";
-							echo "<td class='ofr'>".$row["pr_oferta"]."</td>";
-							echo "<td class='azc'>".$row["pr_nivel_azucar"]."</td>";
-							echo "<td class='grs'>".$row["pr_nivel_grasa"]."</td>";
-							echo "<td class='sal'>".$row["pr_nivel_sal"]."</td>";
-							echo "<td><button onclick='eliminarProducto(".$row['pr_codigo'].")'>Eliminar</button></td>";
+							echo "<td>".$i."</td>";
+							echo "<td class='id'>".$row["fc_codigo"]."</td>";
+							echo "<td class=''>".$row["us_codigo"]."</td>";
+							echo "<td class=''>".$row["fc_nombres"]."</td>";
+							echo "<td class=''>".$row["fc_direccion"]."</td>";
+							echo "<td class=''>".$row["fc_cedula"]."</td>";
+							echo "<td class=''>".$row["fc_correo"]."</td>";
+							echo "<td class=''>".$row["fc_telefono"]."</td>";
+							echo "<td class=''>".$row["fc_fecha_emision"]."</td>";
+							echo "<td class=''>".$row["fc_subtotal"]."</td>";
+							echo "<td class=''>".$row["fc_total"]."</td>";
+							echo "<td class=''>".$row["fc_estado"]."</td>";
+							if ($row["fc_estado"] == 'confirmada')
+								echo "<td><i class='material-icons enviar' onclick='enviar(".$row['fc_codigo'].")'>send</i></td>";
+							else
+								echo "<td></td>";
+							
 							echo "</tr>";
+							$i++;
 						}
 					}
 				?>
@@ -105,7 +108,7 @@
 			    <br>
 			</div>
 		</footer>
-
+		
 	</body>
 	<script type="text/javascript" src="../controladores/javascript.js"></script>
 </html>

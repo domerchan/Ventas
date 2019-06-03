@@ -30,7 +30,11 @@ function filtrar(filtro) {
 }
 
 function chooseFile() {
-	document.getElementById('image').click();
+	document.getElementById('img').click();
+}
+
+function datosg() {
+	document.getElementById('enviar').disabled = false;
 }
 
 function editar() {
@@ -133,5 +137,20 @@ function submit() {
 		}
 	};
 	xmlhttp.open("GET", "../controladores/agregarFoto.php", true);
+	xmlhttp.send();
+}
+
+function cancelarFactura(codigo) {
+	if (window.XMLHttpRequest) {
+		xmlhttp = new XMLHttpRequest();
+	} else {
+		xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+	}
+	xmlhttp.onreadystatechange = function() {
+		if (this.readyState == 4 && this.status == 200) {
+			document.getElementById('estado'+codigo).innerHTML = "Estado: candelada";
+		}
+	};
+	xmlhttp.open("GET", "../controladores/cancelarFactura.php?codigo="+codigo, true);
 	xmlhttp.send();
 }
