@@ -6,6 +6,7 @@
 	$producto = $_GET['producto'];
 	$cantidad = $_GET['cantidad'];
 	$usuario = $_SESSION['codigo'];
+	$sucursal = $_SESSION['sucursal'];
 
 	$sql = "SELECT count(*) FROM factura WHERE fa_compra_realizada = 'N' AND fa_eliminada = 'N' AND us_codigo = ".$usuario;
 	$result = $conn -> query($sql);
@@ -15,7 +16,7 @@
 		$conn -> query($sql);
 	}
 
-	$sql = "SELECT fc_codigo FROM `factura-cabecera` WHERE us_codigo = ".$usuario." ORDER BY fc_codigo DESC LIMIT 1";
+	$sql = "SELECT fc_codigo FROM `factura-cabecera` WHERE fc_estado = 'creada' AND us_codigo = ".$usuario." ORDER BY fc_codigo DESC LIMIT 1";
 	$result = $conn -> query($sql);
 	$row = $result -> fetch_assoc();
 
@@ -25,6 +26,6 @@
 
 	$subtotal = (int)$cantidad * (float)$row2['pr_precio'];
 
-	$sql = "INSERT INTO factura VALUES(0, '$producto', '".$row['fc_codigo']."', '$cantidad', '$subtotal', 'N', '$usuario', 'N')";
+	$sql = "INSERT INTO factura VALUES(0, '$producto', '".$row['fc_codigo']."', '$cantidad', '$subtotal', 'N', '$usuario', 'N', '$sucursal')";
 	$conn -> query($sql);
 ?>
