@@ -105,7 +105,7 @@
 		<br style="clear: both;">
 		
 		<div class='pop' id='info'></div>
-
+		<p id="exito"></p>
 
 		<div id="productos">
 			<?php

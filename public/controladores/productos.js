@@ -2,7 +2,6 @@ function agregar(producto) {
 	var cantidad = document.getElementById(producto).value;
 	
 	if (cantidad > 0) {
-		document.getElementById(producto).value = 0;
 
 		if (window.XMLHttpRequest) {
 			xmlhttp = new XMLHttpRequest();
@@ -10,7 +9,8 @@ function agregar(producto) {
 			xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
 		}
 		xmlhttp.onreadystatechange = function() {
-			if (this.readyState == 4 && this.status == 200) {
+					if (this.readyState == 4 && this.status == 200) {
+				document.getElementById(producto).value = 0;
 				document.getElementById('exito').innerHTML = this.responseText;
 			}
 		};

@@ -8,11 +8,13 @@
 	$usuario = $_SESSION['codigo'];
 	$sucursal = $_SESSION['sucursal'];
 
+
 	$sql = "SELECT count(*) FROM factura WHERE fa_compra_realizada = 'N' AND fa_eliminada = 'N' AND us_codigo = ".$usuario;
 	$result = $conn -> query($sql);
 	$row = $result -> fetch_assoc();
+
 	if ($row['count(*)'] == 0) {
-		$sql = "INSERT INTO `factura-cabecera` VALUES(0, '$usuario', null, null, null, null, null, null, null, null, null, 'creada')";
+		$sql = "INSERT INTO `factura-cabecera` VALUES(0, '$usuario', null, null, null, null, null, null, null, null, null, 'creada', '$sucursal')";
 		$conn -> query($sql);
 	}
 
